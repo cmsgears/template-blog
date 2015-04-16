@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `cmgdemocms` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `cmgdemocms`;
+CREATE DATABASE  IF NOT EXISTS `cmgdemoblog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `cmgdemoblog`;
 -- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: cmgdemocms
+-- Host: localhost    Database: cmgdemoblog
 -- ------------------------------------------------------
 -- Server version	5.5.41-0ubuntu0.14.04.1
 

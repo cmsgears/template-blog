@@ -4,9 +4,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=cmgdemocms',
-            'username' => 'cmgdemocms',
-            'password' => 'cmgdemocms',
+            'dsn' => 'mysql:host=localhost;dbname=cmgdemoblog',
+            'username' => 'cmgdemoblog',
+            'password' => 'cmgdemoblog',
             'charset' => 'utf8'
         ],
         'mailer' => [
