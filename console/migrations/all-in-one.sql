@@ -69,6 +69,7 @@ CREATE TABLE `cmg_category` (
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_category_name` (`name`),
   KEY `fk_category_1` (`parentId`),
   CONSTRAINT `fk_category_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -82,6 +83,350 @@ LOCK TABLES `cmg_category` WRITE;
 /*!40000 ALTER TABLE `cmg_category` DISABLE KEYS */;
 INSERT INTO `cmg_category` VALUES (1,NULL,'category type',NULL,0),(2,NULL,'role type',NULL,0),(3,NULL,'config type',NULL,0),(4,NULL,'gender',NULL,0);
 /*!40000 ALTER TABLE `cmg_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_menu`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_menu` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `parentId` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_menu_1` (`parentId`),
+  CONSTRAINT `fk_menu_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_menu` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_menu`
+--
+
+LOCK TABLES `cmg_cms_menu` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_menu` DISABLE KEYS */;
+INSERT INTO `cmg_cms_menu` VALUES (1,NULL,'main-menu','Main Menu. It can be used for site header and footer.');
+/*!40000 ALTER TABLE `cmg_cms_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_menu_page`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_menu_page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_menu_page` (
+  `menuId` bigint(20) NOT NULL,
+  `pageId` bigint(20) NOT NULL,
+  `order` tinyint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`menuId`,`pageId`),
+  KEY `fk_menu_page_1` (`menuId`),
+  KEY `fk_menu_page_2` (`pageId`),
+  CONSTRAINT `fk_menu_page_1` FOREIGN KEY (`menuId`) REFERENCES `cmg_cms_menu` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_menu_page_2` FOREIGN KEY (`pageId`) REFERENCES `cmg_cms_page` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_menu_page`
+--
+
+LOCK TABLES `cmg_cms_menu_page` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_menu_page` DISABLE KEYS */;
+INSERT INTO `cmg_cms_menu_page` VALUES (1,1,0),(1,2,0),(1,3,0),(1,8,0),(1,10,0),(1,11,0),(1,12,0),(1,13,0);
+/*!40000 ALTER TABLE `cmg_cms_menu_page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_page`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_page` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `parentId` bigint(20) DEFAULT NULL,
+  `authorId` bigint(20) NOT NULL,
+  `bannerId` bigint(20) DEFAULT NULL,
+  `templateId` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` smallint(6) DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  `visibility` smallint(6) DEFAULT NULL,
+  `summary` text COLLATE utf8_unicode_ci,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `createdAt` datetime DEFAULT NULL,
+  `publishedAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_page_slug` (`slug`),
+  KEY `fk_page_1` (`parentId`),
+  KEY `fk_page_2` (`authorId`),
+  KEY `fk_page_3` (`bannerId`),
+  KEY `fk_page_4` (`templateId`),
+  CONSTRAINT `fk_page_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_page` (`id`),
+  CONSTRAINT `fk_page_2` FOREIGN KEY (`authorId`) REFERENCES `cmg_user` (`id`),
+  CONSTRAINT `fk_page_3` FOREIGN KEY (`bannerId`) REFERENCES `cmg_file` (`id`),
+  CONSTRAINT `fk_page_4` FOREIGN KEY (`templateId`) REFERENCES `cmg_cms_template` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_page`
+--
+
+LOCK TABLES `cmg_cms_page` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_page` DISABLE KEYS */;
+INSERT INTO `cmg_cms_page` VALUES (1,NULL,1,NULL,NULL,'Home','home page','home',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(2,NULL,1,NULL,NULL,'Login','login page','login',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(3,NULL,1,NULL,NULL,'Register','register page','register',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(4,NULL,1,NULL,NULL,'Confirm Account','confirm account page','confirm-account',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(5,NULL,1,NULL,NULL,'Activate Account','activate account page','activate-account',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(6,NULL,1,NULL,NULL,'Forgot Password','forgot password page','forgot-password',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(7,NULL,1,NULL,NULL,'Reset Password','reset password page','reset-password',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(8,NULL,1,NULL,NULL,'Contact','contact page','contact',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(9,NULL,1,NULL,NULL,'Feedback','feedback page','feedback',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(10,NULL,1,NULL,1,'About Us','about us page','about-us',0,0,0,'<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(11,NULL,1,NULL,1,'Terms','terms page','terms',0,0,0,NULL,'<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(12,NULL,1,NULL,1,'Privacy','privacy page','privacy',0,0,0,NULL,'<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00'),(13,NULL,1,NULL,2,'Blog','blog page','blog',0,0,0,NULL,NULL,'2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00');
+/*!40000 ALTER TABLE `cmg_cms_page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_page_file`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_page_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_page_file` (
+  `pageId` bigint(20) NOT NULL,
+  `fileId` bigint(20) NOT NULL,
+  `order` tinyint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pageId`,`fileId`),
+  KEY `fk_page_file_1` (`pageId`),
+  KEY `fk_page_file_2` (`fileId`),
+  CONSTRAINT `fk_page_file_1` FOREIGN KEY (`pageId`) REFERENCES `cmg_cms_page` (`id`),
+  CONSTRAINT `fk_page_file_2` FOREIGN KEY (`fileId`) REFERENCES `cmg_file` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_page_file`
+--
+
+LOCK TABLES `cmg_cms_page_file` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_page_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_page_file` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_page_meta`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_page_meta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_page_meta` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pageId` bigint(20) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_page_meta_1` (`pageId`),
+  CONSTRAINT `fk_page_meta_1` FOREIGN KEY (`pageId`) REFERENCES `cmg_cms_page` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_page_meta`
+--
+
+LOCK TABLES `cmg_cms_page_meta` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_page_meta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_page_meta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_page_tag`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_page_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_page_tag` (
+  `pageId` bigint(20) NOT NULL,
+  `tagId` bigint(20) NOT NULL,
+  `order` tinyint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pageId`,`tagId`),
+  KEY `fk_page_tag_1` (`pageId`),
+  KEY `fk_page_tag_2` (`tagId`),
+  CONSTRAINT `fk_page_tag_1` FOREIGN KEY (`pageId`) REFERENCES `cmg_cms_page` (`id`),
+  CONSTRAINT `fk_page_tag_2` FOREIGN KEY (`tagId`) REFERENCES `cmg_cms_tag` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_page_tag`
+--
+
+LOCK TABLES `cmg_cms_page_tag` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_page_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_page_tag` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_post_category`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_post_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_post_category` (
+  `postId` bigint(20) NOT NULL,
+  `categoryId` bigint(20) NOT NULL,
+  PRIMARY KEY (`postId`,`categoryId`),
+  KEY `fk_post_category_1` (`postId`),
+  KEY `fk_post_category_2` (`categoryId`),
+  CONSTRAINT `fk_post_category_1` FOREIGN KEY (`postId`) REFERENCES `cmg_cms_page` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_post_category_2` FOREIGN KEY (`categoryId`) REFERENCES `cmg_category` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_post_category`
+--
+
+LOCK TABLES `cmg_cms_post_category` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_post_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_post_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_sidebar`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_sidebar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_sidebar` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_sidebar`
+--
+
+LOCK TABLES `cmg_cms_sidebar` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_sidebar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_sidebar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_sidebar_widget`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_sidebar_widget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_sidebar_widget` (
+  `sidebarId` bigint(20) NOT NULL,
+  `widgetId` bigint(20) NOT NULL,
+  PRIMARY KEY (`sidebarId`,`widgetId`),
+  KEY `fk_sidebar_widget_1` (`sidebarId`),
+  KEY `fk_sidebar_widget_2` (`widgetId`),
+  CONSTRAINT `fk_sidebar_widget_1` FOREIGN KEY (`sidebarId`) REFERENCES `cmg_cms_sidebar` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_sidebar_widget_2` FOREIGN KEY (`widgetId`) REFERENCES `cmg_cms_widget` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_sidebar_widget`
+--
+
+LOCK TABLES `cmg_cms_sidebar_widget` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_sidebar_widget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_sidebar_widget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_tag`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_tag` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_tag`
+--
+
+LOCK TABLES `cmg_cms_tag` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_tag` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_template`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_template` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` smallint(6) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_template`
+--
+
+LOCK TABLES `cmg_cms_template` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_template` DISABLE KEYS */;
+INSERT INTO `cmg_cms_template` VALUES (1,'simple','Simple layout for pages and posts.',0),(2,'blog','Blog layout to view all blog posts or filters(category, author).',0),(3,'text','Text layout for text widget.',5);
+/*!40000 ALTER TABLE `cmg_cms_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cmg_cms_widget`
+--
+
+DROP TABLE IF EXISTS `cmg_cms_widget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cmg_cms_widget` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `templateId` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  KEY `fk_widget_1` (`templateId`),
+  CONSTRAINT `fk_widget_1` FOREIGN KEY (`templateId`) REFERENCES `cmg_cms_template` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cmg_cms_widget`
+--
+
+LOCK TABLES `cmg_cms_widget` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_widget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_widget` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -108,7 +453,7 @@ CREATE TABLE `cmg_config` (
 
 LOCK TABLES `cmg_config` WRITE;
 /*!40000 ALTER TABLE `cmg_config` DISABLE KEYS */;
-INSERT INTO `cmg_config` VALUES (1,'locale message','false',0,'text',NULL),(2,'language','en-US',0,'text',NULL),(3,'charset','UTF-8',0,'text',NULL),(4,'site title','CMG Demo',0,'text',NULL),(5,'site name','CMSGears',0,'text',NULL),(6,'site url','http://demo.cmsgears.com/templates/basic/frontend/web/',0,'text',NULL),(7,'smtp','false',10,'text',NULL),(8,'smtp username','',10,'text',NULL),(9,'smtp password','',10,'',NULL),(10,'smtp host','',10,'text',NULL),(11,'smtp port','587',10,'text',NULL),(12,'debug','true',10,'text',NULL),(13,'sender name','Admin',10,'text',NULL),(14,'sender email','demoadmin@cmsgears.com',10,'text',NULL),(15,'contact name','Contact Us',10,'text',NULL),(16,'contact email','democontact@cmsgears.com',10,'text',NULL),(17,'info name','Info',10,'text',NULL),(18,'info email','demoinfo@cmsgears.com',10,'text',NULL),(19,'theme','basic',20,'text',NULL),(20,'theme version','1',20,'text',NULL),(21,'admin url','http://demo.cmsgears.com/templates/basic/admin/web/',30,'text',NULL),(22,'theme','basic',30,'text',NULL),(23,'theme version','1',30,'text',NULL);
+INSERT INTO `cmg_config` VALUES (1,'locale message','false',0,'text',NULL),(2,'language','en-US',0,'text',NULL),(3,'charset','UTF-8',0,'text',NULL),(4,'site title','CMG Demo',0,'text',NULL),(5,'site name','CMSGears',0,'text',NULL),(6,'site url','http://demo.cmsgears.com/templates/blog/frontend/web/',0,'text',NULL),(7,'smtp','false',10,'text',NULL),(8,'smtp username','',10,'text',NULL),(9,'smtp password','',10,'',NULL),(10,'smtp host','',10,'text',NULL),(11,'smtp port','587',10,'text',NULL),(12,'debug','true',10,'text',NULL),(13,'sender name','Admin',10,'text',NULL),(14,'sender email','demoadmin@cmsgears.com',10,'text',NULL),(15,'contact name','Contact Us',10,'text',NULL),(16,'contact email','democontact@cmsgears.com',10,'text',NULL),(17,'info name','Info',10,'text',NULL),(18,'info email','demoinfo@cmsgears.com',10,'text',NULL),(19,'theme','basic',20,'text',NULL),(20,'theme version','1',20,'text',NULL),(21,'admin url','http://demo.cmsgears.com/templates/blog/admin/web/',30,'text',NULL),(22,'theme','basic',30,'text',NULL),(23,'theme version','1',30,'text',NULL);
 /*!40000 ALTER TABLE `cmg_config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +468,8 @@ CREATE TABLE `cmg_country` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_country_code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -294,7 +640,8 @@ CREATE TABLE `cmg_locale` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `code` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_locale_code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -355,6 +702,7 @@ CREATE TABLE `cmg_newsletter` (
   `modifiedAt` datetime DEFAULT NULL,
   `lastSentAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_newsletter_name` (`name`),
   KEY `fk_newsletter_1` (`createdBy`),
   KEY `fk_newsletter_2` (`modifiedBy`),
   CONSTRAINT `fk_newsletter_1` FOREIGN KEY (`createdBy`) REFERENCES `cmg_user` (`id`),
@@ -418,7 +766,7 @@ CREATE TABLE `cmg_option` (
   PRIMARY KEY (`id`),
   KEY `fk_option_1` (`categoryId`),
   CONSTRAINT `fk_option_1` FOREIGN KEY (`categoryId`) REFERENCES `cmg_category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,7 +775,7 @@ CREATE TABLE `cmg_option` (
 
 LOCK TABLES `cmg_option` WRITE;
 /*!40000 ALTER TABLE `cmg_option` DISABLE KEYS */;
-INSERT INTO `cmg_option` VALUES (1,1,'Combo','0'),(2,2,'System','0'),(3,3,'Core','0'),(4,3,'Email','10'),(5,3,'Website','20'),(6,3,'Admin','30'),(7,4,'Male',NULL),(8,4,'Female',NULL),(9,4,'Other',NULL);
+INSERT INTO `cmg_option` VALUES (1,1,'Combo','0'),(2,2,'System','0'),(3,3,'Core','0'),(4,3,'Email','10'),(5,3,'Website','20'),(6,3,'Admin','30'),(7,4,'Male',NULL),(8,4,'Female',NULL),(9,4,'Other',NULL),(1001,1,'Post','1001');
 /*!40000 ALTER TABLE `cmg_option` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,12 +795,12 @@ CREATE TABLE `cmg_permission` (
   `createdAt` datetime NOT NULL,
   `modifiedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `permission_name_unique` (`name`),
+  UNIQUE KEY `unique_permission_name` (`name`),
   KEY `fk_permission_1` (`createdBy`),
   KEY `fk_permission_2` (`modifiedBy`),
   CONSTRAINT `fk_permission_1` FOREIGN KEY (`createdBy`) REFERENCES `cmg_user` (`id`),
   CONSTRAINT `fk_permission_2` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,7 +809,7 @@ CREATE TABLE `cmg_permission` (
 
 LOCK TABLES `cmg_permission` WRITE;
 /*!40000 ALTER TABLE `cmg_permission` DISABLE KEYS */;
-INSERT INTO `cmg_permission` VALUES (1,1,1,'admin','The permission admin is to distinguish between admin and site user. It is a must have permission for admins.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(2,1,1,'user','The permission user is to distinguish between admin and site user. It is a must have permission for users.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(3,1,1,'settings','The permission settings is to manage settings from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(4,1,1,'category','The permission category is to manage drop down options from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(5,1,1,'identity','The permission identity is to manage user, roles and permissions modules from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(6,1,1,'identity-user','The permission user-crud-user is to manage users from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(7,1,1,'identity-rbac','The permission rbac is to manage Role Based Access Control(RBAC) module from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(8,1,1,'newsletter','The permission newsletter is to manage newsletters from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(9,1,1,'slider','The permission slider is to manage site sliders from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54');
+INSERT INTO `cmg_permission` VALUES (1,1,1,'admin','The permission admin is to distinguish between admin and site user. It is a must have permission for admins.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(2,1,1,'user','The permission user is to distinguish between admin and site user. It is a must have permission for users.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(3,1,1,'settings','The permission settings is to manage settings from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(4,1,1,'category','The permission category is to manage drop down options from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(5,1,1,'identity','The permission identity is to manage user, roles and permissions modules from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(6,1,1,'identity-user','The permission user-crud-user is to manage users from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(7,1,1,'identity-rbac','The permission rbac is to manage Role Based Access Control(RBAC) module from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(8,1,1,'newsletter','The permission newsletter is to manage newsletters from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(9,1,1,'slider','The permission slider is to manage site sliders from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54'),(1001,1,1,'cms','The permission cms is to manage page, menu, sidebar, widget from admin.','2014-10-11 14:22:54','2014-10-11 14:22:54');
 /*!40000 ALTER TABLE `cmg_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -541,12 +889,12 @@ CREATE TABLE `cmg_role` (
   `createdAt` datetime NOT NULL,
   `modifiedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `role_name_unique` (`name`),
+  UNIQUE KEY `unique_role_name` (`name`),
   KEY `fk_role_1` (`createdBy`),
   KEY `fk_role_2` (`modifiedBy`),
   CONSTRAINT `fk_role_1` FOREIGN KEY (`createdBy`) REFERENCES `cmg_user` (`id`),
   CONSTRAINT `fk_role_2` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,7 +903,7 @@ CREATE TABLE `cmg_role` (
 
 LOCK TABLES `cmg_role` WRITE;
 /*!40000 ALTER TABLE `cmg_role` DISABLE KEYS */;
-INSERT INTO `cmg_role` VALUES (1,1,1,'Super Admin','The Super Admin have all the permisisons to perform operations on the admin site and website.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(2,1,1,'Admin','The Admin have all the permisisons to perform operations on the admin site and website except RBAC module.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(3,1,1,'User','The role User is limited to website users.','/home',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(4,1,1,'Identity Manager','The role User Manager is limited to manage users from admin.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54');
+INSERT INTO `cmg_role` VALUES (1,1,1,'Super Admin','The Super Admin have all the permisisons to perform operations on the admin site and website.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(2,1,1,'Admin','The Admin have all the permisisons to perform operations on the admin site and website except RBAC module.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(3,1,1,'User','The role User is limited to website users.','/home',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(4,1,1,'Identity Manager','The role Identity Manager is limited to manage users from admin.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(1001,1,1,'CMS Manager','The role CMS Manager is limited to manage cms from admin.','/dashboard',0,'2014-10-11 14:22:54','2014-10-11 14:22:54');
 /*!40000 ALTER TABLE `cmg_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -583,7 +931,7 @@ CREATE TABLE `cmg_role_permission` (
 
 LOCK TABLES `cmg_role_permission` WRITE;
 /*!40000 ALTER TABLE `cmg_role_permission` DISABLE KEYS */;
-INSERT INTO `cmg_role_permission` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(2,1),(2,2),(2,3),(2,4),(2,8),(2,9),(3,2),(4,1),(4,2),(4,5),(4,6),(5,7);
+INSERT INTO `cmg_role_permission` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,1001),(2,1),(2,2),(2,3),(2,4),(2,8),(2,9),(2,1001),(3,2),(4,1),(4,2),(4,5),(4,6),(5,7),(1001,1001);
 /*!40000 ALTER TABLE `cmg_role_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -619,6 +967,8 @@ CREATE TABLE `cmg_user` (
   `accessTokenAccessedAt` datetime DEFAULT NULL,
   `authKey` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user_email` (`email`),
+  UNIQUE KEY `unique_user_username` (`username`),
   KEY `fk_user_1` (`roleId`),
   KEY `fk_user_2` (`localeId`),
   KEY `fk_user_3` (`genderId`),
@@ -627,7 +977,7 @@ CREATE TABLE `cmg_user` (
   CONSTRAINT `fk_user_2` FOREIGN KEY (`localeId`) REFERENCES `cmg_locale` (`id`),
   CONSTRAINT `fk_user_3` FOREIGN KEY (`genderId`) REFERENCES `cmg_option` (`id`),
   CONSTRAINT `fk_user_4` FOREIGN KEY (`avatarId`) REFERENCES `cmg_file` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -636,7 +986,7 @@ CREATE TABLE `cmg_user` (
 
 LOCK TABLES `cmg_user` WRITE;
 /*!40000 ALTER TABLE `cmg_user` DISABLE KEYS */;
-INSERT INTO `cmg_user` VALUES (1,1,NULL,NULL,NULL,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2015-04-16 01:47:22',NULL,NULL,NULL,NULL,NULL),(2,2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(3,3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(4,4,NULL,NULL,NULL,500,'demoidentitymanager@cmsgears.com','demoidentitymanager','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `cmg_user` VALUES (1,1,NULL,NULL,NULL,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(2,2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(3,3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(4,4,NULL,NULL,NULL,500,'demoidentitymanager@cmsgears.com','demoidentitymanager','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL),(1001,1001,NULL,NULL,NULL,500,'democmsmanager@cmsgears.com','democmsmanager','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','cms','manager',NULL,NULL,1,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cmg_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -703,4 +1053,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-16  7:18:32
+-- Dump completed on 2015-04-22 15:38:44
