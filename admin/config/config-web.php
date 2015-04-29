@@ -14,6 +14,9 @@ return [
     'modules' => [
         'cmgcore' => [
             'class' => 'cmsgears\core\admin\Module'
+        ],
+        'cmgcms' => [
+            'class' => 'cmsgears\cms\admin\Module'
         ]
     ],
     'components' => [
@@ -35,6 +38,10 @@ return [
         	'loginRedirectPage' => '/dashboard',
         	'logoutRedirectPage' => '/login',
         	'editorClass' => 'cmsgears\cleditor\ClEditor',
+        ],
+        'sidebar' => [
+        	'class' => 'cmsgears\core\admin\components\Sidebar',
+        	'modules' => [ 'cmgcms', 'cmgcore' ]
         ]
     ],
     'params' => $params

@@ -17,6 +17,9 @@ return [
         ],
         'cmgforms' => [
             'class' => 'cmsgears\forms\frontend\Module'
+        ],
+        'cmgcms' => [
+            'class' => 'cmsgears\cms\frontend\Module'
         ]
     ],
     'components' => [
@@ -25,21 +28,27 @@ return [
             'enableAutoLogin' => true
         ],
         'view' => [
-            'theme' => 'themes\basic\Theme'
+            'theme' => 'themes\blog\Theme'
         ],
         'urlManager' => [
 	        'rules' => [
-	        	// apix request rules
+	        	// apix request rules --------------------------
 	        	'apix/<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
 	        	'apix/<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
 	        	'apix/<action:(login|register|logout)>' => 'cmgcore/apix/site/<action>',
 	        	'apix/<action:(contact)>' => 'cmgforms/apix/site/<action>',
-				// regular request rules
+				// regular request rules -----------------------
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
+	        	// Blog Posts
+	        	'post/<slug:[\w\-]+>' => 'cmgcms/site/post',
+	        	// Core Module Pages
 	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/<controller>/<action>',
+	        	// Standard Pages
 	        	'<action:(home)>' => 'cmgcore/user/<action>',
 	        	'<action:(login|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'cmgcore/site/<action>',
-	        	'<action:(contact|feedback)>' => 'cmgforms/site/<action>'
+	        	'<action:(contact|feedback)>' => 'cmgforms/site/<action>',
+	        	// CMS Pages
+	        	'<slug:[\w\-]+>' => 'cmgcms/site/index'
 	        ]
 		],
         'cmgCore' => [
