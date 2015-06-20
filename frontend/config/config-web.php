@@ -23,10 +23,6 @@ return [
         ]
     ],
     'components' => [
-        'user' => [
-            'identityClass' => 'cmsgears\core\common\models\entities\User',
-            'enableAutoLogin' => true
-        ],
         'view' => [
             'theme' => 'themes\blog\Theme'
         ],
@@ -35,7 +31,7 @@ return [
 	        	// apix request rules --------------------------
 	        	'apix/<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
 	        	'apix/<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
-	        	'apix/<action:(login|register|logout)>' => 'cmgcore/apix/site/<action>',
+	        	'apix/<action:(login|register)>' => 'cmgcore/apix/site/<action>',
 	        	'apix/<action:(contact)>' => 'cmgforms/apix/site/<action>',
 				// regular request rules -----------------------
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
@@ -45,10 +41,11 @@ return [
 	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/<controller>/<action>',
 	        	// Standard Pages
 	        	'<action:(home)>' => 'cmgcore/user/<action>',
-	        	'<action:(login|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'cmgcore/site/<action>',
+	        	'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'cmgcore/site/<action>',
 	        	'<action:(contact|feedback)>' => 'cmgforms/site/<action>',
 	        	// CMS Pages
-	        	'<slug:[\w\-]+>' => 'cmgcms/site/index'
+	        	'<slug:[\w\-]+>' => 'cmgcms/site/index',
+	        	'/' => 'cmgcore/site/index'
 	        ]
 		],
         'cmgCore' => [

@@ -59,7 +59,8 @@ return [
         	'class' => 'cmsgears\cms\common\components\Mailer'
         ],
         'fileManager' => [
-        	'class' => 'cmsgears\files\components\FileManager'
+        	'class' => 'cmsgears\files\components\FileManager',
+        	'uploadUrl' => 'http://localhost/cmgdemoblog/uploads/'
         ]
     ]
 ];

@@ -15,6 +15,9 @@ return [
         'cmgcore' => [
             'class' => 'cmsgears\core\admin\Module'
         ],
+        'cmgforms' => [
+            'class' => 'cmsgears\forms\admin\Module'
+        ],
         'cmgcms' => [
             'class' => 'cmsgears\cms\admin\Module'
         ]
@@ -30,11 +33,11 @@ return [
 				// regular request rules
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
 	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/site/<action>',
-	        	'<action:(login|dashboard)>' => 'cmgcore/site/<action>'
+	        	'<action:(login|logout|dashboard)>' => 'cmgcore/site/<action>',
+	        	'/' => 'cmgcore/site/index'
 	        ]
 		],
         'cmgCore' => [
-        	'useRbac' => true,
         	'loginRedirectPage' => '/dashboard',
         	'logoutRedirectPage' => '/login',
         	'editorClass' => 'cmsgears\cleditor\ClEditor',
