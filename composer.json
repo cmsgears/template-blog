@@ -28,11 +28,31 @@
 		},
 		{
 			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/plugin-file-manager.git"
+		},
+		{
+			"type": "vcs",
 			"url": "https://git.vcdevhub.com/cmsgears/widget-cleditor.git"
 		},
 		{
 			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/plugin-file-manager.git"
+			"url": "https://git.vcdevhub.com/cmsgears/widget-nav.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-login.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-blog.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-tag.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-social-share.git"
 		}
     ],
     "require": {
@@ -41,8 +61,13 @@
 		"cmsgears/module-core": "dev-dev",
 		"cmsgears/module-forms": "dev-dev",
 		"cmsgears/module-cms": "dev-dev",
+		"cmsgears/plugin-file-manager": "dev-dev",
 		"cmsgears/widget-cleditor": "dev-dev",
-		"cmsgears/plugin-file-manager": "dev-dev"
+		"cmsgears/widget-nav": "dev-dev",
+		"cmsgears/widget-login": "dev-dev",
+		"cmsgears/widget-blog": "dev-dev",
+		"cmsgears/widget-tag": "dev-dev",
+		"cmsgears/widget-social-share": "dev-dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
