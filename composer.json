@@ -44,7 +44,11 @@
 		},
 		{
 			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-blog.git"
+			"url": "https://git.vcdevhub.com/cmsgears/widget-gallery.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-newsletter.git"
 		},
 		{
 			"type": "vcs",
@@ -53,7 +57,12 @@
 		{
 			"type": "vcs",
 			"url": "https://git.vcdevhub.com/cmsgears/widget-social-share.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/widget-blog.git"
 		}
+		
     ],
     "require": {
         "yiisoft/yii2": "2.0.3",
@@ -65,9 +74,11 @@
 		"cmsgears/widget-cleditor": "dev-dev",
 		"cmsgears/widget-nav": "dev-dev",
 		"cmsgears/widget-login": "dev-dev",
-		"cmsgears/widget-blog": "dev-dev",
+		"cmsgears/widget-gallery": "dev-dev",
+		"cmsgears/widget-newsletter": "dev-dev",
 		"cmsgears/widget-tag": "dev-dev",
-		"cmsgears/widget-social-share": "dev-dev"
+		"cmsgears/widget-social-share": "dev-dev",
+		"cmsgears/widget-blog": "dev-dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
