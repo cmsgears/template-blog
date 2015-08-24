@@ -28,21 +28,24 @@ return [
         ],
         'urlManager' => [
 	        'rules' => [
-	        	// apix request rules
+	        	// APIX Rules
 	        	'apix/<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
-				// regular request rules
+	        	'apix/<controller:(user|file)>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
+	        	// Regular Rules
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
-	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/site/<action>',
 	        	'<action:(login|logout|dashboard)>' => 'cmgcore/site/<action>'
 	        ]
 		],
         'cmgCore' => [
         	'loginRedirectPage' => '/dashboard',
-        	'logoutRedirectPage' => '/login',
-        	'editorClass' => 'cmsgears\widgets\cleditor\ClEditor',
+        	'logoutRedirectPage' => '/login'
         ],
         'sidebar' => [
         	'class' => 'cmsgears\core\admin\components\Sidebar',
+        	'modules' => [ 'cmgcms', 'cmgcore' ]
+        ],
+        'dashboard' => [
+        	'class' => 'cmsgears\core\admin\components\Dashboard',
         	'modules' => [ 'cmgcms', 'cmgcore' ]
         ]
     ],
