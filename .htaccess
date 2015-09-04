@@ -2,12 +2,12 @@ RewriteEngine On
 
 # pass all the non uploads and non admin requests to frontend application
 RewriteCond %{REQUEST_URI} !^/(cmgdemoblog/uploads)
-RewriteCond %{REQUEST_URI} !^/(cmgdemoblog/admin/web|cmgdemoblog/admin)
+RewriteCond %{REQUEST_URI} !^/(cmgdemoblog/backend/web|cmgdemoblog/backend)
 RewriteRule !(frontend/web) /cmgdemoblog/frontend/web%{REQUEST_URI} [L]
 
 # pass all the admin requests to admin application
-RewriteCond %{REQUEST_URI} ^/(cmgdemoblog/admin)
-RewriteRule !(admin/web) /cmgdemoblog/admin/web%{REQUEST_URI} [L]
+RewriteCond %{REQUEST_URI} ^/(cmgdemoblog/backend)
+RewriteRule !(backend/web) /cmgdemoblog/backend/web%{REQUEST_URI} [L]
 
 # handle frontend application requests
 RewriteCond %{REQUEST_URI} ^/cmgdemoblog/frontend/web
@@ -16,7 +16,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\?*$ /cmgdemoblog/frontend/web/index.php/$1 [L,QSA]
 
 # handle admin application requests
-RewriteCond %{REQUEST_URI} ^/cmgdemoblog/admin/web
+RewriteCond %{REQUEST_URI} ^/cmgdemoblog/backend/web
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)\?*$ /cmgdemoblog/admin/web/index.php/$1 [L,QSA]
+RewriteRule ^(.*)\?*$ /cmgdemoblog/backend/web/index.php/$1 [L,QSA]

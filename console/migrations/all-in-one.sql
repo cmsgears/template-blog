@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `cmgdemoblog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `cmgdemoblog`;
--- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.24, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: cmgdemoblog
 -- ------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `cmg_cms_menu` (
 
 LOCK TABLES `cmg_cms_menu` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_menu` DISABLE KEYS */;
-INSERT INTO `cmg_cms_menu` VALUES (1,NULL,'main-menu','Main Menu. It can be used for site header and footer.');
+INSERT INTO `cmg_cms_menu` VALUES (1,NULL,'main','Main Menu. It can be used for site header and footer.');
 /*!40000 ALTER TABLE `cmg_cms_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `cmg_cms_menu_page` (
 
 LOCK TABLES `cmg_cms_menu_page` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_menu_page` DISABLE KEYS */;
-INSERT INTO `cmg_cms_menu_page` VALUES (1,1,0),(1,2,0),(1,3,0),(1,8,0),(1,10,0),(1,11,0),(1,12,0),(1,13,0);
+INSERT INTO `cmg_cms_menu_page` VALUES (1,1,0),(1,13,0),(1,10,0),(1,8,0);
 /*!40000 ALTER TABLE `cmg_cms_menu_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,6 +341,7 @@ DROP TABLE IF EXISTS `cmg_core_category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cmg_core_category` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `avatarId` bigint(20) DEFAULT NULL,
   `parentId` bigint(20) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -348,8 +349,10 @@ CREATE TABLE `cmg_core_category` (
   `type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_category_1` (`parentId`),
-  CONSTRAINT `fk_category_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_core_category` (`id`)
+  KEY `fk_category_1` (`avatarId`),
+  KEY `fk_category_2` (`parentId`),
+  CONSTRAINT `fk_category_1` FOREIGN KEY (`avatarId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_category_2` FOREIGN KEY (`parentId`) REFERENCES `cmg_core_category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -359,7 +362,7 @@ CREATE TABLE `cmg_core_category` (
 
 LOCK TABLES `cmg_core_category` WRITE;
 /*!40000 ALTER TABLE `cmg_core_category` DISABLE KEYS */;
-INSERT INTO `cmg_core_category` VALUES (1,NULL,'gender',NULL,'gender','combo',NULL);
+INSERT INTO `cmg_core_category` VALUES (1,NULL,NULL,'gender',NULL,'gender','combo',NULL);
 /*!40000 ALTER TABLE `cmg_core_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1042,7 +1045,7 @@ CREATE TABLE `cmg_core_site_member` (
   `userId` bigint(20) NOT NULL,
   `roleId` bigint(20) NOT NULL,
   `createdAt` datetime NOT NULL,
-  `modifiedAt` datetime NOT NULL,
+  `modifiedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`siteId`,`userId`),
   KEY `fk_site_member_1` (`siteId`),
   KEY `fk_site_member_2` (`userId`),
@@ -1291,4 +1294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-22 17:27:24
+-- Dump completed on 2015-09-03 17:39:15
