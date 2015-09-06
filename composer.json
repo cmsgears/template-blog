@@ -9,29 +9,6 @@
         "resources": "http://www.cmsgears.org"
 	},
 	"minimum-stability": "stable",
-    "repositories": [
-		{
-			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-newsletter.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-tag.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-social-share.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-blog.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/widget-nav-dynamic.git"
-		}
-		
-    ],
     "require": {
         "yiisoft/yii2": "2.0.6",
         "yiisoft/yii2-swiftmailer": "2.0.*",
@@ -43,10 +20,10 @@
 		"cmsgears/widget-nav": "dev-1.0.0-alpha",
 		"cmsgears/widget-login": "dev-1.0.0-alpha",
 		"cmsgears/widget-gallery": "dev-1.0.0-alpha",
-		"cmsgears/widget-newsletter": "dev-dev",
-		"cmsgears/widget-tag": "dev-dev",
-		"cmsgears/widget-social-share": "dev-dev",
-		"cmsgears/widget-blog": "dev-dev",
+		"cmsgears/widget-newsletter": "dev-1.0.0-alpha",
+		"cmsgears/widget-tag": "dev-1.0.0-alpha",
+		"cmsgears/widget-social-share": "dev-1.0.0-alpha",
+		"cmsgears/widget-blog": "dev-1.0.0-alpha",
 		"cmsgears/widget-nav-dynamic": "dev-1.0.0-alpha"
     },
     "require-dev": {

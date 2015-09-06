@@ -32,7 +32,7 @@ CREATE TABLE `cmg_cms_menu` (
   PRIMARY KEY (`id`),
   KEY `fk_menu_1` (`parentId`),
   CONSTRAINT `fk_menu_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_menu` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `cmg_cms_menu` (
 
 LOCK TABLES `cmg_cms_menu` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_menu` DISABLE KEYS */;
+INSERT INTO `cmg_cms_menu` VALUES (1,NULL,'main','Main Menu. It can be used for site header and footer.');
 /*!40000 ALTER TABLE `cmg_cms_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +70,7 @@ CREATE TABLE `cmg_cms_menu_page` (
 
 LOCK TABLES `cmg_cms_menu_page` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_menu_page` DISABLE KEYS */;
+INSERT INTO `cmg_cms_menu_page` VALUES (1,1,0),(1,8,0),(1,10,0),(1,13,0);
 /*!40000 ALTER TABLE `cmg_cms_menu_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1063,7 +1065,7 @@ CREATE TABLE `cmg_core_template` (
   `frontendView` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` mediumtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1072,6 +1074,7 @@ CREATE TABLE `cmg_core_template` (
 
 LOCK TABLES `cmg_core_template` WRITE;
 /*!40000 ALTER TABLE `cmg_core_template` DISABLE KEYS */;
+INSERT INTO `cmg_core_template` VALUES (1,'simple','Simple layout for pages and posts.','page','simple','@themes/blog/views/templates/page',NULL,'simple',NULL),(2,'blog','Blog layout to view all blog posts or filters(category, author).','page','blog','@themes/blog/views/templates/page',NULL,'blog',NULL),(3,'text','It can be used to display simple key values for a widget.','widget',NULL,'@themes/blog/views/templates/widget','text-admin',NULL,NULL);
 /*!40000 ALTER TABLE `cmg_core_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1250,4 +1253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-06 19:16:46
+-- Dump completed on 2015-09-06 19:19:20
