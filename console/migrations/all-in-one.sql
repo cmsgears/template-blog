@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `cmgdemoblog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `cmgdemoblog`;
 -- MySQL dump 10.13  Distrib 5.6.24, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: cmgdemoblog
@@ -18,58 +16,51 @@ USE `cmgdemoblog`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cmg_cms_menu`
+-- Table structure for table `cmg_cms_block`
 --
 
-DROP TABLE IF EXISTS `cmg_cms_menu`;
+DROP TABLE IF EXISTS `cmg_cms_block`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cmg_cms_menu` (
+CREATE TABLE `cmg_cms_block` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `parentId` bigint(20) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `bannerId` bigint(20) DEFAULT NULL,
+  `textureId` bigint(20) DEFAULT NULL,
+  `videoId` bigint(20) DEFAULT NULL,
+  `templateId` bigint(20) DEFAULT NULL,
+  `createdBy` bigint(20) NOT NULL,
+  `modifiedBy` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `htmlOptions` text COLLATE utf8_unicode_ci,
+  `backgroundClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `textureClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `modifiedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_menu_1` (`parentId`),
-  CONSTRAINT `fk_menu_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_menu` (`id`)
+  KEY `fk_cms_block_1` (`bannerId`),
+  KEY `fk_cms_block_2` (`textureId`),
+  KEY `fk_cms_block_3` (`videoId`),
+  KEY `fk_cms_block_4` (`templateId`),
+  KEY `fk_cms_block_5` (`createdBy`),
+  KEY `fk_cms_block_6` (`modifiedBy`),
+  CONSTRAINT `fk_cms_block_1` FOREIGN KEY (`bannerId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_cms_block_2` FOREIGN KEY (`textureId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_cms_block_3` FOREIGN KEY (`videoId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_cms_block_4` FOREIGN KEY (`templateId`) REFERENCES `cmg_core_template` (`id`),
+  CONSTRAINT `fk_cms_block_5` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
+  CONSTRAINT `fk_cms_block_6` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cmg_cms_menu`
+-- Dumping data for table `cmg_cms_block`
 --
 
-LOCK TABLES `cmg_cms_menu` WRITE;
-/*!40000 ALTER TABLE `cmg_cms_menu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cmg_cms_menu` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cmg_cms_menu_page`
---
-
-DROP TABLE IF EXISTS `cmg_cms_menu_page`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cmg_cms_menu_page` (
-  `menuId` bigint(20) NOT NULL,
-  `pageId` bigint(20) NOT NULL,
-  `order` tinyint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`menuId`,`pageId`),
-  KEY `fk_menu_page_1` (`menuId`),
-  KEY `fk_menu_page_2` (`pageId`),
-  CONSTRAINT `fk_menu_page_1` FOREIGN KEY (`menuId`) REFERENCES `cmg_cms_menu` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_menu_page_2` FOREIGN KEY (`pageId`) REFERENCES `cmg_cms_page` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cmg_cms_menu_page`
---
-
-LOCK TABLES `cmg_cms_menu_page` WRITE;
-/*!40000 ALTER TABLE `cmg_cms_menu_page` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cmg_cms_menu_page` ENABLE KEYS */;
+LOCK TABLES `cmg_cms_block` WRITE;
+/*!40000 ALTER TABLE `cmg_cms_block` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cmg_cms_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -81,21 +72,13 @@ DROP TABLE IF EXISTS `cmg_cms_model_block`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cmg_cms_model_block` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `backgroundId` bigint(20) DEFAULT NULL,
-  `textureId` bigint(20) DEFAULT NULL,
+  `blockId` bigint(20) DEFAULT NULL,
   `parentId` bigint(20) NOT NULL,
+  `parentType` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order` smallint(6) DEFAULT '0',
-  `htmlOptions` text COLLATE utf8_unicode_ci,
-  `backgroundClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `textureClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `createdAt` datetime DEFAULT NULL,
-  `modifiedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_model_block_1` (`backgroundId`),
-  KEY `fk_model_block_2` (`textureId`),
-  CONSTRAINT `fk_model_block_1` FOREIGN KEY (`backgroundId`) REFERENCES `cmg_core_file` (`id`),
-  CONSTRAINT `fk_model_block_2` FOREIGN KEY (`textureId`) REFERENCES `cmg_core_template` (`id`)
+  KEY `fk_cms_model_block_1` (`blockId`),
+  CONSTRAINT `fk_cms_model_block_1` FOREIGN KEY (`blockId`) REFERENCES `cmg_cms_block` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,6 +101,7 @@ DROP TABLE IF EXISTS `cmg_cms_model_content`;
 CREATE TABLE `cmg_cms_model_content` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `bannerId` bigint(20) DEFAULT NULL,
+  `videoId` bigint(20) DEFAULT NULL,
   `templateId` bigint(20) DEFAULT NULL,
   `parentId` bigint(20) NOT NULL,
   `parentType` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -131,11 +115,13 @@ CREATE TABLE `cmg_cms_model_content` (
   `seoKeywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seoRobot` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_model_content_1` (`bannerId`),
-  KEY `fk_model_content_2` (`templateId`),
-  CONSTRAINT `fk_model_content_1` FOREIGN KEY (`bannerId`) REFERENCES `cmg_core_file` (`id`),
-  CONSTRAINT `fk_model_content_2` FOREIGN KEY (`templateId`) REFERENCES `cmg_core_template` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `fk_cms_model_content_1` (`bannerId`),
+  KEY `fk_cms_model_content_2` (`videoId`),
+  KEY `fk_cms_model_content_3` (`templateId`),
+  CONSTRAINT `fk_cms_model_content_1` FOREIGN KEY (`bannerId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_cms_model_content_2` FOREIGN KEY (`videoId`) REFERENCES `cmg_core_file` (`id`),
+  CONSTRAINT `fk_cms_model_content_3` FOREIGN KEY (`templateId`) REFERENCES `cmg_core_template` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +130,7 @@ CREATE TABLE `cmg_cms_model_content` (
 
 LOCK TABLES `cmg_cms_model_content` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_model_content` DISABLE KEYS */;
-INSERT INTO `cmg_cms_model_content` VALUES (1,NULL,NULL,1,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'home page',NULL,NULL),(2,NULL,NULL,2,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'login page',NULL,NULL),(3,NULL,NULL,3,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'register page',NULL,NULL),(4,NULL,NULL,4,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'confirm account page',NULL,NULL),(5,NULL,NULL,5,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'activate account page',NULL,NULL),(6,NULL,NULL,6,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'forgot password page',NULL,NULL),(7,NULL,NULL,7,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'reset password page',NULL,NULL),(8,NULL,NULL,8,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'contact page',NULL,NULL),(9,NULL,NULL,9,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'feedback page',NULL,NULL),(10,NULL,NULL,10,'page','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'about us page',NULL,NULL),(11,NULL,NULL,11,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'terms page',NULL,NULL),(12,NULL,NULL,12,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'privacy page',NULL,NULL),(13,NULL,NULL,13,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'blog page',NULL,NULL);
+INSERT INTO `cmg_cms_model_content` VALUES (1,NULL,NULL,NULL,1,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'home page',NULL,NULL),(2,NULL,NULL,NULL,2,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'login page',NULL,NULL),(3,NULL,NULL,NULL,3,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'register page',NULL,NULL),(4,NULL,NULL,NULL,4,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'confirm account page',NULL,NULL),(5,NULL,NULL,NULL,5,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'activate account page',NULL,NULL),(6,NULL,NULL,NULL,6,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'forgot password page',NULL,NULL),(7,NULL,NULL,NULL,7,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'reset password page',NULL,NULL),(8,NULL,NULL,NULL,8,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'contact page',NULL,NULL),(9,NULL,NULL,NULL,9,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'feedback page',NULL,NULL),(10,NULL,NULL,NULL,10,'page','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'about us page',NULL,NULL),(11,NULL,NULL,NULL,11,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'terms page',NULL,NULL),(12,NULL,NULL,NULL,12,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'privacy page',NULL,NULL),(13,NULL,NULL,NULL,13,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'blog page',NULL,NULL),(14,NULL,NULL,1,14,'post','test post 1','test post 1','2015-09-12 17:27:27','2015-09-12 17:27:27',NULL,'','','','');
 /*!40000 ALTER TABLE `cmg_cms_model_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,13 +152,13 @@ CREATE TABLE `cmg_cms_page` (
   `status` smallint(6) DEFAULT NULL,
   `visibility` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_page_1` (`parentId`),
-  KEY `fk_page_2` (`createdBy`),
-  KEY `fk_page_3` (`modifiedBy`),
-  CONSTRAINT `fk_page_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_page` (`id`),
-  CONSTRAINT `fk_page_2` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
-  CONSTRAINT `fk_page_3` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `fk_cms_page_1` (`parentId`),
+  KEY `fk_cms_page_2` (`createdBy`),
+  KEY `fk_cms_page_3` (`modifiedBy`),
+  CONSTRAINT `fk_cms_page_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_page` (`id`),
+  CONSTRAINT `fk_cms_page_2` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
+  CONSTRAINT `fk_cms_page_3` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +167,7 @@ CREATE TABLE `cmg_cms_page` (
 
 LOCK TABLES `cmg_cms_page` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_page` DISABLE KEYS */;
-INSERT INTO `cmg_cms_page` VALUES (1,NULL,1,1,'Home','home','page',5,5),(2,NULL,1,1,'Login','login','page',5,5),(3,NULL,1,1,'Register','register','page',5,5),(4,NULL,1,1,'Confirm Account','confirm-account','page',5,5),(5,NULL,1,1,'Activate Account','activate-account','page',5,5),(6,NULL,1,1,'Forgot Password','forgot-password','page',5,5),(7,NULL,1,1,'Reset Password','reset-password','page',5,5),(8,NULL,1,1,'Contact Us','contact-us','page',5,5),(9,NULL,1,1,'Feedback','feedback','page',5,5),(10,NULL,1,1,'About Us','about-us','page',5,5),(11,NULL,1,1,'Terms','terms','page',5,5),(12,NULL,1,1,'Privacy','privacy','page',5,5),(13,NULL,1,1,'Blog','blog','page',5,5);
+INSERT INTO `cmg_cms_page` VALUES (1,NULL,1,1,'Home','home','page',5,5),(2,NULL,1,1,'Login','login','page',5,5),(3,NULL,1,1,'Register','register','page',5,5),(4,NULL,1,1,'Confirm Account','confirm-account','page',5,5),(5,NULL,1,1,'Activate Account','activate-account','page',5,5),(6,NULL,1,1,'Forgot Password','forgot-password','page',5,5),(7,NULL,1,1,'Reset Password','reset-password','page',5,5),(8,NULL,1,1,'Contact Us','contact-us','page',5,5),(9,NULL,1,1,'Feedback','feedback','page',5,5),(10,NULL,1,1,'About Us','about-us','page',5,5),(11,NULL,1,1,'Terms','terms','page',5,5),(12,NULL,1,1,'Privacy','privacy','page',5,5),(13,NULL,1,1,'Blog','blog','page',5,5),(14,NULL,1,1,'test post 1','test-post-1','post',0,0);
 /*!40000 ALTER TABLE `cmg_cms_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +257,7 @@ CREATE TABLE `cmg_core_category` (
   KEY `fk_category_2` (`parentId`),
   CONSTRAINT `fk_category_1` FOREIGN KEY (`avatarId`) REFERENCES `cmg_core_file` (`id`),
   CONSTRAINT `fk_category_2` FOREIGN KEY (`parentId`) REFERENCES `cmg_core_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +266,7 @@ CREATE TABLE `cmg_core_category` (
 
 LOCK TABLES `cmg_core_category` WRITE;
 /*!40000 ALTER TABLE `cmg_core_category` DISABLE KEYS */;
-INSERT INTO `cmg_core_category` VALUES (1,NULL,NULL,'gender',NULL,'gender','combo',NULL);
+INSERT INTO `cmg_core_category` VALUES (1,NULL,NULL,'gender',NULL,'gender','combo',NULL),(2,NULL,NULL,'test p1','test p1','test-p1','post','');
 /*!40000 ALTER TABLE `cmg_core_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,7 +438,7 @@ CREATE TABLE `cmg_core_model_category` (
   PRIMARY KEY (`id`),
   KEY `fk_model_category_1` (`categoryId`),
   CONSTRAINT `fk_model_category_1` FOREIGN KEY (`categoryId`) REFERENCES `cmg_core_category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,6 +447,7 @@ CREATE TABLE `cmg_core_model_category` (
 
 LOCK TABLES `cmg_core_model_category` WRITE;
 /*!40000 ALTER TABLE `cmg_core_model_category` DISABLE KEYS */;
+INSERT INTO `cmg_core_model_category` VALUES (1,2,14,'post');
 /*!40000 ALTER TABLE `cmg_core_model_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -761,7 +748,7 @@ CREATE TABLE `cmg_core_object` (
   CONSTRAINT `fk_object_1` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
   CONSTRAINT `fk_object_2` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`),
   CONSTRAINT `fk_object_3` FOREIGN KEY (`templateId`) REFERENCES `cmg_core_template` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -770,6 +757,7 @@ CREATE TABLE `cmg_core_object` (
 
 LOCK TABLES `cmg_core_object` WRITE;
 /*!40000 ALTER TABLE `cmg_core_object` DISABLE KEYS */;
+INSERT INTO `cmg_core_object` VALUES (1,1,1,NULL,'main','Main Menu. It can be used for site header and footer.','menu',NULL,'2014-10-11 14:22:54','2014-10-11 14:22:54'),(2,1,1,NULL,'Test Menu 1','Test Menu 1','menu','{\"pages\":[\"1\",\"3\",\"12\"]}','2015-09-12 17:23:17','2015-09-12 17:23:17');
 /*!40000 ALTER TABLE `cmg_core_object` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1063,7 +1051,7 @@ CREATE TABLE `cmg_core_template` (
   `frontendView` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` mediumtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1072,6 +1060,7 @@ CREATE TABLE `cmg_core_template` (
 
 LOCK TABLES `cmg_core_template` WRITE;
 /*!40000 ALTER TABLE `cmg_core_template` DISABLE KEYS */;
+INSERT INTO `cmg_core_template` VALUES (1,'simple','Simple layout for pages and posts.','page','simple','@themes/blog/views/templates/page',NULL,'simple',NULL),(2,'blog','Blog layout to view all blog posts or filters(category, author).','page','blog','@themes/blog/views/templates/page',NULL,'blog',NULL),(3,'text','It can be used to display simple key values for a widget.','widget',NULL,'@themes/blog/views/templates/widget','text-admin',NULL,NULL);
 /*!40000 ALTER TABLE `cmg_core_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1120,7 +1109,7 @@ CREATE TABLE `cmg_core_user` (
 
 LOCK TABLES `cmg_core_user` WRITE;
 /*!40000 ALTER TABLE `cmg_core_user` DISABLE KEYS */;
-INSERT INTO `cmg_core_user` VALUES (1,NULL,NULL,NULL,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'JuL37UBqGpjnA7kaPiRnlsiWRwbRvXx7',NULL,NULL,NULL),(2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'SQ1LLCWEPva4IKuQklILLGDpmUTGzq8E',NULL,NULL,NULL),(3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL),(1001,NULL,NULL,NULL,500,'democmsmanager@cmsgears.com','democmsmanager','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','cms','manager',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL);
+INSERT INTO `cmg_core_user` VALUES (1,NULL,NULL,NULL,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2015-09-12 11:39:25',NULL,'JuL37UBqGpjnA7kaPiRnlsiWRwbRvXx7',NULL,NULL,NULL),(2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'SQ1LLCWEPva4IKuQklILLGDpmUTGzq8E',NULL,NULL,NULL),(3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL),(1001,NULL,NULL,NULL,500,'democmsmanager@cmsgears.com','democmsmanager','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','cms','manager',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cmg_core_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1250,4 +1239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-06 19:16:46
+-- Dump completed on 2015-09-12 17:33:57
