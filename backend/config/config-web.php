@@ -15,6 +15,9 @@ return [
         'cmgcore' => [
             'class' => 'cmsgears\core\admin\Module'
         ],
+        'cmgforms' => [
+            'class' => 'cmsgears\forms\admin\Module'
+        ],
         'cmgcms' => [
             'class' => 'cmsgears\cms\admin\Module'
         ]
@@ -25,22 +28,24 @@ return [
         ],
         'urlManager' => [
 	        'rules' => [
-	        	// apix request rules
+	        	// APIX Rules
 	        	'apix/<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
-				// regular request rules
+	        	'apix/<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
+	        	// Regular Rules
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
-	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/site/<action>',
-	        	'<action:(login|dashboard)>' => 'cmgcore/site/<action>'
+	        	'<action:(login|logout|dashboard|forgot-password|reset-password|activate-account)>' => 'cmgcore/site/<action>'
 	        ]
 		],
         'cmgCore' => [
-        	'useRbac' => true,
         	'loginRedirectPage' => '/dashboard',
-        	'logoutRedirectPage' => '/login',
-        	'editorClass' => 'cmsgears\cleditor\ClEditor',
+        	'logoutRedirectPage' => '/login'
         ],
         'sidebar' => [
         	'class' => 'cmsgears\core\admin\components\Sidebar',
+        	'modules' => [ 'cmgcms', 'cmgcore' ]
+        ],
+        'dashboard' => [
+        	'class' => 'cmsgears\core\admin\components\Dashboard',
         	'modules' => [ 'cmgcms', 'cmgcore' ]
         ]
     ],

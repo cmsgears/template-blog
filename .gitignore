@@ -1,0 +1,6 @@
+composer.lock
+vendor
+themes/admin/resources/.sass-cache
+themes/admin/resources/styles/scss/.sass-cache
+themes/blog/resources/.sass-cache
+themes/blog/resources/styles/scss/.sass-cache
