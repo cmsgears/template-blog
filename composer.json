@@ -17,14 +17,19 @@
 		"cmsgears/module-cms": "dev-1.0.0-alpha",
 		"cmsgears/plugin-file-manager": "dev-1.0.0-alpha",
 		"cmsgears/widget-cleditor": "dev-1.0.0-alpha",
+		"cmsgears/widget-block": "dev-1.0.0-alpha",
 		"cmsgears/widget-nav": "dev-1.0.0-alpha",
 		"cmsgears/widget-login": "dev-1.0.0-alpha",
 		"cmsgears/widget-gallery": "dev-1.0.0-alpha",
 		"cmsgears/widget-newsletter": "dev-1.0.0-alpha",
 		"cmsgears/widget-tag": "dev-1.0.0-alpha",
-		"cmsgears/widget-social-share": "dev-1.0.0-alpha",
+		"cmsgears/widget-form": "dev-1.0.0-alpha",
+		"cmsgears/widget-form-ajax": "dev-1.0.0-alpha",
+		"cmsgears/widget-block-dynamic": "dev-1.0.0-alpha",
+		"cmsgears/widget-nav-dynamic": "dev-1.0.0-alpha",
 		"cmsgears/widget-blog": "dev-1.0.0-alpha",
-		"cmsgears/widget-nav-dynamic": "dev-1.0.0-alpha"
+		"cmsgears/widget-social-share": "dev-1.0.0-alpha",
+		"bower-asset/cmt-js": "dev-1.0.0-alpha"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
