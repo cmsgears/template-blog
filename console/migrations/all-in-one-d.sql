@@ -1,11 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `cmgdemoblog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `cmgdemoblog`;
-
--- MySQL dump 10.13  Distrib 5.6.24, for linux-glibc2.5 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: cmgdemoblog
 -- ------------------------------------------------------
--- Server version	5.5.41-0ubuntu0.14.04.1
+-- Server version	5.5.38-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -64,7 +63,7 @@ CREATE TABLE `cmg_cms_block` (
 
 LOCK TABLES `cmg_cms_block` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_block` DISABLE KEYS */;
-INSERT INTO `cmg_cms_block` VALUES (1,NULL,NULL,NULL,NULL,1,1,'main','main','The main block used on top of all system pages.','','','','','2015-11-06 14:55:42','2015-11-06 14:55:42');
+INSERT INTO `cmg_cms_block` VALUES (1,1,NULL,NULL,NULL,1,1,'main','main','The main block used on top of all system pages.','','','','','2015-11-06 14:55:42','2015-11-08 10:35:25');
 /*!40000 ALTER TABLE `cmg_cms_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +125,7 @@ CREATE TABLE `cmg_cms_model_content` (
   CONSTRAINT `fk_cms_model_content_1` FOREIGN KEY (`bannerId`) REFERENCES `cmg_core_file` (`id`),
   CONSTRAINT `fk_cms_model_content_2` FOREIGN KEY (`videoId`) REFERENCES `cmg_core_file` (`id`),
   CONSTRAINT `fk_cms_model_content_3` FOREIGN KEY (`templateId`) REFERENCES `cmg_core_template` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +134,7 @@ CREATE TABLE `cmg_cms_model_content` (
 
 LOCK TABLES `cmg_cms_model_content` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_model_content` DISABLE KEYS */;
-INSERT INTO `cmg_cms_model_content` VALUES (1,NULL,NULL,NULL,1,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'home page',NULL,NULL),(2,NULL,NULL,NULL,2,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'login page',NULL,NULL),(3,NULL,NULL,NULL,3,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'register page',NULL,NULL),(4,NULL,NULL,NULL,4,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'confirm account page',NULL,NULL),(5,NULL,NULL,NULL,5,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'activate account page',NULL,NULL),(6,NULL,NULL,NULL,6,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'forgot password page',NULL,NULL),(7,NULL,NULL,NULL,7,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'reset password page',NULL,NULL),(8,NULL,NULL,1,8,'page','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'about us page',NULL,NULL),(9,NULL,NULL,1,9,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'terms page',NULL,NULL),(10,NULL,NULL,1,10,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'privacy page',NULL,NULL),(11,NULL,NULL,2,11,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'blog page',NULL,NULL);
+INSERT INTO `cmg_cms_model_content` VALUES (1,NULL,NULL,NULL,1,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'home page',NULL,NULL),(2,NULL,NULL,NULL,2,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'login page',NULL,NULL),(3,NULL,NULL,NULL,3,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'register page',NULL,NULL),(4,NULL,NULL,NULL,4,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'confirm account page',NULL,NULL),(5,NULL,NULL,NULL,5,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'activate account page',NULL,NULL),(6,NULL,NULL,NULL,6,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'forgot password page',NULL,NULL),(7,NULL,NULL,NULL,7,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'reset password page',NULL,NULL),(8,NULL,NULL,1,8,'page','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'about us page',NULL,NULL),(9,NULL,NULL,1,9,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'terms page',NULL,NULL),(10,NULL,NULL,1,10,'page','','<p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero</p>','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'privacy page',NULL,NULL),(11,NULL,NULL,2,11,'page','','','2014-10-01 00:00:00','2014-10-01 00:00:00','2014-10-01 00:00:00',NULL,'blog page',NULL,NULL),(12,2,NULL,5,12,'post','<font face=\"Arial, Verdana\" size=\"2\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</font><br>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><br>','2015-11-07 16:58:38','2015-11-08 12:36:05','2015-11-07 11:28:47','','','',''),(13,3,NULL,5,13,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><br>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><br>','2015-11-07 17:03:38','2015-11-07 18:46:01','2015-11-07 11:33:55','','','',''),(14,4,NULL,5,14,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><br>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><br>','2015-11-07 17:11:22','2015-11-08 16:57:17','2015-11-07 11:41:29','','','',''),(15,5,NULL,5,15,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','2015-11-07 18:57:40','2015-11-08 12:36:12','2015-11-07 13:27:50','','','',''),(16,7,NULL,5,16,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','2015-11-08 16:56:21','2015-11-08 16:56:52','2015-11-08 11:26:52','','','',''),(17,8,NULL,5,17,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','2015-11-08 16:58:42','2015-11-08 16:58:50','2015-11-08 11:28:50','','','',''),(18,9,NULL,5,18,'post','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','<span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span><span style=\"font-size: small;\">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine</span>','2015-11-08 17:00:02','2015-11-08 17:00:10','2015-11-08 11:30:10','','','','');
 /*!40000 ALTER TABLE `cmg_cms_model_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +162,7 @@ CREATE TABLE `cmg_cms_page` (
   CONSTRAINT `fk_cms_page_1` FOREIGN KEY (`parentId`) REFERENCES `cmg_cms_page` (`id`),
   CONSTRAINT `fk_cms_page_2` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
   CONSTRAINT `fk_cms_page_3` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +171,7 @@ CREATE TABLE `cmg_cms_page` (
 
 LOCK TABLES `cmg_cms_page` WRITE;
 /*!40000 ALTER TABLE `cmg_cms_page` DISABLE KEYS */;
-INSERT INTO `cmg_cms_page` VALUES (1,NULL,1,1,'Home','home','page',5,5),(2,NULL,1,1,'Login','login','page',5,5),(3,NULL,1,1,'Register','register','page',5,5),(4,NULL,1,1,'Confirm Account','confirm-account','page',5,5),(5,NULL,1,1,'Activate Account','activate-account','page',5,5),(6,NULL,1,1,'Forgot Password','forgot-password','page',5,5),(7,NULL,1,1,'Reset Password','reset-password','page',5,5),(8,NULL,1,1,'About Us','about-us','page',5,5),(9,NULL,1,1,'Terms','terms','page',5,5),(10,NULL,1,1,'Privacy','privacy','page',5,5),(11,NULL,1,1,'Blog','blog','page',5,5);
+INSERT INTO `cmg_cms_page` VALUES (1,NULL,1,1,'Home','home','page',5,5),(2,NULL,1,1,'Login','login','page',5,5),(3,NULL,1,1,'Register','register','page',5,5),(4,NULL,1,1,'Confirm Account','confirm-account','page',5,5),(5,NULL,1,1,'Activate Account','activate-account','page',5,5),(6,NULL,1,1,'Forgot Password','forgot-password','page',5,5),(7,NULL,1,1,'Reset Password','reset-password','page',5,5),(8,NULL,1,1,'About Us','about-us','page',5,5),(9,NULL,1,1,'Terms','terms','page',5,5),(10,NULL,1,1,'Privacy','privacy','page',5,5),(11,NULL,1,1,'Blog','blog','page',5,5),(12,NULL,1,1,'Sample Post 1','sample-post-1','post',5,5),(13,NULL,1,1,'Sample Post 2','sample-post-2','post',5,5),(14,NULL,1,1,'Sample Post 3','sample-post-3','post',5,5),(15,NULL,1,1,'Sample Post 4','sample-post-4','post',5,5),(16,NULL,1,1,'Sample Post 5','sample-post-5','post',5,5),(17,NULL,1,1,'Sample Post 6','sample-post-6','post',5,5),(18,NULL,1,1,'Sample Post 7','sample-post-7','post',5,5);
 /*!40000 ALTER TABLE `cmg_cms_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +271,7 @@ CREATE TABLE `cmg_core_category` (
   KEY `fk_category_2` (`parentId`),
   CONSTRAINT `fk_category_1` FOREIGN KEY (`avatarId`) REFERENCES `cmg_core_file` (`id`),
   CONSTRAINT `fk_category_2` FOREIGN KEY (`parentId`) REFERENCES `cmg_core_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +280,7 @@ CREATE TABLE `cmg_core_category` (
 
 LOCK TABLES `cmg_core_category` WRITE;
 /*!40000 ALTER TABLE `cmg_core_category` DISABLE KEYS */;
-INSERT INTO `cmg_core_category` VALUES (1,NULL,NULL,'gender',NULL,'gender','combo',NULL);
+INSERT INTO `cmg_core_category` VALUES (1,NULL,NULL,'gender',NULL,'gender','combo',NULL),(2,NULL,NULL,'Attachment','Demo Description','attachment','post','cmti cmti-attachment');
 /*!40000 ALTER TABLE `cmg_core_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +338,7 @@ CREATE TABLE `cmg_core_file` (
   KEY `fk_file_2` (`modifiedBy`),
   CONSTRAINT `fk_file_1` FOREIGN KEY (`createdBy`) REFERENCES `cmg_core_user` (`id`),
   CONSTRAINT `fk_file_2` FOREIGN KEY (`modifiedBy`) REFERENCES `cmg_core_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,6 +347,7 @@ CREATE TABLE `cmg_core_file` (
 
 LOCK TABLES `cmg_core_file` WRITE;
 /*!40000 ALTER TABLE `cmg_core_file` DISABLE KEYS */;
+INSERT INTO `cmg_core_file` VALUES (1,1,1,NULL,NULL,'8ac5d7456b629d7d3095b8c0209f1ff7','jpg','banner',0,NULL,'2015-11-08/banner/8ac5d7456b629d7d3095b8c0209f1ff7.jpg','2015-11-08/banner/8ac5d7456b629d7d3095b8c0209f1ff7-thumb.jpg',NULL,'','2015-11-07 16:52:49','2015-11-08 10:35:25'),(2,1,1,NULL,NULL,'82561c039e380e5ad0a0839c0a9ab234','jpg','banner',0,NULL,'2015-11-07/banner/82561c039e380e5ad0a0839c0a9ab234.jpg','2015-11-07/banner/82561c039e380e5ad0a0839c0a9ab234-thumb.jpg',NULL,'','2015-11-07 16:58:38','2015-11-08 12:36:04'),(3,1,1,NULL,NULL,'81f43df01c695c66ef05456d14bcc108','jpg','banner',0,NULL,'2015-11-07/banner/81f43df01c695c66ef05456d14bcc108.jpg','2015-11-07/banner/81f43df01c695c66ef05456d14bcc108-thumb.jpg',NULL,'','2015-11-07 17:03:38','2015-11-07 18:46:01'),(4,1,1,NULL,NULL,'59c027d7507215026d05bd60333644a4','jpg','banner',0,NULL,'2015-11-07/banner/59c027d7507215026d05bd60333644a4.jpg','2015-11-07/banner/59c027d7507215026d05bd60333644a4-thumb.jpg',NULL,'','2015-11-07 17:11:22','2015-11-08 16:57:17'),(5,1,1,NULL,NULL,'88af6625c2794ea8dccb2abe065e1893','jpg','banner',0,NULL,'2015-11-07/banner/88af6625c2794ea8dccb2abe065e1893.jpg','2015-11-07/banner/88af6625c2794ea8dccb2abe065e1893-thumb.jpg',NULL,'','2015-11-07 18:57:40','2015-11-08 12:36:12'),(6,1,NULL,NULL,NULL,'17049693d645f42c8b5b90914f61fb15','jpg','avatar',0,NULL,'2015-11-08/avatar/17049693d645f42c8b5b90914f61fb15.jpg','2015-11-08/avatar/17049693d645f42c8b5b90914f61fb15-thumb.jpg',NULL,'','2015-11-08 12:51:19','2015-11-08 12:51:19'),(7,1,1,NULL,NULL,'7d943b7b1c66cfeb8e7e442a446fb530','jpg','banner',0,NULL,'2015-11-08/banner/7d943b7b1c66cfeb8e7e442a446fb530.jpg','2015-11-08/banner/7d943b7b1c66cfeb8e7e442a446fb530-thumb.jpg',NULL,'','2015-11-08 16:56:21','2015-11-08 16:56:52'),(8,1,1,NULL,NULL,'cc91609018884f0e1dbc61b9b1db08a6','jpg','banner',0,NULL,'2015-11-08/banner/cc91609018884f0e1dbc61b9b1db08a6.jpg','2015-11-08/banner/cc91609018884f0e1dbc61b9b1db08a6-thumb.jpg',NULL,'','2015-11-08 16:58:42','2015-11-08 16:58:50'),(9,1,1,NULL,NULL,'c1a49ec122071676828dd805b1b44dad','jpg','banner',0,NULL,'2015-11-08/banner/c1a49ec122071676828dd805b1b44dad.jpg','2015-11-08/banner/c1a49ec122071676828dd805b1b44dad-thumb.jpg',NULL,'','2015-11-08 17:00:02','2015-11-08 17:00:10');
 /*!40000 ALTER TABLE `cmg_core_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,7 +453,7 @@ CREATE TABLE `cmg_core_model_category` (
   PRIMARY KEY (`id`),
   KEY `fk_model_category_1` (`categoryId`),
   CONSTRAINT `fk_model_category_1` FOREIGN KEY (`categoryId`) REFERENCES `cmg_core_category` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -462,6 +462,7 @@ CREATE TABLE `cmg_core_model_category` (
 
 LOCK TABLES `cmg_core_model_category` WRITE;
 /*!40000 ALTER TABLE `cmg_core_model_category` DISABLE KEYS */;
+INSERT INTO `cmg_core_model_category` VALUES (1,2,12,'post'),(2,2,15,'post');
 /*!40000 ALTER TABLE `cmg_core_model_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1007,7 +1008,7 @@ CREATE TABLE `cmg_core_template` (
   `frontendView` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` mediumtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1016,7 +1017,7 @@ CREATE TABLE `cmg_core_template` (
 
 LOCK TABLES `cmg_core_template` WRITE;
 /*!40000 ALTER TABLE `cmg_core_template` DISABLE KEYS */;
-INSERT INTO `cmg_core_template` VALUES (1,'simple','Simple layout for pages and posts.','page','simple','@themes/blog/views/templates/page',NULL,'simple',NULL),(2,'blog','Blog layout to view all blog posts or filters(category, author).','page','blog','@themes/blog/views/templates/page',NULL,'blog',NULL),(3,'text','It can be used to display simple key values for a widget.','widget',NULL,'@themes/blog/views/templates/widget','text-admin',NULL,NULL),(4,'form','It can be used to display form.','form','form','@themes/blog/views/templates/form',NULL,'form',NULL);
+INSERT INTO `cmg_core_template` VALUES (1,'simple','Simple layout for pages and posts.','page','simple','@themes/blog/views/templates/page',NULL,'simple',NULL),(2,'blog','Blog layout to view all blog posts or filters(category, author).','page','blog','@themes/blog/views/templates/page',NULL,'blog',NULL),(3,'text','It can be used to display simple key values for a widget.','widget',NULL,'@themes/blog/views/templates/widget','text-admin',NULL,NULL),(4,'form','It can be used to display form.','form','form','@themes/blog/views/templates/form',NULL,'form',NULL),(5,'post','It can be used to display single post','page','post','@themes/blog/views/templates/page',NULL,'page',NULL);
 /*!40000 ALTER TABLE `cmg_core_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1065,7 +1066,7 @@ CREATE TABLE `cmg_core_user` (
 
 LOCK TABLES `cmg_core_user` WRITE;
 /*!40000 ALTER TABLE `cmg_core_user` DISABLE KEYS */;
-INSERT INTO `cmg_core_user` VALUES (1,NULL,NULL,NULL,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2015-11-06 09:21:02',NULL,'JuL37UBqGpjnA7kaPiRnlsiWRwbRvXx7',NULL,NULL,NULL),(2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'SQ1LLCWEPva4IKuQklILLGDpmUTGzq8E',NULL,NULL,NULL),(3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL);
+INSERT INTO `cmg_core_user` VALUES (1,NULL,NULL,6,500,'demomaster@cmsgears.com','demomaster','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','master',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2015-11-08 12:13:06',NULL,'JuL37UBqGpjnA7kaPiRnlsiWRwbRvXx7',NULL,NULL,NULL),(2,NULL,NULL,NULL,500,'demoadmin@cmsgears.com','demoadmin','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','admin',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2014-10-10 08:03:19',NULL,'SQ1LLCWEPva4IKuQklILLGDpmUTGzq8E',NULL,NULL,NULL),(3,NULL,NULL,NULL,500,'demouser@cmsgears.com','demouser','$2y$13$Ut5b2RskRpGA9Q0nKSO6Xe65eaBHdx/q8InO8Ln6Lt3HzOK4ECz8W','demo','user',NULL,NULL,NULL,NULL,'2014-10-11 14:22:54','2015-11-07 09:56:02',NULL,'-jG5ExHS0Y39ucSxHhl3PZ4xmPsfvQFC',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cmg_core_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1210,4 +1211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-06 14:56:21
+-- Dump completed on 2015-11-08 19:33:08
