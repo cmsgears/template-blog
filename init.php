@@ -22,7 +22,7 @@ echo "Yii Application Initialization Tool\n\n";
 echo "Enter your development environment among dev or prod:";
 
 // Set the required environemnt
-$choice 	= trim( fgets(STDIN) );
+$choice 	= 'dev';
 $envName	= null;
 
 switch( $choice ) {
