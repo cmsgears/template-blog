@@ -31,6 +31,7 @@ return [
         ],
         'formatter' => [
         	'dateFormat' => 'yyyy-MM-dd',
+        	'timeFormat' => 'HH:mm:ss',
         	'datetimeFormat' => "yyyy-MM-dd HH:mm:ss"
         ],
         'errorHandler' => [
@@ -38,13 +39,34 @@ return [
         ],
         'cmgCore' => [
         	'class' => 'cmsgears\core\common\components\Core',
-        	'editorClass' => 'cmsgears\widgets\cleditor\ClEditor'
+        	'editorClass' => 'cmsgears\widgets\cleditor\ClEditor',
+        	'rbacFilters' => [
+        		'owner' => 'cmsgears\core\common\filters\OwnerFilter'
+        	]
         ],
         'cmgCoreMessage' => [
         	'class' => 'cmsgears\core\common\components\MessageSource',
         ],
         'cmgCoreMailer' => [
         	'class' => 'cmsgears\core\common\components\Mailer'
+        ],
+        'formDesigner' => [
+        	'class' => 'cmsgears\core\common\components\FormDesigner' 
+        ],
+        'fileManager' => [
+        	'class' => 'cmsgears\files\components\FileManager' 
+        ],
+        'iconManager' => [
+        	'class' => 'cmsgears\icons\components\IconManager' 
+        ],
+        'templateSource' => [
+        	'class' => 'cmsgears\core\common\components\TemplateSource',
+        	'templatesPath' => null,
+        	'renderers' => [
+        		'default' => 'Default',
+        		'twig' => 'Twig',
+        		'smarty' => 'Smarty'
+        	]
         ],
         'cmgFormsMessage' => [
         	'class' => 'cmsgears\forms\common\components\MessageSource',
@@ -58,9 +80,8 @@ return [
         'cmgCmsMailer' => [
         	'class' => 'cmsgears\cms\common\components\Mailer'
         ],
-        'fileManager' => [
-        	'class' => 'cmsgears\files\components\FileManager',
-        	'uploadUrl' => 'http://localhost/cmgdemoblog/uploads/'
+        'cmgSnsLoginMailer' => [
+        	'class' => 'cmsgears\social\login\common\components\Mailer'
         ]
     ]
 ];

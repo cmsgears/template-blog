@@ -20,6 +20,9 @@ return [
         ],
         'cmgcms' => [
             'class' => 'cmsgears\cms\admin\Module'
+        ],
+        'cmgsnslogin' => [
+            'class' => 'cmsgears\social\login\admin\Module'
         ]
     ],
     'components' => [
@@ -42,7 +45,11 @@ return [
         ],
         'sidebar' => [
         	'class' => 'cmsgears\core\admin\components\Sidebar',
-        	'modules' => [ 'cmgcms', 'cmgcore' ]
+        	'modules' => [ 'cmgcms', 'cmgforms', 'cmgcore', 'cmgsnslogin' ],
+        	'plugins' => [
+        		'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
+        		'fileManager' => [ 'file' ]
+        	]
         ],
         'dashboard' => [
         	'class' => 'cmsgears\core\admin\components\Dashboard',

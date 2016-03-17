@@ -20,6 +20,9 @@ return [
         ],
         'cmgcms' => [
             'class' => 'cmsgears\cms\frontend\Module'
+        ],
+        'cmgsnslogin' => [
+            'class' => 'cmsgears\social\login\frontend\Module'
         ]
     ],
     'components' => [
@@ -29,20 +32,26 @@ return [
         'urlManager' => [
 	        'rules' => [
 	        	// apix request rules --------------------------
-	        	'apix/<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
+	        	// Forms
+	        	'apix/form/<slug:[\w\-]+>' => 'cmgforms/apix/site/index',
+	        	// Core Module Actions
 	        	'apix/<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
-	        	'apix/<action:(login|register)>' => 'cmgcore/apix/site/<action>',
-	        	'apix/<action:(contact)>' => 'cmgforms/apix/site/<action>',
+	        	// Module Actions
+	        	'apix/<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
 				// regular request rules -----------------------
-	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
+	        	// SNS Login
+	        	'sns/<controller:\w+>/<action:[\w\-]+>' => 'cmgsnslogin/<controller>/<action>',
 	        	// Blog Posts
 	        	'post/<slug:[\w\-]+>' => 'cmgcms/site/post',
+	        	// Forms
+	        	'form/<slug:[\w\-]+>' => 'cmgforms/site/index',
 	        	// Core Module Pages
 	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/<controller>/<action>',
+	        	// Module Pages
+	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
 	        	// Standard Pages
-	        	'<action:(home|profile)>' => 'cmgcore/user/<action>',
+	        	'<action:(home)>' => 'cmgcore/user/<action>',
 	        	'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'cmgcore/site/<action>',
-	        	'<form:(contact-us|feedback)>' => 'cmgforms/site/index',
 	        	// CMS Pages
 	        	'<slug:[\w\-]+>' => 'cmgcms/site/index'
 	        ]
