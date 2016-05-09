@@ -15,19 +15,25 @@ return [
         'cmgcore' => [
             'class' => 'cmsgears\core\admin\Module'
         ],
-        'cmgforms' => [
+		'cmgforms' => [
             'class' => 'cmsgears\forms\admin\Module'
         ],
         'cmgcms' => [
             'class' => 'cmsgears\cms\admin\Module'
         ],
-        'cmgsnslogin' => [
-            'class' => 'cmsgears\social\login\admin\Module'
+        'cmgnewsletter' => [
+            'class' => 'cmsgears\newsletter\admin\Module'
+        ],
+        'cmgnotify' => [
+            'class' => 'cmsgears\notify\admin\Module'
         ]
     ],
     'components' => [
         'view' => [
             'theme' => 'themes\admin\Theme'
+        ],
+        'errorHandler' => [
+            'errorAction' => 'cmgcore/site/error',
         ],
         'urlManager' => [
 	        'rules' => [
@@ -37,7 +43,7 @@ return [
 	        	// Regular Rules
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
 	        	'<action:(login|logout|dashboard|forgot-password|reset-password|activate-account)>' => 'cmgcore/site/<action>'
-	        ]
+			]
 		],
         'cmgCore' => [
         	'loginRedirectPage' => '/dashboard',
@@ -45,7 +51,7 @@ return [
         ],
         'sidebar' => [
         	'class' => 'cmsgears\core\admin\components\Sidebar',
-        	'modules' => [ 'cmgcms', 'cmgforms', 'cmgcore', 'cmgsnslogin' ],
+        	'modules' => [ 'cmgcms', 'cmgforms', 'cmgcore', 'cmgnewsletter', 'cmgnotify' ],
         	'plugins' => [
         		'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
         		'fileManager' => [ 'file' ]

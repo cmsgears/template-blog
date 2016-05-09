@@ -29,6 +29,9 @@ return [
         'view' => [
             'theme' => 'themes\blog\Theme'
         ],
+        'errorHandler' => [
+            'errorAction' => 'cmgcore/site/error',
+        ],
         'urlManager' => [
 	        'rules' => [
 	        	// apix request rules --------------------------
@@ -38,21 +41,28 @@ return [
 	        	'apix/<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/apix/<controller>/<action>',
 	        	// Module Actions
 	        	'apix/<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<controller>/<action>',
-				// regular request rules -----------------------
-	        	// SNS Login
-	        	'sns/<controller:\w+>/<action:[\w\-]+>' => 'cmgsnslogin/<controller>/<action>',
-	        	// Blog Posts
+	        	
+	        	// Blog rules ----------------------------------
+	        	'post/search' => 'cmgcms/site/search',
+	        	'post/category/<slug:[\w\-]+>' => 'cmgcms/site/category',
+	        	'post/tag/<slug:[\w\-]+>>' => 'cmgcms/site/tag',
 	        	'post/<slug:[\w\-]+>' => 'cmgcms/site/post',
+
+				// regular request rules -----------------------
 	        	// Forms
 	        	'form/<slug:[\w\-]+>' => 'cmgforms/site/index',
-	        	// Core Module Pages
+	        	// SNS Login
+	        	'sns/<controller:\w+>/<action:[\w\-]+>' => 'cmgsnslogin/<controller>/<action>',
+	        	// Core Module Actions
 	        	'<controller:\w+>/<action:[\w\-]+>' => 'cmgcore/<controller>/<action>',
-	        	// Module Pages
+	        	// Module Actions
 	        	'<module:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
-	        	// Standard Pages
+
+	        	// static rules --------------------------------
 	        	'<action:(home)>' => 'cmgcore/user/<action>',
 	        	'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'cmgcore/site/<action>',
-	        	// CMS Pages
+
+	        	// page rules ----------------------------------
 	        	'<slug:[\w\-]+>' => 'cmgcms/site/index'
 	        ]
 		],

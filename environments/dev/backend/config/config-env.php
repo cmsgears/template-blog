@@ -8,7 +8,6 @@ $config = [
     ]
 ];
 
-// Debugger and Gii extensions required for dev environment
 if( !YII_ENV_TEST ) {
 
     $config['bootstrap'][] 		= 'debug';
