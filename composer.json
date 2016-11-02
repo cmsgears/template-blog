@@ -1,20 +1,20 @@
 {
 	"name": "cmsgears/template-blog",
 	"description": "The blog template for cms module having default theme set to blog.",
-	"homepage": "http://www.cmsgears.org", 
+	"homepage": "http://www.cmsgears.org",
 	"type": "project",
 	"keywords": [ "yii2", "cmsgears", "template", "blog" ],
 	"license": "GPLv3",
 	"support": {
-        "resources": "http://www.cmsgears.org"
+        "forum": "http://forum.cmsgears.org"
 	},
 	"minimum-stability": "stable",
     "require": {
-        "yiisoft/yii2": "2.0.7",
+        "yiisoft/yii2": "2.0.9",
         "yiisoft/yii2-swiftmailer": "2.0.*",
         "cmsgears/module-core": "dev-1.0.0-alpha",
-        "cmsgears/module-forms": "dev-1.0.0-alpha",
         "cmsgears/module-cms": "dev-1.0.0-alpha",
+        "cmsgears/module-forms": "dev-1.0.0-alpha",
         "cmsgears/module-sns-login": "dev-1.0.0-alpha",
         "cmsgears/module-newsletter": "dev-1.0.0-alpha",
         "cmsgears/module-notify": "dev-1.0.0-alpha",
