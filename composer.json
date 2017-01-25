@@ -38,6 +38,7 @@
         "cmsgears/widget-blog": "dev-1.0.0-alpha",
         "cmsgears/widget-social-share": "dev-1.0.0-alpha",
         "cmsgears/widget-social-counts": "dev-1.0.0-alpha",
+        "foxslider/cmg-plugin": "dev-1.0.0-alpha",
 		"bower-asset/jquery-ui": "1.10.*",
 		"bower-asset/handlebars": "4.0.*",
 		"bower-asset/imagesloaded": "4.1.*",
