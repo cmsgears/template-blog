@@ -90,9 +90,9 @@ return [
 				'blog/tag/<slug:[\w\-]+>' => 'cms/post/tag',
 				'blog/<slug:[\w\-]+>' => 'cms/post/single',
 				// Blog Posts - Private 2 and 3 levels
-				'blog/manage/<action:[\w\-]+>' => 'core/listing/<action>',
-				'blog/<controller:\w+>/<action:[\w\-]+>' => 'core/listing/<controller>/<action>',
-				'blog/<pcontroller:\w+>/<controller:\w+>/<action:[\w\-]+>' => 'core/listing/<pcontroller>/<controller>/<action>',
+				'blog/manage/<action:[\w\-]+>' => 'cms/post/<action>',
+				'blog/<controller:\w+>/<action:[\w\-]+>' => 'cms/post/<controller>/<action>',
+				'blog/<pcontroller:\w+>/<controller:\w+>/<action:[\w\-]+>' => 'cms/post/<pcontroller>/<controller>/<action>',
 				// Forms
 				'form/<slug:[\w\-]+>' => 'forms/form/single',
 				// Core Module Pages
