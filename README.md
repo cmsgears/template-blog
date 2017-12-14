@@ -42,8 +42,8 @@ It also provide DB configuration having required test data. The uploads director
 
 Template Demo
 =========================================
-1. Frontend - http://demo.cmsgears.com/templates/blog (demouser@cmsgears.com, test#123)
-2. Admin - http://demo.cmsgears.com/templates/blog/admin (demomaster@cmsgears.com, test#123)
+1. Frontend - https://demo.cmsgears.com/templates/blog (demouser@cmsgears.com, test#123)
+2. Admin - https://demo.cmsgears.com/templates/blog/admin (demomaster@cmsgears.com, test#123)
 
 Template Installation
 =========================================
@@ -55,22 +55,22 @@ We can install release and pre-release i.e. alpha, beta versions using composer 
 ```
 // Release Versions
 
-php composer.phar create-project --prefer-dist --stability=stable cmsgears/template-blog cmgdemoblog
+php composer.phar create-project --prefer-dist --stability=stable cmsgears/template-blog blogdemo
 
 or
 
-composer create-project --prefer-dist --stability=stable cmsgears/template-blog cmgdemoblog
+composer create-project --prefer-dist --stability=stable cmsgears/template-blog blogdemo
 ```
 
 We can also use below mentioned commands to access the pre release code
 ```
 // Pre-release Versions
 
-php composer.phar create-project --prefer-dist --stability=<alpha or beta or RC> cmsgears/template-blog cmgdemoblog
+php composer.phar create-project --prefer-dist --stability=<alpha or beta or RC> cmsgears/template-blog blogdemo
 
 or
 
-composer create-project --prefer-dist --stability=<alpha or beta or RC> cmsgears/template-blog cmgdemoblog
+composer create-project --prefer-dist --stability=<alpha or beta or RC> cmsgears/template-blog blogdemo
 ```
 
 We can also install the template for latest code by cloning Blog Template for the pre-release branch i.e. alpha, beta. In this case, we need to install composer.json file to initialise vendor directory.
@@ -93,8 +93,8 @@ Template Configuration - New
 9. By default all the files uploaded by users will be stored in uploads directory.
 
 ```
-Frontend - http://localhost/cmgdemoblog/frontend/web
-Admin - http://localhost/cmgdemoblog/frontend/web
+Frontend - http://localhost/blogdemo/frontend/web
+Admin - http://localhost/blogdemo/frontend/web
 ```
 
 Template Configuration - Update

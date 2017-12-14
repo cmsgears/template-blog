@@ -1,15 +1,15 @@
 <?php
 
 $params = yii\helpers\ArrayHelper::merge(
-	require( dirname( dirname( __DIR__ ) ) . '/common/config/params.php' ),
+	require( __DIR__ . '/../../common/config/params.php' ),
 	require( __DIR__ . '/params.php' )
 );
 
 return [
-	'id' => 'app-frontend',
+	'id' => 'cmg-blog-site',
 	'name' => 'Blog Demo',
 	'version' => '1.0.0',
-	'basePath' => dirname(__DIR__),
+	'basePath' => dirname( __DIR__ ),
 	'controllerNamespace' => 'frontend\controllers',
 	'defaultRoute' => 'core/site/index',
 	'bootstrap' => [
@@ -47,16 +47,16 @@ return [
 			]
 		],
 		'request' => [
-			'csrfParam' => '_csrf-app',
+			'csrfParam' => '_csrf-cmg-blog-site',
 			'parsers' => [
 				'application/json' => 'yii\web\JsonParser'
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-app', 'httpOnly' => true ]
+			'identityCookie' => [ 'name' => '_identity-cmg-blog-site', 'httpOnly' => true ]
 		],
 		'session' => [
-			'name' => 'cmg-blog-app'
+			'name' => 'cmg-blog-site'
 		],
 		'errorHandler' => [
 			'errorAction' => 'core/site/error'
@@ -68,6 +68,7 @@ return [
 			'rules' => [
 				// TODO: Use Group Rule for api and apix prefix
 				// api request rules ---------------------------
+				// Generic - 3, 4 and 5 levels - catch all
 				'api/<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<action>',
 				'api/<module:\w+>/<controller:[\w\-]+>/<pcontroller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<pcontroller>/<action>',
 				'api/<module:\w+>/<pcontroller1:\w+>/<pcontroller2:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/api/<pcontroller1>/<pcontroller2>/<controller>/<action>',

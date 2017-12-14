@@ -8,7 +8,7 @@ return [
 	'components' => [
 		'urlManager' => [
 			'class' => 'yii\web\UrlManager',
-			'baseUrl' => 'http://localhost/cmgdemoblog/frontend/web'
+			'baseUrl' => 'http://localhost/blogdemo/frontend/web'
 		],
 		// CMG Modules - Core
 		'migration' => [
@@ -16,12 +16,12 @@ return [
 			'cmgPrefix' => 'cmg_',
 			'appPrefix' => 'cmg_',
 			'siteName' => 'CMSGears',
-			'siteTitle' => 'CMSGears Demo',
+			'siteTitle' => 'Blog Demo',
 			'siteMaster' => 'demomaster',
 			'primaryDomain' => 'cmsgears.com',
-			'defaultSite' => 'http://localhost/cmgdemoblog/frontend/web',
-			'defaultAdmin' => 'http://localhost/cmgdemoblog/backend/web',
-			'uploadsUrl' => 'http://localhost/cmgdemoblog/uploads'
+			'defaultSite' => 'http://localhost/blogdemo/frontend/web',
+			'defaultAdmin' => 'http://localhost/blogdemo/backend/web',
+			'uploadsUrl' => 'http://localhost/blogdemo/uploads'
 		]
 	]
 ];
