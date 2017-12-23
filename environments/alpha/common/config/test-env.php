@@ -7,7 +7,7 @@ return yii\helpers\ArrayHelper::merge(
 		'components' => [
 			'db' => [
 				'class' => 'yii\db\Connection',
-				'dsn' => 'mysql:host=localhost;dbname=blogdemotest',
+				'dsn' => 'mysql:host=localhost;dbname=blogdemo_test',
 				'username' => 'blogdemo',
 				'password' => 'Demo#Blog*6',
 				'charset' => 'utf8'
