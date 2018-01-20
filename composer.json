@@ -1,14 +1,14 @@
 {
 	"name": "cmsgears/template-blog",
 	"description": "The blog template for cms module having default theme set to blog.",
-	"homepage": "http://www.cmsgears.org",
+	"homepage": "https://www.cmsgears.org",
 	"type": "project",
 	"keywords": [
 		"yii", "yii2", "yii 2", "cmsgears", "template", "blog"
 	],
-	"license": "GPLv3",
+	"license": "GPL-3.0-or-later",
 	"support": {
-		"forum": "http://forum.cmsgears.org"
+		"forum": "https://forum.cmsgears.org"
 	},
 	"minimum-stability": "stable",
 	"repositories": [
