@@ -105,6 +105,9 @@ return [
         'snsLogin' => [
         	'class' => 'cmsgears\social\login\common\components\SnsLogin'
         ],
+		'snsLoginMessage' => [
+			'class' => 'cmsgears\social\login\common\components\MessageSource'
+		],
         'snsLoginMailer' => [
         	'class' => 'cmsgears\social\login\common\components\Mailer'
         ],
