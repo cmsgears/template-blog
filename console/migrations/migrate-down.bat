@@ -3,6 +3,8 @@ call ../../yii migrate/down --migrationPath=@themes/blog/migrations --interactiv
 call ../../yii migrate/down --migrationPath=@cmsgears/module-sns-login/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-sns-login/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-sns-login/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@cmsgears/module-sns-login/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@foxslider/cmg-plugin/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@foxslider/cmg-plugin/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@foxslider/cmg-plugin/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@foxslider/cmg-plugin/migrations --interactive=0
@@ -11,12 +13,16 @@ call ../../yii migrate/down --migrationPath=@cmsgears/plugin-file-manager/migrat
 call ../../yii migrate/down --migrationPath=@cmsgears/module-notify/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-notify/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-notify/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@cmsgears/module-notify/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@cmsgears/module-newsletter/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-newsletter/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-newsletter/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-newsletter/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-forms/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-forms/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-forms/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@cmsgears/module-forms/migrations --interactive=0
+call ../../yii migrate/down --migrationPath=@cmsgears/module-cms/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-cms/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-cms/migrations --interactive=0
 call ../../yii migrate/down --migrationPath=@cmsgears/module-cms/migrations --interactive=0
