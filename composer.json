@@ -25,7 +25,7 @@
 		"cmsgears/module-core": "dev-1.0.0-alpha",
 		"cmsgears/module-cms": "dev-1.0.0-alpha",
 		"cmsgears/module-forms": "dev-1.0.0-alpha",
-		"cmsgears/module-sns-login": "dev-1.0.0-alpha",
+		"cmsgears/module-sns-connect": "dev-1.0.0-alpha",
 		"cmsgears/module-newsletter": "dev-1.0.0-alpha",
 		"cmsgears/module-notify": "dev-1.0.0-alpha",
 		"cmsgears/plugin-file-manager": "dev-1.0.0-alpha",

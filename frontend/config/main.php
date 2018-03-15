@@ -14,7 +14,7 @@ return [
 	'defaultRoute' => 'core/site/index',
 	'bootstrap' => [
 		'log',
-		'core', 'cms', 'forms', 'snsLogin', 'newsletter', 'notify',
+		'core', 'cms', 'forms', 'snsConnect', 'newsletter', 'notify',
 		'foxSlider'
 	],
 	'modules' => [
@@ -27,8 +27,8 @@ return [
 		'forms' => [
 			'class' => 'cmsgears\forms\frontend\Module'
 		],
-		'snslogin' => [
-			'class' => 'cmsgears\social\login\frontend\Module'
+		'snsconnect' => [
+			'class' => 'cmsgears\social\connect\frontend\Module'
 		],
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\frontend\Module'
@@ -82,8 +82,8 @@ return [
 				'apix/<module:\w+>/<pcontroller:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller>/<controller>/<action>',
 				'apix/<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// regular request rules -----------------------
-				// SNS Login
-				'sns/<controller:\w+>/<action:[\w\-]+>' => 'snslogin/<controller>/<action>',
+				// SNS Connect
+				'sns/<controller:\w+>/<action:[\w\-]+>' => 'snsconnect/<controller>/<action>',
 				// TODO: Use Group Rule for blog
 				// Blog Posts - Public - search, category, tag and single
 				'blog/search' => 'cms/post/search',
