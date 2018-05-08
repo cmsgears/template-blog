@@ -6,8 +6,8 @@ $params = yii\helpers\ArrayHelper::merge(
 );
 
 return [
-	'id' => 'cmg-blog-site',
-	'name' => 'Blog Demo',
+	'id' => 'app-site',
+	'name' => 'Blog Site',
 	'version' => '1.0.0',
 	'basePath' => dirname( __DIR__ ),
 	'controllerNamespace' => 'frontend\controllers',
@@ -67,7 +67,6 @@ return [
 		],
 		'urlManager' => [
 			'rules' => [
-				// TODO: Use Group Rule for api and apix prefix
 				// api request rules ---------------------------
 				// Generic - 3, 4 and 5 levels - catch all
 				'api/<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<action>',
@@ -83,25 +82,19 @@ return [
 				'apix/<module:\w+>/<pcontroller:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller>/<controller>/<action>',
 				'apix/<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// regular request rules -----------------------
-				// SNS Connect
-				'sns/<controller:\w+>/<action:[\w\-]+>' => 'snsconnect/<controller>/<action>',
-				// TODO: Use Group Rule for blog
 				// Blog Posts - Public - search, category, tag and single
 				'blog/search' => 'cms/post/search',
 				'blog/category/<slug:[\w\-]+>' => 'cms/post/category',
 				'blog/tag/<slug:[\w\-]+>' => 'cms/post/tag',
 				'blog/<slug:[\w\-]+>' => 'cms/post/single',
-				// Blog Posts - Private 2 and 3 levels
-				'blog/manage/<action:[\w\-]+>' => 'cms/post/<action>',
-				'blog/<controller:\w+>/<action:[\w\-]+>' => 'cms/post/<controller>/<action>',
-				'blog/<pcontroller:\w+>/<controller:\w+>/<action:[\w\-]+>' => 'cms/post/<pcontroller>/<controller>/<action>',
 				// Forms
 				'form/<slug:[\w\-]+>' => 'forms/form/single',
-				// Core Module Pages
+				// Core - 2 levels
 				'<controller:[\w\-]+>/<action:[\w\-]+>' => 'core/<controller>/<action>',
-				// Module Pages - 2 and 3 levels - catch all
+				// Module Pages - 3, 4 and 5 levels - catch all
 				'<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
 				'<module:\w+>/<pcontroller:[\w\-]+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<pcontroller>/<controller>/<action>',
+				'<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// Standard Pages
 				'<action:(home|profile|account|address|settings)>' => 'core/user/<action>',
 				'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'core/site/<action>',
@@ -110,7 +103,7 @@ return [
 			]
 		],
 		'core' => [
-			'loginRedirectPage' => '/home',
+			'loginRedirectPage' => '/',
 			'logoutRedirectPage' => '/'
 		]
 	],
