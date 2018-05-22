@@ -94,7 +94,7 @@ return [
         ],
         'sidebar' => [
         	'class' => 'cmsgears\core\admin\components\Sidebar',
-        	'modules' => [ 'cms', 'foxslider', 'forms', 'core', 'notify', 'newsletter' ],
+        	'modules' => [ 'cms', 'foxslider', 'core', 'notify', 'newsletter' ],
 			'plugins' => [
 				'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
 				'fileManager' => [ 'file' ]
