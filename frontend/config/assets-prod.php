@@ -8,7 +8,14 @@ return [
 		'baseUrl' => '@web',
 		'css' => [ 'styles/cmnbzxrs-20170816.css' ],
 		'js' => [ 'scripts/cmnbzxrs-20170816.js' ],
-		'depends' => [ 'cmsgears\core\common\assets\Jquery' ]
+		'depends' => [ 'cmsgears\assets\jquery\Jquery' ]
+	],
+	'cmtjs' => [
+		'class' => 'yii\web\AssetBundle',
+		'basePath' => '@webroot',
+		'baseUrl' => '@web',
+		'js' => [ 'scripts/cjsazxrs-20170816.js' ],
+		'depends' => [ 'common' ]
 	],
 	'landing' => [
 		'class' => 'yii\web\AssetBundle',
@@ -24,14 +31,6 @@ return [
 		'baseUrl' => '@web',
 		'css' => [ 'styles/pubbzxrs-20170816.css' ],
 		'js' => [ 'scripts/pubbzxrs-20170816.js' ],
-		'depends' => [ 'common' ]
-	],
-	'blog' => [
-		'class' => 'yii\web\AssetBundle',
-		'basePath' => '@webroot',
-		'baseUrl' => '@web',
-		'css' => [ 'styles/blgbzxrs-20170816.css' ],
-		'js' => [ 'scripts/blgbzxrs-20170816.js' ],
 		'depends' => [ 'common' ]
 	],
 	'private' => [

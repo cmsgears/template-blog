@@ -52,7 +52,7 @@ class m180502_112752_forms extends Migration {
 
 	private function insertContactForm() {
 
-		$formTemplate	= Template::findBySlugType( 'form', CoreGlobal::TYPE_FORM );
+		$formTemplate = Template::findBySlugType( 'form', CoreGlobal::TYPE_FORM );
 
 		$this->insert( $this->cmgPrefix . 'core_form', [
 			'siteId' => $this->site->id, 'templateId' => $formTemplate->id,
