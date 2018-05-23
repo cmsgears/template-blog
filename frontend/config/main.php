@@ -82,13 +82,19 @@ return [
 				'apix/<module:\w+>/<pcontroller:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller>/<controller>/<action>',
 				'apix/<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// regular request rules -----------------------
+				// CMS Pages
+				'page/search' => 'cms/page/search',
+				'team/<slug:[\w\-]+>' => 'sfcms/page/team',
+				// Articles - Public - search and single
+				'article/search' => 'cms/article/search',
+				'article/<slug:[\w\-]+>' => 'cms/article/single',
 				// Blog Posts - Public - search, category, tag and single
 				'blog/search' => 'cms/post/search',
 				'blog/category/<slug:[\w\-]+>' => 'cms/post/category',
 				'blog/tag/<slug:[\w\-]+>' => 'cms/post/tag',
 				'blog/<slug:[\w\-]+>' => 'cms/post/single',
 				// Forms
-				'form/<slug:[\w\-]+>' => 'forms/form/single',
+				'form/<slug:[\w\-]+>' => 'cms/form/single',
 				// Core - 2 levels
 				'<controller:[\w\-]+>/<action:[\w\-]+>' => 'core/<controller>/<action>',
 				// Module Pages - 3, 4 and 5 levels - catch all
@@ -97,7 +103,7 @@ return [
 				'<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// Standard Pages
 				'<action:(home|profile|account|address|settings)>' => 'core/user/<action>',
-				'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account)>' => 'core/site/<action>',
+				'<action:(login|logout|register|forgot-password|reset-password|activate-account|confirm-account|feedback|testimonial)>' => 'core/site/<action>',
 				// CMS Pages
 				'<slug:[\w\-]+>' => 'cms/page/single'
 			]

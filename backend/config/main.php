@@ -19,11 +19,11 @@ return [
         'core' => [
             'class' => 'cmsgears\core\admin\Module'
         ],
-        'cms' => [
-            'class' => 'cmsgears\cms\admin\Module'
-        ],
 		'forms' => [
             'class' => 'cmsgears\forms\admin\Module'
+        ],
+        'cms' => [
+            'class' => 'cmsgears\cms\admin\Module'
         ],
         'snsconnect' => [
             'class' => 'cmsgears\social\connect\admin\Module'
