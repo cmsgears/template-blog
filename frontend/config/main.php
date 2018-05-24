@@ -15,27 +15,27 @@ return [
 	'catchAll' => null,
 	'bootstrap' => [
 		'log',
-		'core', 'cms', 'forms', 'snsConnect', 'newsletter', 'notify',
+		'core', 'forms', 'cms', 'newsletter', 'notify', 'snsConnect',
 		'foxSlider'
 	],
 	'modules' => [
 		'core' => [
 			'class' => 'cmsgears\core\frontend\Module'
 		],
-		'cms' => [
-			'class' => 'cmsgears\cms\frontend\Module'
-		],
 		'forms' => [
 			'class' => 'cmsgears\forms\frontend\Module'
 		],
-		'snsconnect' => [
-			'class' => 'cmsgears\social\connect\frontend\Module'
+		'cms' => [
+			'class' => 'cmsgears\cms\frontend\Module'
 		],
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\frontend\Module'
 		],
 		'notify' => [
 			'class' => 'cmsgears\notify\frontend\Module'
+		],
+		'snsconnect' => [
+			'class' => 'cmsgears\social\connect\frontend\Module'
 		]
 	],
 	'components' => [
@@ -48,16 +48,16 @@ return [
 			]
 		],
 		'request' => [
-			'csrfParam' => '_csrf-cmg-blog-site',
+			'csrfParam' => '_csrf-blog-site',
 			'parsers' => [
 				'application/json' => 'yii\web\JsonParser'
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-cmg-blog-site', 'httpOnly' => true ]
+			'identityCookie' => [ 'name' => '_identity-blog-site', 'httpOnly' => true ]
 		],
 		'session' => [
-			'name' => 'cmg-blog-site'
+			'name' => 'blog-site'
 		],
 		'errorHandler' => [
 			'errorAction' => 'core/site/error'
@@ -84,7 +84,6 @@ return [
 				// regular request rules -----------------------
 				// CMS Pages
 				'page/search' => 'cms/page/search',
-				'team/<slug:[\w\-]+>' => 'sfcms/page/team',
 				// Articles - Public - search and single
 				'article/search' => 'cms/article/search',
 				'article/<slug:[\w\-]+>' => 'cms/article/single',

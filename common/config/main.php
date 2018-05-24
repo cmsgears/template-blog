@@ -80,16 +80,6 @@ return [
         'eventManager' => [
         	'class' => 'cmsgears\notify\common\components\EventManager'
         ],
-		// CMG Modules - CMS
-		'cms' => [
-			'class' => 'cmsgears\cms\common\components\Cms'
-		],
-		'cmsMessage' => [
-			'class' => 'cmsgears\cms\common\components\MessageSource'
-		],
-		'cmsMailer' => [
-			'class' => 'cmsgears\cms\common\components\Mailer'
-		],
 		// CMG Modules - Forms
 		'forms' => [
 			'class' => 'cmsgears\forms\common\components\Form'
@@ -100,16 +90,16 @@ return [
 		'formsMailer' => [
 			'class' => 'cmsgears\forms\common\components\Mailer'
 		],
-        // CMG Modules - SNS Connect
-        'snsConnect' => [
-        	'class' => 'cmsgears\social\connect\common\components\SnsConnect'
-        ],
-		'snsConnectMessage' => [
-			'class' => 'cmsgears\social\connect\common\components\MessageSource'
+		// CMG Modules - CMS
+		'cms' => [
+			'class' => 'cmsgears\cms\common\components\Cms'
 		],
-        'snsConnectMailer' => [
-        	'class' => 'cmsgears\social\connect\common\components\Mailer'
-        ],
+		'cmsMessage' => [
+			'class' => 'cmsgears\cms\common\components\MessageSource'
+		],
+		'cmsMailer' => [
+			'class' => 'cmsgears\cms\common\components\Mailer'
+		],
 		// CMG Modules - Newsletter
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\common\components\Newsletter'
@@ -130,6 +120,16 @@ return [
 		'notifyMailer' => [
 			'class' => 'cmsgears\notify\common\components\Mailer'
 		],
+        // CMG Modules - SNS Connect
+        'snsConnect' => [
+        	'class' => 'cmsgears\social\connect\common\components\SnsConnect'
+        ],
+		'snsConnectMessage' => [
+			'class' => 'cmsgears\social\connect\common\components\MessageSource'
+		],
+        'snsConnectMailer' => [
+        	'class' => 'cmsgears\social\connect\common\components\Mailer'
+        ],
 		// CMG Plugins
 		'fileManager' => [
 			'class' => 'cmsgears\files\components\FileManager'

@@ -12,7 +12,7 @@ return [
     'defaultRoute' => 'core/site/index',
 	'bootstrap' => [
 		'log',
-		'core', 'cms', 'forms', 'snsConnect', 'newsletter', 'notify',
+		'core', 'forms', 'cms', 'newsletter', 'notify', 'snsConnect',
 		'foxSlider'
 	],
     'modules' => [
@@ -46,16 +46,16 @@ return [
 			]
 		],
 		'request' => [
-			'csrfParam' => '_csrf-cmg-blog-admin',
+			'csrfParam' => '_csrf-blog-admin',
 			'parsers' => [
 				'application/json' => 'yii\web\JsonParser'
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-cmg-blog-admin', 'httpOnly' => true ]
+			'identityCookie' => [ 'name' => '_identity-blog-admin', 'httpOnly' => true ]
 		],
 		'session' => [
-			'name' => 'cmg-blog-admin'
+			'name' => 'blog-admin'
 		],
 		'errorHandler' => [
 			'errorAction' => 'core/site/error'
