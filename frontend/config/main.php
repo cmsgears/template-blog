@@ -92,6 +92,8 @@ return [
 				'blog/category/<slug:[\w\-]+>' => 'cms/post/category',
 				'blog/tag/<slug:[\w\-]+>' => 'cms/post/tag',
 				'blog/<slug:[\w\-]+>' => 'cms/post/single',
+				// SNS Connect
+				'sns/<controller:\w+>/<action:[\w\-]+>' => 'snsconnect/<controller>/<action>',
 				// Forms
 				'form/<slug:[\w\-]+>' => 'cms/form/single',
 				// Core - 2 levels

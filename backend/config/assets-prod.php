@@ -8,14 +8,7 @@ return [
 		'baseUrl' => '@web',
 		'css' => [ 'styles/cmnazxrs-20170816.css' ],
 		'js' => [ 'scripts/cmnazxrs-20170816.js' ],
-		'depends' => [ 'cmsgears\assets\jquery\Jquery' ]
-	],
-	'cmtjs' => [
-		'class' => 'yii\web\AssetBundle',
-		'basePath' => '@webroot',
-		'baseUrl' => '@web',
-		'js' => [ 'scripts/cjsazxrs-20170816.js' ],
-		'depends' => [ 'common' ]
+		'depends' => [ 'cmsgears\core\common\assets\Jquery' ]
 	],
 	'public' => [
 		'class' => 'yii\web\AssetBundle',

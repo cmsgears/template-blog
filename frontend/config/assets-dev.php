@@ -2,9 +2,6 @@
 
 return [
 	'yii\web\JqueryAsset' => false,
-	'cmtjs' => [
-		'class' => 'themes\blog\assets\CmtJsAssets'
-	],
 	'landing' => [
 		'class' => 'themes\blog\assets\LandingAssets'
 	],
