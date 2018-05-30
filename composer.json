@@ -15,6 +15,10 @@
 		{
 			"type": "composer",
 			"url": "https://asset-packagist.org"
+		},
+		{
+			"type": "vcs",
+			"url": "https://git.vcdevhub.com/cmsgears/plugin-btemplates.git"
 		}
 	],
 	"require": {
@@ -28,6 +32,7 @@
 		"cmsgears/module-newsletter": "dev-1.0.0-alpha",
 		"cmsgears/module-notify": "dev-1.0.0-alpha",
 		"cmsgears/plugin-assets" : "dev-1.0.0-alpha",
+		"cmsgears/plugin-btemplates": "dev-1.0.0-alpha",
 		"cmsgears/module-sns-connect": "dev-1.0.0-alpha",
 		"cmsgears/plugin-file-manager": "dev-1.0.0-alpha",
 		"cmsgears/plugin-social-meta": "dev-1.0.0-alpha",
@@ -62,8 +67,9 @@
 		"bower-asset/fontawesome": "5.0.*",
 		"bower-asset/chart.js": "2.7.*",
 		"bower-asset/moment": "2.22.*",
-		"bower-asset/cmt-ui" : "dev-1.0.0-alpha",
-		"bower-asset/cmt-js" : "dev-1.0.0-alpha",
+		"bower-asset/cmt-breeze" : "dev-1.0.0-alpha",
+		"bower-asset/cmt-velocity" : "dev-1.0.0-alpha",
+		"bower-asset/cmt-vapps" : "dev-1.0.0-alpha",
 		"bower-asset/cmt-iconlib" : "dev-1.0.0-alpha"
 	},
 	"require-dev": {
