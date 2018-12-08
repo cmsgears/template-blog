@@ -10,8 +10,8 @@ return [
 	'basePath' => dirname( __DIR__ ),
 	'bootstrap' => [
 		'log',
-		'core', 'forms', 'cms', 'newsletter', 'notify', 'snsConnect',
-		'foxSlider',
+		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
 		'core-console'
 	],
 	'controllerNamespace' => 'console\controllers',

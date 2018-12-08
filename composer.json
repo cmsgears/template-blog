@@ -18,7 +18,7 @@
 		},
 		{
 			"type": "vcs",
-			"url": "https://git.vcdevhub.com/cmsgears/plugin-btemplates.git"
+			"url": "https://repo1.vcdevhub.com/cmsgears/plugin-breeze-templates.git"
 		}
 	],
 	"require": {
@@ -32,7 +32,7 @@
 		"cmsgears/module-newsletter": "dev-1.0.0-alpha",
 		"cmsgears/module-notify": "dev-1.0.0-alpha",
 		"cmsgears/plugin-assets" : "dev-1.0.0-alpha",
-		"cmsgears/plugin-btemplates": "dev-1.0.0-alpha",
+		"cmsgears/plugin-breeze-templates": "dev-1.0.0-alpha",
 		"cmsgears/module-sns-connect": "dev-1.0.0-alpha",
 		"cmsgears/plugin-file-manager": "dev-1.0.0-alpha",
 		"cmsgears/plugin-social-meta": "dev-1.0.0-alpha",
@@ -49,7 +49,7 @@
 		"cmsgears/widget-form-ajax": "dev-1.0.0-alpha",
 		"cmsgears/widget-tag": "dev-1.0.0-alpha",
 		"cmsgears/widget-category": "dev-1.0.0-alpha",
-		"cmsgears/widget-blog": "dev-1.0.0-alpha",
+		"cmsgears/widget-club": "dev-1.0.0-alpha",
 		"cmsgears/widget-social-share": "dev-1.0.0-alpha",
 		"cmsgears/widget-social-feeds": "dev-1.0.0-alpha",
 		"cmsgears/widget-social-counts": "dev-1.0.0-alpha",
@@ -67,10 +67,13 @@
 		"bower-asset/fontawesome": "5.0.*",
 		"bower-asset/chart.js": "2.7.*",
 		"bower-asset/moment": "2.22.*",
-		"bower-asset/cmt-breeze" : "dev-1.0.0-alpha",
-		"bower-asset/cmt-velocity" : "dev-1.0.0-alpha",
-		"bower-asset/cmt-vapps" : "dev-1.0.0-alpha",
-		"bower-asset/cmt-iconlib" : "dev-1.0.0-alpha"
+		"bower-asset/fullcalendar": "3.9.*",
+		"bower-asset/datetimepicker": "2.5.*",
+		"bower-asset/cmt-breeze": "dev-1.0.0-alpha",
+		"bower-asset/cmt-breeze-icons": "dev-1.0.0-alpha",
+		"bower-asset/cmt-velocity": "dev-1.0.0-alpha",
+		"bower-asset/cmt-velocity-apps": "dev-1.0.0-alpha",
+		"bower-asset/cmt-velocity-breeze": "dev-1.0.0-alpha"
 	},
 	"require-dev": {
 		"codeception/base": "^2.2.3",

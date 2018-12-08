@@ -7,5 +7,7 @@
 ./yii migrate/up --migrationPath=@cmsgears/plugin-social-meta/migrations --interactive=0
 ./yii migrate/up --migrationPath=@foxslider/cmg-plugin/migrations --interactive=0
 ./yii migrate/up --migrationPath=@cmsgears/module-sns-connect/migrations --interactive=0
+./yii migrate/up --migrationPath=@cmsgears/plugin-breeze-templates/migrations/cms --interactive=0
+./yii migrate/up --migrationPath=@cmsgears/plugin-breeze-templates/migrations/sns-connect --interactive=0
 ./yii core-console/theme/up --migrationPath=@themes/blog/migrations --interactive=0
 ./yii migrate/up --migrationPath=@console/migrations/data --interactive=0

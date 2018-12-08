@@ -14,8 +14,8 @@ return [
 		'migration' => [
 			'class' => 'cmsgears\core\common\components\Migration',
 			'cmgPrefix' => 'cmg_',
-			'sitePrefix' => 'site_',
-			'siteName' => 'CMSGears',
+			'sitePrefix' => 'blog_',
+			'siteName' => 'Blog',
 			'siteTitle' => 'Blog Demo',
 			'siteMaster' => 'demomaster',
 			'primaryDomain' => 'cmsgears.com',

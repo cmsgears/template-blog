@@ -1,5 +1,4 @@
 <?php
-
 return [
 	'yii\web\JqueryAsset' => false,
 	'landing' => [
