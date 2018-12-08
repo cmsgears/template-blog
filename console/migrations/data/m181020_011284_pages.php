@@ -200,7 +200,7 @@ class m181020_011284_pages extends \cmsgears\core\common\base\Migration {
 		];
 
 		// Templates
-		$blogTemplate = Template::findByThemeSlugType( 'cre-blog-page', CmsGlobal::TYPE_PAGE );
+		$blogTemplate = Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_BLOG, CmsGlobal::TYPE_PAGE );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'bannerId' => null, 'summary' => $summary[ 0 ], 'seoName' => $seo[ 0 ][ 0 ], 'seoDescription' => $seo[ 0 ][ 1 ], 'seoKeywords' => $seo[ 0 ][ 2 ], 'seoRobot' => $seo[ 0 ][ 3 ], 'content' => $content[ 0 ] ], [ 'parentId' => 1, 'parentType' => 'page' ] );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'bannerId' => null, 'summary' => $summary[ 1 ], 'seoName' => $seo[ 1 ][ 0 ], 'seoDescription' => $seo[ 1 ][ 1 ], 'seoKeywords' => $seo[ 1 ][ 2 ], 'seoRobot' => $seo[ 1 ][ 3 ], 'content' => $content[ 1 ] ], [ 'parentId' => 2, 'parentType' => 'page' ] );
