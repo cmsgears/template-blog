@@ -18,7 +18,7 @@ return [
 			'siteName' => 'Blog',
 			'siteTitle' => 'Blog Demo',
 			'siteMaster' => 'demomaster',
-			'primaryDomain' => 'vcdevhub.com',
+			'primaryDomain' => 'dev.vcdevhub.com',
 			'defaultSite' => 'https://dev.vcdevhub.com/blogdemo/frontend/web',
 			'defaultAdmin' => 'https://dev.vcdevhub.com/blogdemo/backend/web',
 			'uploadsUrl' => 'https://dev.vcdevhub.com/blogdemo/uploads'
