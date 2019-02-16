@@ -15,7 +15,7 @@ use cmsgears\core\common\models\entities\User;
 
 use cmsgears\core\common\utilities\DateUtil;
 
-class m181018_026621_slider extends \cmsgears\core\common\base\Migration {
+class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -55,7 +55,7 @@ class m181018_026621_slider extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 102001, $site->id, $master->id, $master->id,'lifestyle',NULL,'Lifestyle','','jpg','gallery',0.2991,1500,'image',NULL,'2018-11-14/gallery/lifestyle.jpg','2018-11-14/gallery/lifestyle-medium.jpg','2018-11-14/gallery/lifestyle-thumb.jpg','','','',0,'2018-11-14 07:31:44','2018-11-14 07:54:13',NULL,NULL,NULL,0,NULL]
+			//[ 102001, $site->id, $master->id, $master->id,'dKF4UPZukfuPI9C-zycWht7ph7eCzhV9', null, 'Agripreneural Opportunities','','jpg','slider',0.1316,1500,'image',NULL,'2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-medium.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-thumb.jpg',null,'Safari Cities - Creating Agripreneural Opportunities','',0,DateUtil::getDateTime(), DateUtil::getDateTime(),NULL,NULL,NULL,0,NULL]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -69,7 +69,7 @@ class m181018_026621_slider extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'slug', 'title', 'description', 'status', 'fullPage', 'slideWidth', 'slideHeight', 'scrollAuto', 'scrollType', 'circular', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$sliders = [
-			//[ 10001, $site->id, $master->id, $master->id, 'Main Slider', 'main-slider', '', 'Main Slider used on landing page.', 16000, 1, 1920, 750, 1, 0, 1, '2018-05-25 07:15:45', '2018-11-14 08:12:27', '{ "class": "fx-slider fx-slider-regular" }', NULL, '{"settings":{"loadAssets":"0","bullets":"1","bulletsIndexing":"0","bulletClass":"","controls":"1","lControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-left","rControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-right","lControlContent":"","rControlContent":"","autoScrollDuration":"","stopOnHover":"1","sliderWidth":"","sliderHeight":"","slideDimMax":"1","slideWidth":"","slideHeight":"","slideArrangement":"filmstrip","resizeBkgImage":"0","bkgImageClass":"fluid","autoHeight":"1","preSlideChange":"","postSlideChange":"","slideTemplate":"reader","slideTemplateDir":"@themeTemplates\/foxslider","slideTexture":"texture","genericContent":""}}', NULL, 0, NULL ]
+			//[ 10001, $site->id, $master->id, $master->id, 'Main Slider', 'main-slider', '', 'Main Slider used on landing page.', 16000, 1, 1800, 900, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "fx-slider fx-slider-regular" }', null, '{"settings":{"loadAssets":"0","bullets":"1","bulletsIndexing":"0","bulletClass":"","controls":"1","lControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-left","rControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-right","lControlContent":"","rControlContent":"","autoScrollDuration":"","stopOnHover":"1","sliderWidth":"","sliderHeight":"","slideDimMax":"1","slideWidth":"","slideHeight":"","slideArrangement":"filmstrip","resizeBkgImage":"0","bkgImageClass":"","autoHeight":"0","duration":"500","preSlideChange":"","postSlideChange":"","onSlideClick":"","slideTemplate":"reader","slideTemplateDir":"@breeze\/templates\/widget\/native\/foxslider","slideTexture":"texture texture-black","genericContent":""}}', NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( 'fxs_slider', $columns, $sliders );
@@ -77,7 +77,7 @@ class m181018_026621_slider extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'sliderId', 'imageId', 'name', 'title', 'description', 'url', 'order', 'content' ];
 
 		$slides = [
-			//[100001, 10001, 102001, 'Lifestyle', '', '', '', 0, '' ]
+			//[ 100001, 10001, 102001, 'Test', null, null, null, 0, null ]
 		];
 
 		$this->batchInsert( 'fxs_slide', $columns, $slides );
@@ -85,7 +85,7 @@ class m181018_026621_slider extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181018_026621_slider will be deleted with m160621_014408_core.\n";
+		echo "m181211_026621_slider will be deleted with m160621_014408_core.\n";
 	}
 
 }

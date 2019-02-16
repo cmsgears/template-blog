@@ -13,7 +13,7 @@ use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
 
-class m181017_021468_world extends \cmsgears\core\common\base\Migration {
+class m181210_021468_world extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -44,7 +44,7 @@ class m181017_021468_world extends \cmsgears\core\common\base\Migration {
 
 		$this->insertProvinces();
 
-		$this->insertDistricts();
+		$this->insertRegions();
 	}
 
 	private function insertCountries() {
@@ -520,7 +520,8 @@ class m181017_021468_world extends \cmsgears\core\common\base\Migration {
 		$this->batchInsert( $this->cmgPrefix . 'core_province', $columns, $provinces );
 	}
 
-	private function insertDistricts() {
+	// TODO: Add US Counties and Nigeria Regions
+	private function insertRegions() {
 
 		$columns = [ 'id', 'countryId', 'provinceId', 'code', 'iso', 'name', 'title' ];
 
@@ -568,7 +569,7 @@ class m181017_021468_world extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181017_021468_world will be deleted with m160621_014408_core.\n";
+		echo "m181210_021468_world will be deleted with m160621_014408_core.\n";
 	}
 
 }

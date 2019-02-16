@@ -16,7 +16,7 @@ use cmsgears\core\common\models\resources\Category;
 
 use cmsgears\core\common\utilities\DateUtil;
 
-class m181017_025488_categories extends \cmsgears\core\common\base\Migration {
+class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -54,17 +54,17 @@ class m181017_025488_categories extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'description', 'featured', 'lValue', 'rValue', 'createdAt', 'modifiedAt' ];
 
 		$groups = [
-			//[ 10001, $site->id, $master->id, $master->id, 'Security', 'security', CoreGlobal::TYPE_OPTION_GROUP, 'Security', false, 1, 2, DateUtil::getDateTime(), DateUtil::getDateTime() ],
+			//[ 10001, $site->id, $master->id, $master->id, 'Test', 'test', CoreGlobal::TYPE_OPTION_GROUP, 'Test options.', false, 1, 2, DateUtil::getDateTime(), DateUtil::getDateTime() ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_category', $columns, $groups );
 
-		//$security = Category::findBySlugType( 'security', CoreGlobal::TYPE_OPTION_GROUP );
+		//$tAssets = Category::findBySlugType( 'test', CoreGlobal::TYPE_OPTION_GROUP );
 
 		$optionColumns = [ 'id', 'categoryId', 'name', 'value', 'icon', 'input', 'htmlOptions', 'content', 'data' ];
 
 		$options = [
-			//[100001, $security->id, 'CCTV', 'CCTV', NULL, 0, NULL, NULL, NULL]
+			//[ 100001, $tAssets->id, 'Test', 'Land', null, null, null, null, null ],
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_option', $optionColumns, $options );
@@ -72,7 +72,7 @@ class m181017_025488_categories extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181017_025488_categories will be deleted with m160621_014408_core.\n";
+		echo "m181210_025488_categories will be deleted with m160621_014408_core.\n";
 	}
 
 }

@@ -12,6 +12,7 @@ return [
 		'log',
 		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
 		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
+		'foxSlider',
 		'core-console'
 	],
 	'controllerNamespace' => 'console\controllers',
@@ -33,8 +34,8 @@ return [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => [ 'error', 'warning', 'info' ],
-					// 'categories' => [ 'cmsgears\*', 'console\*', '<project>\*' ]
-                    'categories' => [ 'cmsgears\*', 'console\*' ]
+					//'categories' => [ 'cmsgears\*', 'console\*', '<project>\*' ]
+					'categories' => [ 'cmsgears\*', 'console\*' ]
                 ]
             ]
         ]

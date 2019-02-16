@@ -19,7 +19,6 @@ module.exports = function( grunt ) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
-
 		sass: {
 			dist: {
 				options: {
@@ -27,8 +26,8 @@ module.exports = function( grunt ) {
 					loadPath: [ 'e:/development/projects-vc/css/cmt-ui/breeze/src/scss', 'e:/development/projects-vc/css/cmt-ui/breeze-templates/src/scss' ]
 				},
 				files: {
-					'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181201-src.css': 'e:/development/projects-vc/php/blogdemo/themes/admin/resources/styles/scss/public.scss',
-					'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181201-src.css': 'e:/development/projects-vc/php/blogdemo/themes/admin/resources/styles/scss/private.scss'
+					'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181226-src.css': 'e:/development/projects-vc/php/blogdemo/themes/admin/resources/styles/scss/public.scss',
+					'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181226-src.css': 'e:/development/projects-vc/php/blogdemo/themes/admin/resources/styles/scss/private.scss'
 				}
 			}
 		},
@@ -42,7 +41,7 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-core.min.css',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-currency.min.css'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181201-src.css'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181226-src.css'
       		}
     	},
         concatCssChild: {
@@ -53,7 +52,7 @@ module.exports = function( grunt ) {
         		src: [
 					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/styles/main.css'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181201-src.css'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181226-src.css'
       		}
     	},
         concatJsCommon: {
@@ -81,7 +80,7 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/city.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/comment.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181226-src.js'
       		}
     	},
         concatJsPublic: {
@@ -99,7 +98,7 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/themes/admin/resources/scripts/main.js',
 					'e:/development/projects-vc/php/blogdemo/themes/admin/resources/scripts/search.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181226-src.js'
       		}
     	},
         concatJsPrivate: {
@@ -149,7 +148,7 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/themes/admin/resources/scripts/main.js',
 					'e:/development/projects-vc/php/blogdemo/themes/admin/resources/scripts/search.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181226-src.js'
       		}
     	},
         concatJsChild: {
@@ -158,9 +157,14 @@ module.exports = function( grunt ) {
       		},
       		dist: {
         		src: [
+					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/scripts/apps/project/base.js',
+					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/scripts/apps/project/controllers/project.js',
+					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/scripts/apps/crm/base.js',
+					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/scripts/apps/crm/controllers/user.js',
+
 					'e:/development/projects-vc/php/blogdemo/themes/adminchild/resources/scripts/main.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181226-src.js'
       		}
     	},
     	cssmin: {
@@ -169,10 +173,10 @@ module.exports = function( grunt ) {
 			},
       		target: {
 	        	files: {
-					'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181201-src.css' ],
-	          		'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181201-src.css' ],
-					'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181201-src.css' ],
-					'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181201-src.css' ]
+					'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181226.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/cmnazxrs-20181226-src.css' ],
+	          		'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181226.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/pubazxrs-20181226-src.css' ],
+					'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181226.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/prvazxrs-20181226-src.css' ],
+					'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181226.css': [ 'e:/development/projects-vc/php/blogdemo/backend/web/styles/chdazxrs-20181226-src.css' ]
 	        	}
       		}
     	},
@@ -182,10 +186,10 @@ module.exports = function( grunt ) {
 			},
       		main_target: {
 	        	files: {
-	          		'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181201-src.js' ]
+	          		'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181226.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/cmnazxrs-20181226-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181226.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/pubazxrs-20181226-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181226.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/prvazxrs-20181226-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181226.js': [ 'e:/development/projects-vc/php/blogdemo/backend/web/scripts/chdazxrs-20181226-src.js' ]
 	        	}
       		}
     	},

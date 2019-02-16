@@ -17,7 +17,6 @@ module.exports = function( grunt ) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
-
 		sass: {
 			dist: {
 				options: {
@@ -25,9 +24,9 @@ module.exports = function( grunt ) {
 					loadPath: [ 'e:/development/projects-vc/css/cmt-ui/breeze/src/scss', 'e:/development/projects-vc/css/cmt-ui/breeze-templates/src/scss' ]
 				},
 				files: {
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/landing.scss',
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/public.scss',
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/private.scss'
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/landing.scss',
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/public.scss',
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228-src.css': 'e:/development/projects-vc/php/blogdemo/themes/blog/resources/styles/scss/private.scss'
 				}
 			}
 		},
@@ -41,10 +40,10 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-core.min.css',
 					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-currency.min.css',
 					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/nouislider/distribute/nouislider.min.css',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.min.css',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/fullcalendar/dist/fullcalendar.min.css'
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.min.css',
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/fullcalendar/dist/fullcalendar.min.css'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201-src.css'
+        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228-src.css'
       		}
     	},
         concatJsCommon: {
@@ -63,26 +62,27 @@ module.exports = function( grunt ) {
 					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/nouislider/distribute/nouislider.min.js',
 					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/progressbar.js/dist/progressbar.min.js',
 					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/chart.js/dist/Chart.min.js',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.full.min.js',
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.full.min.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/moment/min/moment.min.js',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/fullcalendar/dist/fullcalendar.min.js',
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/fullcalendar/dist/fullcalendar.min.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity/dist/velocity.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/cmsgears/widget-form-ajax/resources/scripts/apps/form.js',
 
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/base.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/grid.js',
-					
+
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/site.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/province.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/region.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/city.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/comment.js',
-					
+
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/forms/base.js',
-					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/forms/controllers/form.js'
-					
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/forms/controllers/form.js',
+
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/autoload.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228-src.js'
       		}
     	},
         concatJsLanding: {
@@ -98,9 +98,11 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/public.js',
 
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/main.js',
-					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js'
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/sliders.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/popups.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228-src.js'
       		}
     	},
         concatJsPublic: {
@@ -116,10 +118,11 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/public.js',
 
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/main.js',
-					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js'
-					
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/sliders.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/popups.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228-src.js'
       		}
     	},
         concatJsPrivate: {
@@ -153,11 +156,8 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/model.js',
 					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/user.js',
 
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/forms/base.js',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/forms/controllers/form.js',
-
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/notify/base.js',
-					//'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/notify/controllers/notification.js',
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/notify/base.js',
+					'e:/development/projects-vc/php/blogdemo/vendor/bower-asset/cmt-velocity-apps/src/apps/notify/controllers/notification.js',
 
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/public.js',
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/private.js',
@@ -166,9 +166,11 @@ module.exports = function( grunt ) {
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/apps/core/controllers/user.js',
 
 					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/main.js',
-					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js'
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/search.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/sliders.js',
+					'e:/development/projects-vc/php/blogdemo/themes/blog/resources/scripts/popups.js'
 				],
-        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201-src.js'
+        		dest: 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228-src.js'
       		}
     	},
     	cssmin: {
@@ -177,10 +179,10 @@ module.exports = function( grunt ) {
 			},
       		target: {
 	        	files: {
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201-src.css' ],
-	          		'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201-src.css' ],
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201-src.css' ],
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201-src.css' ]
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228-src.css' ],
+	          		'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228-src.css' ],
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228-src.css' ],
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228.css': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228-src.css' ]
 	        	}
       		}
     	},
@@ -190,10 +192,10 @@ module.exports = function( grunt ) {
 			},
       		main_target: {
 	        	files: {
-	          		'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmncmgbl-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladcmgbl-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubcmgbl-20181201-src.js' ],
-					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvcmgbl-20181201-src.js' ]
+	          		'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/cmnbtblg-20181228-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/ladbtblg-20181228-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/pubbtblg-20181228-src.js' ],
+					'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228.js': [ 'e:/development/projects-vc/php/blogdemo/frontend/web/blog/prvbtblg-20181228-src.js' ]
 	        	}
       		}
     	},

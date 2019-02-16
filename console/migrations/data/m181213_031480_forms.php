@@ -18,7 +18,7 @@ use cmsgears\core\common\models\resources\FormField;
 
 use cmsgears\core\common\utilities\DateUtil;
 
-class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
+class m181213_031480_forms extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -52,6 +52,8 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 
 		$this->updateForms();
 		$this->updateFormContent();
+
+		$this->insertObjectMappings();
 	}
 
 	private function insertFiles() {
@@ -59,10 +61,10 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[108001, $site->id, $master->id, $master->id, 'b9xF0Ousj0TPtSPEWevQ85PKSZScie4l','mailbox','','jpg','banner',0.1135,1500,'image',NULL,'2018-06-02/banner/b9xF0Ousj0TPtSPEWevQ85PKSZScie4l.jpg','2018-06-02/banner/b9xF0Ousj0TPtSPEWevQ85PKSZScie4l-medium.jpg','2018-06-02/banner/b9xF0Ousj0TPtSPEWevQ85PKSZScie4l-thumb.jpg','','',0,DateUtil::getDateTime(), DateUtil::getDateTime(),NULL,NULL,NULL,0,NULL]
+			//[ 108001, $site->id, $master->id, $master->id, 'iuh5lJHxhg68gYspF4TbQbiHWAJuNKDA', null, 'contact', '', 'jpg', 'banner', 0.3935, 1500, 'image', NULL, '2018-09-28/banner/iuh5lJHxhg68gYspF4TbQbiHWAJuNKDA.jpg', '2018-09-28/banner/iuh5lJHxhg68gYspF4TbQbiHWAJuNKDA-medium.jpg', '2018-09-28/banner/iuh5lJHxhg68gYspF4TbQbiHWAJuNKDA-thumb.jpg', null, null, null, 0, DateUtil::getDateTime(), DateUtil::getDateTime() ,NULL, NULL, NULL, 0, NULL]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -81,7 +83,7 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'templateId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'title', 'description', 'success', 'captcha', 'visibility', 'status', 'userMail', 'adminMail', 'createdAt', 'modifiedAt', 'content', 'data' ];
 
 		$models = [
-			//[ 10001, $site->id, $formTemplate->id, $master->id, $master->id, 'Joint Development', 'joint-development', CoreGlobal::TYPE_FORM, null, null, 'Joint Development form', 'Thanks for contacting us.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, null ]
+			//[ 10001, $site->id, $formTemplate->id, $master->id, $master->id, 'Support', 'support', CoreGlobal::TYPE_FORM, null, null, null, 'Thanks for contacting us.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_form', $columns, $models );
@@ -92,7 +94,7 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'parentId', 'parentType', 'seoName', 'seoDescription', 'seoKeywords', 'seoRobot', 'summary', 'content', 'publishedAt' ];
 
 		$formsContent = [
-			//[ 10001, Form::findBySlugType( 'joint-development', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ]
+			//[ 10001, Form::findBySlugType( 'support', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_model_content', $columns, $formsContent );
@@ -100,12 +102,13 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 
 	private function insertFormFields() {
 
-		$cuform = Form::findBySlugType( 'contact-us', 'form' );
+		$cuform = Form::findBySlugType( 'contact-us', CoreGlobal::TYPE_FORM );
+		//$spform = Form::findBySlugType( 'support', CoreGlobal::TYPE_FORM );
 
 		$columns = [ 'id', 'formId', 'name', 'label', 'type', 'compress', 'validators', 'order', 'icon', 'htmlOptions' ];
 
 		$fields	= [
-			//[ 100001, $cuform->id, 'mobile', 'Mobile', FormField::TYPE_TEXT, false, 'required', 0, NULL, '{"field":{"placeholder":"Mobile *"}}' ]
+			//[ 100001, $spform->id, 'name', 'Name', FormField::TYPE_TEXT, false, 'required', 0, NULL, '{"field":{placeholder":"Name"}}' ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_form_field', $columns, $fields );
@@ -126,16 +129,16 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 		];
 
 		// Contact Form
-		$form = Form::findBySlugType( 'contact-us', 'form' );
+		$contactForm = Form::findBySlugType( 'contact-us', 'form' );
 
 		// Update Form
-		$this->update( $this->cmgPrefix . 'core_form', [ 'texture' => 'texture texture-black', 'title' => 'Contact Us', 'description' => $desc[ 0 ], 'data' => $setting[ 0 ], 'htmlOptions' => $options[ 0 ] ], [ 'id' => $form->id ] );
+		$this->update( $this->cmgPrefix . 'core_form', [ 'texture' => 'texture texture-black', 'title' => 'Contact Us', 'description' => $desc[ 0 ], 'data' => $setting[ 0 ], 'htmlOptions' => $options[ 0 ] ], [ 'id' => $contactForm->id ] );
 
 		// Update Form Fields
-		//$this->update( $this->cmgPrefix . 'core_form_field', [ ], [ 'formId' => $form->id, 'name' => 'name' ] );
-		//$this->update( $this->cmgPrefix . 'core_form_field', [ ], [ 'formId' => $form->id, 'name' => 'email' ] );
-		//$this->update( $this->cmgPrefix . 'core_form_field', [ ], [ 'formId' => $form->id, 'name' => 'subject' ] );
-		//$this->update( $this->cmgPrefix . 'core_form_field', [ ], [ 'formId' => $form->id, 'name' => 'message' ] );
+		$this->update( $this->cmgPrefix . 'core_form_field', [ 'htmlOptions' => '{"field":{"placeholder":"Name"}, "wrapper":{"options":{"class":"col col2"}}}' ], [ 'formId' => $contactForm->id, 'name' => 'name' ] );
+		$this->update( $this->cmgPrefix . 'core_form_field', [ 'htmlOptions' => '{"field":{"placeholder":"Email"}, "wrapper":{"options":{"class":"col col2"}}}' ], [ 'formId' => $contactForm->id, 'name' => 'email' ] );
+		$this->update( $this->cmgPrefix . 'core_form_field', [ 'htmlOptions' => '{"field":{"placeholder":"Subject"}, "wrapper":{"options":{"class":"col col1"}}}' ], [ 'formId' => $contactForm->id, 'name' => 'subject' ] );
+		$this->update( $this->cmgPrefix . 'core_form_field', [ 'htmlOptions' => '{"field":{"placeholder":"Message"}, "wrapper":{"options":{"class":"col col1"}}}' ], [ 'formId' => $contactForm->id, 'name' => 'message' ] );
 
 		// Update Template View
 		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => 'views/templates/form/contact' ], [ 'slug' => 'contact', 'type' => 'form' ] );
@@ -148,21 +151,35 @@ class m181021_031480_forms extends \cmsgears\core\common\base\Migration {
 		];
 
 		$seo = [
-			[ 'Contact Us', 'Contact Us to know more about us and for queries and clarifications.', 'CMSGears, Contact' ]
+			[ 'Contact Us', 'Contact Us to know more about us and for queries and clarifications.', 'Site, Contact' ]
 		];
 
 		$content = [
 			null
 		];
 
-		$form = Form::findBySlugType( 'contact-us', 'form' );
+		$contactForm = Form::findBySlugType( 'contact-us', 'form' );
 
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'bannerId' => null, 'summary' => $summary[ 0 ], 'seoName' => $seo[ 0 ][ 0 ], 'seoDescription' => $seo[ 0 ][ 1 ], 'seoKeywords' => $seo[ 0 ][ 2 ], 'content' => $content[ 0 ] ], [ 'parentId' => $form->id, 'parentType' => 'form' ] );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'bannerId' => null, 'summary' => $summary[ 0 ], 'seoName' => $seo[ 0 ][ 0 ], 'seoDescription' => $seo[ 0 ][ 1 ], 'seoKeywords' => $seo[ 0 ][ 2 ], 'content' => $content[ 0 ] ], [ 'parentId' => $contactForm->id, 'parentType' => 'form' ] );
+	}
+
+	private function insertObjectMappings() {
+
+		// Contact Form
+		$contactForm = Form::findBySlugType( 'contact-us', 'form' );
+
+		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
+
+		$mappings = [
+			//[ 151001, 10089, $contactForm->id, 'form', 'block', 0, 1, 0, 0, NULL ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
 	}
 
 	public function down() {
 
-		echo "m181021_031480_forms will be deleted with m160621_014408_core.\n";
+		echo "m181213_031480_forms will be deleted with m160621_014408_core.\n";
 	}
 
 }

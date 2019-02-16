@@ -5,21 +5,21 @@ return [
 		'@bower' => '@vendor/bower-asset',
 		'@npm'   => '@vendor/npm-asset'
 	],
-	'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
-	'components' => [
-		// Yii Components
-		'user' => [
-			'class' => 'yii\web\User',
-			'identityClass' => 'cmsgears\core\common\models\entities\User',
+    'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
+    'components' => [
+    	// Yii Components
+        'user' => [
+        	'class' => 'yii\web\User',
+            'identityClass' => 'cmsgears\core\common\models\entities\User',
 			'enableAutoLogin' => true,
 			'loginUrl' => '@web/login'
-		],
-		'cache' => [
-			'class' => 'yii\caching\FileCache'
-		],
-		'urlManager' => [
-			'enablePrettyUrl' => true,
-			'showScriptName' => false
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache'
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -30,29 +30,33 @@ return [
 				]
 			]
 		],
-		'view' => [
-			'renderers' => [
-				'twig' => [
-					'class' => 'yii\twig\ViewRenderer',
-					'cachePath' => '@runtime/Twig/cache',
-					// Array of twig options:
-					'options' => [
-						'auto_reload' => true
-					],
-					'globals' => [
-						'html' => '\yii\helpers\Html'
-					],
-					//'uses' => [ 'yii\bootstrap' ]
-				]
-			]
-		],
-		// CMG Modules - Core
-		'factory' => [
-			'class' => 'cmsgears\core\common\components\ObjectFactory'
-		],
+        'view' => [
+            'renderers' => [
+                'twig' => [
+                    'class' => 'yii\twig\ViewRenderer',
+                    'cachePath' => '@runtime/Twig/cache',
+                    // Array of twig options:
+                    'options' => [
+                        'auto_reload' => true
+                    ],
+                    'globals' => [ 'html' => '\yii\helpers\Html' ],
+                    //'uses' => [ 'yii\bootstrap' ]
+                ]
+            ]
+        ],
+        // CMG Modules - Core
+        'factory' => [
+        	'class' => 'cmsgears\core\common\components\ObjectFactory'
+        ],
 		'core' => [
 			'class' => 'cmsgears\core\common\components\Core',
-			'editorClass' => 'cmsgears\widgets\cleditor\ClEditor',
+			//'editor' => 'cmsgears\widgets\cleditor\ClEditor',
+			'editor' => [
+				'class' => 'cmsgears\widgets\tinymce\TinyMce',
+				'options' => [
+					'unsafeTargetLink' => false
+				]
+			],
 			'rbacFilters' => [
 				'discover' => 'cmsgears\core\common\filters\DiscoverFilter',
 				'owner' => 'cmsgears\core\common\filters\OwnerFilter'
@@ -62,8 +66,8 @@ return [
 			'multiSite' => false,
 			'subDirectory' => false,
 			'defaultSiteSlug' => 'main',
-			'provinceLabel' => 'State',
-			'regionLabel' => 'District',
+			'provinceLabel' => 'Province',
+			'regionLabel' => 'Region',
 			'zipLabel' => 'Postal Code'
 		],
 		'coreFactory' => [
@@ -91,7 +95,7 @@ return [
 			'class' => 'cmsgears\notify\common\components\EventManager'
 		],
 		'smsManager' => [
-			'class' => 'cmsgears\sms\common\components\Msg91Manager'
+			'class' => 'cmsgears\core\common\components\SmsManager'
 		],
 		// CMG Modules - Forms
 		'forms' => [
@@ -134,7 +138,8 @@ return [
 		],
 		// CMG Modules - Notify
 		'notify' => [
-			'class' => 'cmsgears\notify\common\components\Notify'
+			'class' => 'cmsgears\notify\common\components\Notify',
+			'defaultLayout' => '//max'
 		],
 		'notifyFactory' => [
 			'class' => 'cmsgears\notify\common\components\Factory'

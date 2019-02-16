@@ -17,7 +17,7 @@ use cmsgears\cms\common\models\entities\Menu;
 
 use cmsgears\core\common\utilities\DateUtil;
 
-class m181022_025806_links extends \cmsgears\core\common\base\Migration {
+class m181214_025806_links extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -84,14 +84,14 @@ class m181022_025806_links extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active' ];
 
 		$mappings = [
-			[ 100001, 10006, $main->id, 'menu', NULL, 0, 1 ],
-			[ 100002, 10005, $main->id, 'menu', NULL, 0, 1 ],
-			[ 100003, 10004, $main->id, 'menu', NULL, 0, 1 ],
-			[ 100004, 10001, $main->id, 'menu', NULL, 0, 1 ],
-			[ 100005, 10006, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 100006, 10005, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 100007, 10004, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 100008, 10001, $sec->id, 'menu', NULL, 0, 1 ],
+			[ 100001, 10001, $main->id, 'menu', NULL, 0, 1 ],
+			[ 100002, 10004, $main->id, 'menu', NULL, 0, 1 ],
+			[ 100003, 10005, $main->id, 'menu', NULL, 0, 1 ],
+			[ 100004, 10006, $main->id, 'menu', NULL, 0, 1 ],
+			[ 100005, 10001, $sec->id, 'menu', NULL, 0, 1 ],
+			[ 100006, 10004, $sec->id, 'menu', NULL, 0, 1 ],
+			[ 100007, 10005, $sec->id, 'menu', NULL, 0, 1 ],
+			[ 100008, 10006, $sec->id, 'menu', NULL, 0, 1 ],
 			[ 100009, 10007, $link->id, 'menu', NULL, 0, 1 ],
 			[ 100010, 10008, $link->id, 'menu', NULL, 0, 1 ],
 			[ 100011, 10009, $link->id, 'menu', NULL, 0, 1 ],
@@ -103,7 +103,7 @@ class m181022_025806_links extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181022_025806_links will be deleted with m160621_014408_core.\n";
+		echo "m181214_025806_links will be deleted with m160621_014408_core.\n";
 	}
 
 }
