@@ -14,11 +14,11 @@ return [
 		'migration' => [
 			'class' => 'cmsgears\core\common\components\Migration',
 			'cmgPrefix' => 'cmg_',
-			'sitePrefix' => 'site_',
-			'siteName' => 'CMSGears',
+			'sitePrefix' => 'blog_',
+			'siteName' => 'Blog',
 			'siteTitle' => 'Blog Demo',
 			'siteMaster' => 'demomaster',
-			'primaryDomain' => 'cmsgears.com',
+			'primaryDomain' => 'dev.vcdevhub.com',
 			'defaultSite' => 'http://localhost/blogdemo/frontend/web',
 			'defaultAdmin' => 'http://localhost/blogdemo/backend/web',
 			'uploadsUrl' => 'http://localhost/blogdemo/uploads'

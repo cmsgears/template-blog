@@ -10,8 +10,10 @@ return [
 	'basePath' => dirname( __DIR__ ),
 	'bootstrap' => [
 		'log',
-		'core', 'cms', 'forms', 'snsLogin', 'newsletter', 'notify',
-		'foxSlider'
+		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
+		'foxSlider',
+		'core-console'
 	],
 	'controllerNamespace' => 'console\controllers',
 	'controllerMap' => [
@@ -22,6 +24,9 @@ return [
 	],
 	'modules' => [
 		// Console modules
+		'core-console' => [
+			'class' => 'cmsgears\core\console\Module'
+		]
 	],
 	'components' => [
         'log' => [
@@ -29,8 +34,8 @@ return [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => [ 'error', 'warning', 'info' ],
-					// 'categories' => [ 'cmsgears\*', 'console\*', '<project>\*' ]
-                    'categories' => [ 'cmsgears\*', 'console\*' ]
+					//'categories' => [ 'cmsgears\*', 'console\*', '<project>\*' ]
+					'categories' => [ 'cmsgears\*', 'console\*' ]
                 ]
             ]
         ]

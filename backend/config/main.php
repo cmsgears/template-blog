@@ -6,33 +6,34 @@ $params = yii\helpers\ArrayHelper::merge(
 );
 
 return [
-    'id' => 'cmg-blog-admin',
+    'id' => 'app-admin',
     'basePath' => dirname( __DIR__ ),
     'controllerNamespace' => 'admin\controllers',
     'defaultRoute' => 'core/site/index',
 	'bootstrap' => [
 		'log',
-		'core', 'cms', 'forms', 'snsLogin', 'newsletter', 'notify',
+		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
 		'foxSlider'
 	],
     'modules' => [
         'core' => [
             'class' => 'cmsgears\core\admin\Module'
         ],
-        'cms' => [
-            'class' => 'cmsgears\cms\admin\Module'
-        ],
 		'forms' => [
             'class' => 'cmsgears\forms\admin\Module'
         ],
-        'snslogin' => [
-            'class' => 'cmsgears\social\login\admin\Module'
+        'cms' => [
+            'class' => 'cmsgears\cms\admin\Module'
         ],
         'newsletter' => [
             'class' => 'cmsgears\newsletter\admin\Module'
         ],
         'notify' => [
             'class' => 'cmsgears\notify\admin\Module'
+        ],
+        'snsconnect' => [
+            'class' => 'cmsgears\social\connect\admin\Module'
         ],
         'foxslider' => [
             'class' => 'foxslider\admin\Module'
@@ -46,22 +47,22 @@ return [
 			]
 		],
 		'request' => [
-			'csrfParam' => '_csrf-cmg-blog-admin',
+			'csrfParam' => '_csrf-blog-admin',
 			'parsers' => [
 				'application/json' => 'yii\web\JsonParser'
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-cmg-blog-admin', 'httpOnly' => true ]
+			'identityCookie' => [ 'name' => '_identity-blog-admin', 'httpOnly' => true ]
 		],
 		'session' => [
-			'name' => 'cmg-blog-admin'
+			'name' => 'blog-admin'
 		],
 		'errorHandler' => [
 			'errorAction' => 'core/site/error'
 		],
 		'assetManager' => [
-			'bundles' => require( __DIR__ . '/' . ( YII_ENV_PROD ? 'assets-prod.php' : 'assets-dev.php' ) )
+			'bundles' => require( dirname( dirname( __DIR__ ) ) . '/themes/assets/admin/' . ( YII_ENV_PROD ? 'prod.php' : 'dev.php' ) )
 		],
 		'urlManager' => [
 			'rules' => [
@@ -73,9 +74,9 @@ return [
 				'apix/<module:\w+>/<pcontroller:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller>/<controller>/<action>',
 				'apix/<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/apix/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// regular request rules -----------------------
-				// Core Module Pages
+				// Core - 2 levels
 				'<controller:[\w\-]+>/<action:[\w\-]+>' => 'core/<controller>/<action>',
-				// Module Pages - 2, 3 and 4 levels - catch all
+				// Module Pages - 3, 4 and 5 levels - catch all
 				'<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<controller>/<action>',
 				'<module:\w+>/<pcontroller:[\w\-]+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<pcontroller>/<controller>/<action>',
 				'<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<pcontroller1>/<pcontroller2>/<controller>/<action>',
@@ -83,22 +84,22 @@ return [
 				'<action:(login|logout|dashboard|forgot-password|reset-password|activate-account)>' => 'core/site/<action>'
 			]
 		],
-        'core' => [
-        	'loginRedirectPage' => '/dashboard',
-        	'logoutRedirectPage' => '/login'
-        ],
-        'sidebar' => [
-        	'class' => 'cmsgears\core\admin\components\Sidebar',
-        	'modules' => [ 'cms', 'foxslider', 'forms', 'core', 'notify', 'newsletter' ],
+		'core' => [
+			'loginRedirectPage' => '/dashboard',
+			'logoutRedirectPage' => '/login'
+		],
+		'sidebar' => [
+			'class' => 'cmsgears\core\admin\components\Sidebar',
+			'modules' => [ 'cms', 'foxslider', 'core', 'notify', 'newsletter', 'snsconnect' ],
 			'plugins' => [
 				'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
 				'fileManager' => [ 'file' ]
 			]
-        ],
-        'dashboard' => [
-        	'class' => 'cmsgears\core\admin\components\Dashboard',
-        	'modules' => [ 'cms', 'core' ]
-        ]
+		],
+		'dashboard' => [
+			'class' => 'cmsgears\core\admin\components\Dashboard',
+			'modules' => [ 'cms', 'core' ]
+		]
     ],
     'params' => $params
 ];

@@ -1,0 +1,91 @@
+<?php
+/**
+ * This file is part of CMSGears Framework. Please view License file distributed
+ * with the source code for license details.
+ *
+ * @link https://www.cmsgears.org/
+ * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
+ */
+
+// CMG Imports
+use cmsgears\core\common\config\CoreGlobal;
+
+use cmsgears\core\common\models\entities\Site;
+use cmsgears\core\common\models\entities\User;
+
+use cmsgears\core\common\utilities\DateUtil;
+
+class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
+
+	// Public Variables
+
+	// Private Variables
+
+	private $cmgPrefix;
+	private $sitePrefix;
+
+	private $site;
+
+	private $master;
+
+	public function init() {
+
+		// Table prefix
+		$this->cmgPrefix	= Yii::$app->migration->cmgPrefix;
+		$this->sitePrefix	= Yii::$app->migration->sitePrefix;
+
+		$this->site		= Site::findBySlug( CoreGlobal::SITE_MAIN );
+		$this->master	= User::findByUsername( Yii::$app->migration->getSiteMaster() );
+
+		Yii::$app->core->setSite( $this->site );
+	}
+
+	public function up() {
+
+		$this->insertFiles();
+
+		$this->insertSlider();
+	}
+
+	private function insertFiles() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+
+		$files = [
+			//[ 102001, $site->id, $master->id, $master->id,'dKF4UPZukfuPI9C-zycWht7ph7eCzhV9', null, 'Agripreneural Opportunities','','jpg','slider',0.1316,1500,'image',NULL,'2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-medium.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-thumb.jpg',null,'Safari Cities - Creating Agripreneural Opportunities','',0,DateUtil::getDateTime(), DateUtil::getDateTime(),NULL,NULL,NULL,0,NULL]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
+	}
+
+	private function insertSlider() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'slug', 'title', 'description', 'status', 'fullPage', 'slideWidth', 'slideHeight', 'scrollAuto', 'scrollType', 'circular', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+
+		$sliders = [
+			//[ 10001, $site->id, $master->id, $master->id, 'Main Slider', 'main-slider', '', 'Main Slider used on landing page.', 16000, 1, 1800, 900, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "fx-slider fx-slider-regular" }', null, '{"settings":{"loadAssets":"0","bullets":"1","bulletsIndexing":"0","bulletClass":"","controls":"1","lControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-left","rControlClass":"text text-gray-l bold cmti cmti-1-5x cmti-angle-right","lControlContent":"","rControlContent":"","autoScrollDuration":"","stopOnHover":"1","sliderWidth":"","sliderHeight":"","slideDimMax":"1","slideWidth":"","slideHeight":"","slideArrangement":"filmstrip","resizeBkgImage":"0","bkgImageClass":"","autoHeight":"0","duration":"500","preSlideChange":"","postSlideChange":"","onSlideClick":"","slideTemplate":"reader","slideTemplateDir":"@breeze\/templates\/widget\/native\/foxslider","slideTexture":"texture texture-black","genericContent":""}}', NULL, 0, NULL ]
+		];
+
+		$this->batchInsert( 'fxs_slider', $columns, $sliders );
+
+		$columns = [ 'id', 'sliderId', 'imageId', 'name', 'title', 'description', 'url', 'order', 'content' ];
+
+		$slides = [
+			//[ 100001, 10001, 102001, 'Test', null, null, null, 0, null ]
+		];
+
+		$this->batchInsert( 'fxs_slide', $columns, $slides );
+	}
+
+	public function down() {
+
+		echo "m181211_026621_slider will be deleted with m160621_014408_core.\n";
+	}
+
+}

@@ -8,20 +8,20 @@ return [
 	'components' => [
 		'urlManager' => [
 			'class' => 'yii\web\UrlManager',
-			'baseUrl' => 'https://alpha.cmsgears.com/blogdemo/frontend/web'
+			'baseUrl' => 'https://dev.vcdevhub.com/blogdemo/frontend/web'
 		],
 		// CMG Modules - Core
 		'migration' => [
 			'class' => 'cmsgears\core\common\components\Migration',
 			'cmgPrefix' => 'cmg_',
-			'sitePrefix' => 'site_',
-			'siteName' => 'CMSGears',
+			'sitePrefix' => 'blog_',
+			'siteName' => 'Blog',
 			'siteTitle' => 'Blog Demo',
 			'siteMaster' => 'demomaster',
-			'primaryDomain' => 'cmsgears.com',
-			'defaultSite' => 'https://alpha.cmsgears.com/blogdemo/frontend/web',
-			'defaultAdmin' => 'https://alpha.cmsgears.com/blogdemo/backend/web',
-			'uploadsUrl' => 'https://alpha.cmsgears.com/blogdemo/uploads'
+			'primaryDomain' => 'dev.vcdevhub.com',
+			'defaultSite' => 'https://dev.vcdevhub.com/blogdemo/frontend/web',
+			'defaultAdmin' => 'https://dev.vcdevhub.com/blogdemo/backend/web',
+			'uploadsUrl' => 'https://dev.vcdevhub.com/blogdemo/uploads'
 		]
 	]
 ];
