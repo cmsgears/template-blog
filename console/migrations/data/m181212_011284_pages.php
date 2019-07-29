@@ -263,8 +263,7 @@ class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ 150001, $homePosts->id, 1, 'page', 'widget', 0, 1, 0, 0, NULL ],
-			[ 150002, 10201, 1, 'page', 'block', 0, 1, 0, 0, NULL ]
+			//[ 150001, $homePosts->id, 1, 'page', 'widget', 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

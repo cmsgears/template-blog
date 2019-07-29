@@ -8,7 +8,7 @@ return [
 	'components' => [
 		'urlManager' => [
 			'class' => 'yii\web\UrlManager',
-			'baseUrl' => 'https://dev.vcdevhub.com/blogdemo/frontend/web'
+			'baseUrl' => 'https://dev.vcdevhub.com/basicdemo/frontend/web'
 		],
 		// CMG Modules - Core
 		'migration' => [
