@@ -41,8 +41,8 @@ return [
                     'options' => [
                         'auto_reload' => true
                     ],
-                    'globals' => [ 
-						'html' => '\yii\helpers\Html' 
+                    'globals' => [
+						'html' => '\yii\helpers\Html'
 					],
                     //'uses' => [ 'yii\bootstrap' ]
                 ]
@@ -150,7 +150,7 @@ return [
 		// CMG Modules - Notify
 		'notify' => [
 			'class' => 'cmsgears\notify\common\components\Notify',
-			'defaultLayout' => '//max'
+			//'defaultLayout' => '//max'
 		],
 		'notifyFactory' => [
 			'class' => 'cmsgears\notify\common\components\Factory'
