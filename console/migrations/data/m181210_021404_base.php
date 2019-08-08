@@ -1,17 +1,10 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
-
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181210_021404_base extends \cmsgears\core\common\base\Migration {
 
@@ -47,14 +40,20 @@ class m181210_021404_base extends \cmsgears\core\common\base\Migration {
 
 		$site = $this->site;
 
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'fonts', 'type' => 'frontend' ] );
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => '|' ], [ 'modelId' => $site->id, 'name' => 'title_separator', 'type' => 'blog' ] );
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'author', 'type' => 'facebook-meta' ] );
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'app_id', 'type' => 'facebook-meta' ] );
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'site', 'type' => 'twitter-meta' ] );
-		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'creator', 'type' => 'twitter-meta' ] );
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => 0 ], [ 'modelId' => $site->id, 'name' => 'change_email', 'type' => 'core' ] );
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => 0 ], [ 'modelId' => $site->id, 'name' => 'change_username', 'type' => 'core' ] );
+
 		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => 0 ], [ 'modelId' => $site->id, 'name' => 'generate_name', 'type' => 'file' ] );
 		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => 1 ], [ 'modelId' => $site->id, 'name' => 'pretty_name', 'type' => 'file' ] );
+
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => 'Blog Demo' ], [ 'modelId' => $site->id, 'name' => 'author', 'type' => 'facebook-meta' ] );
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'app_id', 'type' => 'facebook-meta' ] );
+
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'site', 'type' => 'twitter-meta' ] );
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'creator', 'type' => 'twitter-meta' ] );
+
+		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => '|' ], [ 'modelId' => $site->id, 'name' => 'title_separator', 'type' => 'blog' ] );
+
 		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'comments_disqus_forum', 'type' => 'comment' ] );
 
 		//$this->site->description = 'Site Description';

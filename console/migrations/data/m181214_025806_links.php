@@ -1,14 +1,5 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\cms\common\config\CmsGlobal;
 
 use cmsgears\core\common\models\entities\Site;
@@ -16,6 +7,9 @@ use cmsgears\core\common\models\entities\User;
 use cmsgears\cms\common\models\entities\Menu;
 
 use cmsgears\core\common\utilities\DateUtil;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181214_025806_links extends \cmsgears\core\common\base\Migration {
 

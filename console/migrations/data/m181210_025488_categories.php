@@ -1,20 +1,13 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
-
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
 use cmsgears\core\common\models\resources\Category;
 
 use cmsgears\core\common\utilities\DateUtil;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
 

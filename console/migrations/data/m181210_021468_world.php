@@ -1,17 +1,10 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
-
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181210_021468_world extends \cmsgears\core\common\base\Migration {
 
@@ -520,7 +513,7 @@ class m181210_021468_world extends \cmsgears\core\common\base\Migration {
 		$this->batchInsert( $this->cmgPrefix . 'core_province', $columns, $provinces );
 	}
 
-	// TODO: Add US Counties and Nigeria Regions
+	// Additional: Add US Counties and Nigeria Regions
 	private function insertRegions() {
 
 		$columns = [ 'id', 'countryId', 'provinceId', 'code', 'iso', 'name', 'title' ];

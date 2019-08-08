@@ -1,19 +1,12 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
-
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
 
 use cmsgears\core\common\utilities\DateUtil;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
 
@@ -52,10 +45,10 @@ class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 102001, $site->id, $master->id, $master->id,'dKF4UPZukfuPI9C-zycWht7ph7eCzhV9', null, 'Agripreneural Opportunities','','jpg','slider',0.1316,1500,'image',NULL,'2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-medium.jpg','2018-05-31/slider/dKF4UPZukfuPI9C-zycWht7ph7eCzhV9-thumb.jpg',null,'Safari Cities - Creating Agripreneural Opportunities','',0,DateUtil::getDateTime(), DateUtil::getDateTime(),NULL,NULL,NULL,0,NULL]
+			//[ 102001, $site->id, $master->id, $master->id, 'slide-1', NULL, 'Slide 1', '', 'jpg', 'gallery', 0.1178, 1500, 'image', NULL, '2019-07-25/gallery/slide-1.jpg', '2019-07-25/gallery/slide-1-medium.jpg', '2019-07-25/gallery/slide-1-small.jpg', '2019-07-25/gallery/slide-1-thumb.jpg', '2019-07-25/gallery/slide-1-pl.jpg', '2019-07-25/gallery/slide-1-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );

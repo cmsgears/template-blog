@@ -1,14 +1,5 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\cms\common\config\CmsGlobal;
 
 use cmsgears\core\common\models\entities\Site;
@@ -19,6 +10,9 @@ use cmsgears\cms\common\models\entities\Sidebar;
 use cmsgears\cms\common\models\entities\Widget;
 
 use cmsgears\core\common\utilities\DateUtil;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 
@@ -68,10 +62,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[104001, $site->id, $master->id, $master->id, 'test', null, 'banner','','png','avatar',0.0447,1500,'image',NULL,'2018-06-01/avatar/o-eiU6hurp8qvCtXIHfGcEceeJ3g2m2I.png','2018-06-01/avatar/o-eiU6hurp8qvCtXIHfGcEceeJ3g2m2I-medium.png','2018-06-01/avatar/o-eiU6hurp8qvCtXIHfGcEceeJ3g2m2I-thumb.png',null, null, null, 0,DateUtil::getDateTime(), DateUtil::getDateTime(),NULL,NULL,NULL,0,NULL]
+			//[104001, $site->id, $master->id, $master->id, 'file1', NULL, 'file1', '', 'jpg', 'gallery', 0.0951, 1500, 'image', NULL, '2019-03-26/gallery/file1.jpg', '2019-03-26/gallery/file1-medium.jpg', '2019-03-26/gallery/file1-small.jpg', '2019-03-26/gallery/file1-thumb.jpg', '2019-03-26/gallery/file1-pl.jpg', '2019-03-26/gallery/file1-small-pl.jpg', NULL, NULL, NULL, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
