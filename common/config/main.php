@@ -1,4 +1,6 @@
 <?php
+// CMS Imports
+use cmsgears\core\common\config\CoreGlobal;
 
 return [
 	'aliases' => [
@@ -39,7 +41,9 @@ return [
                     'options' => [
                         'auto_reload' => true
                     ],
-                    'globals' => [ 'html' => '\yii\helpers\Html' ],
+                    'globals' => [
+						'html' => '\yii\helpers\Html'
+					],
                     //'uses' => [ 'yii\bootstrap' ]
                 ]
             ]
@@ -49,7 +53,7 @@ return [
         	'class' => 'cmsgears\core\common\components\ObjectFactory'
         ],
 		'core' => [
-			'class' => 'cmsgears\core\common\components\Core',
+			'class' => 'modules\core\common\components\Core',
 			//'editor' => 'cmsgears\widgets\cleditor\ClEditor',
 			'editor' => [
 				'class' => 'cmsgears\widgets\tinymce\TinyMce',
@@ -66,24 +70,24 @@ return [
 			'multiSite' => false,
 			'subDirectory' => false,
 			'defaultSiteSlug' => 'main',
-			'provinceLabel' => 'Province',
-			'regionLabel' => 'Region',
+			'provinceLabel' => 'State',
+			'regionLabel' => 'District',
 			'zipLabel' => 'Postal Code'
 		],
 		'coreFactory' => [
 			'class' => 'cmsgears\core\common\components\Factory'
 		],
 		'coreMessage' => [
-			'class' => 'cmsgears\core\common\components\MessageSource'
+			'class' => 'modules\core\common\components\MessageSource'
 		],
 		'coreMailer' => [
-			'class' => 'cmsgears\core\common\components\Mailer'
+			'class' => 'modules\core\common\components\Mailer'
 		],
 		'formDesigner' => [
-			'class' => 'cmsgears\core\common\components\FormDesigner'
+			'class' => 'modules\core\common\components\FormDesigner'
 		],
 		'templateManager' => [
-			'class' => 'cmsgears\core\common\components\TemplateManager',
+			'class' => 'modules\core\common\components\TemplateManager',
 			'templatesPath' => null,
 			'renderers' => [
 				'default' => 'Default',
@@ -91,11 +95,18 @@ return [
 				'smarty' => 'Smarty'
 			]
 		],
+		'pluginManager' => [
+			'class' => 'cmsgears\core\common\components\PluginManager',
+			'plugins' => [
+				'basicSeo' => [ 'class' => 'cmsgears\seo\plugins\BasicSeo', 'modelTypes' => [] ]
+			]
+		],
 		'eventManager' => [
 			'class' => 'cmsgears\notify\common\components\EventManager'
 		],
 		'smsManager' => [
-			'class' => 'cmsgears\core\common\components\SmsManager'
+			//'class' => 'modules\sms\common\components\SmsManager'
+			'class' => 'cmsgears\sms\common\components\Msg91Manager'
 		],
 		// CMG Modules - Forms
 		'forms' => [
@@ -139,7 +150,7 @@ return [
 		// CMG Modules - Notify
 		'notify' => [
 			'class' => 'cmsgears\notify\common\components\Notify',
-			'defaultLayout' => '//max'
+			//'defaultLayout' => '//max'
 		],
 		'notifyFactory' => [
 			'class' => 'cmsgears\notify\common\components\Factory'
@@ -163,6 +174,10 @@ return [
 		'snsConnectMailer' => [
 			'class' => 'cmsgears\social\connect\common\components\Mailer'
 		],
+		// CMG Modules - Sms
+		'sms' => [
+			'class' => 'cmsgears\sms\common\components\Sms'
+		],
 		// CMG Plugins
 		'fileManager' => [
 			'class' => 'cmsgears\files\components\FileManager'
@@ -176,6 +191,10 @@ return [
 		// FoxSlider
 		'foxSlider' => [
 			'class' => 'foxslider\common\components\Core'
+		],
+		// Blog
+		'bcoreFactory' => [
+			'class' => 'modules\core\common\components\Factory'
 		]
 	]
 ];

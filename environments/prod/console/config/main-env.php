@@ -4,7 +4,7 @@ return [
 	'components' => [
 		'urlManager' => [
 			'class' => 'yii\web\UrlManager',
-			'baseUrl' => 'https://demo.cmsgears.com/template/blog'
+			'baseUrl' => 'https://demo.cmsgears.com/template/basic'
 		],
 		// CMG Modules - Core
 		'migration' => [

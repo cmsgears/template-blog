@@ -1,14 +1,5 @@
 <?php
-/**
- * This file is part of CMSGears Framework. Please view License file distributed
- * with the source code for license details.
- *
- * @link https://www.cmsgears.org/
- * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
- */
-
 // CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\cms\common\config\CmsGlobal;
 
 use cmsgears\core\common\models\entities\Site;
@@ -17,6 +8,9 @@ use cmsgears\core\common\models\entities\User;
 use cmsgears\cms\common\models\entities\Widget;
 
 use cmsgears\core\common\utilities\DateUtil;
+
+// Blog Imports
+use modules\core\common\config\CoreGlobal;
 
 class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 
@@ -61,10 +55,10 @@ class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'thumb', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'tag', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'caption', 'altText', 'link', 'shared', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 106001, $site->id, $master->id, $master->id, 'test', null, 'test','','jpg','avatar',0.018,1500,'image',NULL,'2018-06-01/avatar/EX1vZyOgOK2243BbNDAJmmsaC2-pLF4z.jpg','2018-06-01/avatar/EX1vZyOgOK2243BbNDAJmmsaC2-pLF4z-medium.jpg','2018-06-01/avatar/EX1vZyOgOK2243BbNDAJmmsaC2-pLF4z-thumb.jpg', null, null, null, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL,NULL,NULL,0,NULL ]
+			//[ 106001, $site->id, $master->id, $master->id, 'file1', NULL, 'file1', '', 'jpg', 'gallery', 0.0951, 1500, 'image', NULL, '2019-03-26/gallery/file1.jpg', '2019-03-26/gallery/file1-medium.jpg', '2019-03-26/gallery/file1-small.jpg', '2019-03-26/gallery/file1-thumb.jpg', '2019-03-26/gallery/file1-pl.jpg', '2019-03-26/gallery/file1-small-pl.jpg', NULL, NULL, NULL, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -263,8 +257,7 @@ class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ 150001, $homePosts->id, 1, 'page', 'widget', 0, 1, 0, 0, NULL ],
-			[ 150002, 10201, 1, 'page', 'block', 0, 1, 0, 0, NULL ]
+			//[ 150001, $homePosts->id, 1, 'page', 'widget', 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

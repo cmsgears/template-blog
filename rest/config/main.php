@@ -6,7 +6,7 @@ $params = yii\helpers\ArrayHelper::merge(
 );
 
 return [
-	'id' => 'app-api',
+	'id' => 'app-rest',
 	'name' => 'Blog Demo',
 	'version' => '1.0.0',
 	'basePath' => dirname( __DIR__ ),
@@ -25,9 +25,9 @@ return [
 		'forms' => [
 			'class' => 'cmsgears\forms\api\Module'
 		],
-		'cms' => [
-			'class' => 'cmsgears\cms\api\Module'
-		],
+        'cms' => [
+            'class' => 'cmsgears\cms\admin\Module'
+        ],
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\api\Module'
 		],
@@ -44,26 +44,16 @@ return [
 	//'catchAll' => [ 'core/site/maintenance' ],
 	'components' => [
 		'request' => [
-			'csrfParam' => '_csrf-blog-api',
 			'parsers' => [
 				'application/json' => 'yii\web\JsonParser'
 			]
 		],
-		'user' => [
-			'identityCookie' => [ 'name' => '_identity-blog-api', 'httpOnly' => true ]
-		],
-		'session' => [
-			'name' => 'blog-api'
-		],
 		'errorHandler' => [
 			'errorAction' => 'core/site/error'
 		],
-		'assetManager' => [
-			'bundles' => require( dirname( dirname( __DIR__ ) ) . '/themes/assets/api/' . ( YII_ENV_PROD ? 'prod.php' : 'dev.php' ) )
-		],
 		'urlManager' => [
 			'rules' => [
-				// api request rules ---------------------------
+				// rest request rules ---------------------------
 				// Generic - 3, 4 and 5 levels - catch all
 				'<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<action>',
 				'<module:\w+>/<controller:[\w\-]+>/<pcontroller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<pcontroller>/<action>',

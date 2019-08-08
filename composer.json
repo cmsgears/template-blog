@@ -15,19 +15,13 @@
 		{
 			"type": "composer",
 			"url": "https://asset-packagist.org"
-		},
-		{
-			"type": "vcs",
-			"url": "https://repo1.vcdevhub.com/cmsgears/plugin-breeze-templates.git"
 		}
 	],
 	"require": {
 		"php": ">=7.0.0",
-		"yiisoft/yii2": "2.0.15.1",
+		"yiisoft/yii2": "2.0.23",
 		"yiisoft/yii2-swiftmailer": "2.1.*",
-		"yiisoft/yii2-twig": "~2.2.0",
-		"kartik-v/yii2-mpdf": "1.0.*",
-		"phpoffice/phpspreadsheet": "1.5.*",
+		"yiisoft/yii2-twig": "2.2.*",
 		"cmsgears/module-core": "dev-1.0.0-alpha",
 		"cmsgears/module-cms": "dev-1.0.0-alpha",
 		"cmsgears/module-forms": "dev-1.0.0-alpha",
@@ -53,9 +47,7 @@
 		"cmsgears/widget-tag": "dev-1.0.0-alpha",
 		"cmsgears/widget-category": "dev-1.0.0-alpha",
 		"cmsgears/widget-club": "dev-1.0.0-alpha",
-		"cmsgears/widget-social-share": "dev-1.0.0-alpha",
-		"cmsgears/widget-social-feeds" : "dev-1.0.0-alpha",
-		"cmsgears/widget-social-counts": "dev-1.0.0-alpha",
+		"cmsgears/widget-social": "dev-1.0.0-alpha",
 		"cmsgears/widget-popup": "dev-1.0.0-alpha",
 		"cmsgears/widget-grid": "dev-1.0.0-alpha",
 		"foxslider/cmg-plugin": "dev-1.0.0-alpha",
@@ -72,6 +64,7 @@
 		"bower-asset/moment": "2.22.*",
 		"bower-asset/fullcalendar": "3.9.*",
 		"bower-asset/datetimepicker": "2.5.*",
+		"bower-asset/intl-tel-input": "15.0.*",
 		"bower-asset/cmt-breeze" : "dev-1.0.0-alpha",
 		"bower-asset/cmt-breeze-icons" : "dev-1.0.0-alpha",
 		"bower-asset/cmt-velocity" : "dev-1.0.0-alpha",
@@ -85,6 +78,7 @@
 		"phpunit/phpunit": "~6.5.5",
 		"yiisoft/yii2-debug": "2.0.*",
 		"yiisoft/yii2-gii": "2.0.*",
-		"yiisoft/yii2-faker": "2.0.*"
+		"yiisoft/yii2-faker": "2.0.*",
+		"symfony/browser-kit": ">=2.7 <=4.2.4"
 	}
 }
