@@ -18,7 +18,7 @@ return [
 		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
 		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
 		'foxSlider',
-		'bcoreFactory'
+		'blogCoreFactory'
 	],
 	'modules' => [
 		'core' => [

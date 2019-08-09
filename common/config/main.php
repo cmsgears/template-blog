@@ -193,7 +193,7 @@ return [
 			'class' => 'foxslider\common\components\Core'
 		],
 		// Blog
-		'bcoreFactory' => [
+		'blogCoreFactory' => [
 			'class' => 'modules\core\common\components\Factory'
 		]
 	]

@@ -13,7 +13,7 @@ return [
 		'core', 'coreFactory', 'forms', 'formsFactory', 'breeze',
 		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
 		'foxSlider',
-		'bcoreFactory',
+		'blogCoreFactory',
 		'core-console'
 	],
 	'controllerNamespace' => 'console\controllers',
