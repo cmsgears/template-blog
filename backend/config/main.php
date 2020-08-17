@@ -13,7 +13,8 @@ return [
 	'bootstrap' => [
 		'log',
 		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
-		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory',
+		'snsConnect', 'snsConnectFactory',
 		'foxSlider',
 		'blogCoreFactory'
 	],
@@ -42,7 +43,7 @@ return [
         'foxslider' => [
             'class' => 'foxslider\admin\Module'
         ],
-        'blogcore' => [
+        'bcore' => [
             'class' => 'modules\core\admin\Module'
         ]
     ],
@@ -60,7 +61,10 @@ return [
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-blog-admin', 'httpOnly' => true ]
+			'identityCookie' => [
+				'name' => '_identity-blog-admin',
+				'httpOnly' => true
+			]
 		],
 		'session' => [
 			'name' => 'blog-admin'
@@ -88,7 +92,7 @@ return [
 				'<module:\w+>/<pcontroller:[\w\-]+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/<pcontroller>/<controller>/<action>',
 				'<module:\w+>/<pcontroller1:[\w\-]+>/<pcontroller2:[\w\-]+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/<pcontroller1>/<pcontroller2>/<controller>/<action>',
 				// Standard Pages
-				'<action:(login|logout|dashboard|forgot-password|reset-password|activate-account)>' => 'core/site/<action>'
+				'<action:(login|logout|dashboard|forgot-password|reset-password|activate-account|colors|theme)>' => 'core/site/<action>'
 			]
 		],
 		'core' => [
@@ -97,7 +101,7 @@ return [
 		],
 		'sidebar' => [
 			'class' => 'cmsgears\core\admin\components\Sidebar',
-			'modules' => [ 'blogcore', 'cms', 'foxslider', 'core', 'notify', 'newsletter', 'snsconnect' ],
+			'modules' => [ 'bcore', 'cms', 'foxslider', 'core', 'notify', 'newsletter', 'snsconnect' ],
 			'plugins' => [
 				'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
 				'fileManager' => [ 'file' ]

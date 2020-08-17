@@ -63,15 +63,17 @@ return [
 			],
 			'rbacFilters' => [
 				'discover' => 'cmsgears\core\common\filters\DiscoverFilter',
-				'owner' => 'cmsgears\core\common\filters\OwnerFilter'
+				'owner' => 'cmsgears\core\common\filters\OwnerFilter',
+				'belongsToUser' => 'cmsgears\core\common\filters\BelongsToUserFilter'
 			],
 			'notifications' => true,
+			'activities' => true,
 			'siteConfigAll' => true,
 			'multiSite' => false,
 			'subDirectory' => false,
 			'defaultSiteSlug' => 'main',
 			'provinceLabel' => 'State',
-			'regionLabel' => 'District',
+			'regionLabel' => 'Province',
 			'zipLabel' => 'Postal Code'
 		],
 		'coreFactory' => [
@@ -98,7 +100,9 @@ return [
 		'pluginManager' => [
 			'class' => 'cmsgears\core\common\components\PluginManager',
 			'plugins' => [
-				'basicSeo' => [ 'class' => 'cmsgears\seo\plugins\BasicSeo', 'modelTypes' => [] ]
+				'basicSeo' => [ 'class' => 'cmsgears\seo\plugins\BasicSeo', 'modelTypes' => [] ],
+				'geoSeo' => [ 'class' => 'cmsgears\seo\plugins\GeoSeo', 'modelTypes' => [] ],
+				'advancedSeo' => [ 'class' => 'cmsgears\seo\plugins\AdvancedSeo', 'modelTypes' => [] ]
 			]
 		],
 		'eventManager' => [
