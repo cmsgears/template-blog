@@ -47,7 +47,7 @@ class m181211_015810_notify extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'description', 'active', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'createdAt', 'modifiedAt', 'content', 'data' ];
 
 		$templates = [
-			//[ 100001, $this->master->id, $this->master->id, 'Test', 'test', null, 'notification', 'Trigger Notification.', true, 'twig', 0, null, false, null, DateUtil::getDateTime(), DateUtil::getDateTime(), 'New Organization "{{orgName | raw }}" is registered', '{"config":{"admin":"1","user":"0","adminEmail":"1","userEmail":"0"}}' ]
+			//[ 100001, $this->master->id, $this->master->id, 'Test', 'test', null, 'notification', 'Trigger Notification and Email to Admin.', true, 'twig', 0, null, false, null, DateUtil::getDateTime(), DateUtil::getDateTime(), 'New Test "{{Test | raw }}" is registered', '{"config":{"admin":"1","user":"0","adminEmail":"1","userEmail":"0"}}' ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );

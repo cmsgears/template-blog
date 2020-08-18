@@ -48,7 +48,7 @@ class m181214_025806_links extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'user', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
+		$columns = [ 'id', 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
 
 		$links = [
 			[ 10001, $site->id, NULL, $master->id, $master->id, 'Home', NULL, '/', 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],

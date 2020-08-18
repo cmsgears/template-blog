@@ -34,9 +34,9 @@ module.exports = function( grunt ) {
 					loadPath: [ '../../../../../../projects-vc/css/cmt-ui/breeze/src/scss', '../../../../../../projects-vc/css/cmt-ui/breeze-templates/src/scss' ]
 				},
 				files: {
-					'../../../frontend/web/blog/ladbtblg-20191001-src.css': '../../../themes/blog/resources/styles/scss/landing.scss',
-					'../../../frontend/web/blog/pubbtblg-20191001-src.css': '../../../themes/blog/resources/styles/scss/public.scss',
-					'../../../frontend/web/blog/prvbtblg-20191001-src.css': '../../../themes/blog/resources/styles/scss/private.scss'
+					'../../../frontend/web/blog/ladbtblg-20200401-src.css': '../../../themes/blog/resources/styles/scss/landing.scss',
+					'../../../frontend/web/blog/pubbtblg-20200401-src.css': '../../../themes/blog/resources/styles/scss/public.scss',
+					'../../../frontend/web/blog/prvbtblg-20200401-src.css': '../../../themes/blog/resources/styles/scss/private.scss'
 				}
 			}
 		},
@@ -49,7 +49,7 @@ module.exports = function( grunt ) {
 					'../../../themes/blog/resources/styles/fixes/font-fix-fa.css',
 					'../../../vendor/bower-asset/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css'
 				],
-        		dest: '../../../frontend/web/blog/fawbtblg-20191001-src.css'
+        		dest: '../../../frontend/web/blog/fawbtblg-20200401-src.css'
       		}
     	},
         concatCssCommon: {
@@ -64,9 +64,11 @@ module.exports = function( grunt ) {
 					'../../../vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-brand.min.css',
 					'../../../vendor/bower-asset/cmt-breeze-icons/dist/css/breeze-icons-currency.min.css',
 					//'../../../vendor/bower-asset/nouislider/distribute/nouislider.min.css',
+					'../../../vendor/bower-asset/chart.js/dist/Chart.min.css',
+					'../../../vendor/bower-asset/aos/dist/aos.css',
 					'../../../vendor/bower-asset/intl-tel-input/build/css/intlTelInput.min.css'
 				],
-        		dest: '../../../frontend/web/blog/cmnbtblg-20191001-src.css'
+        		dest: '../../../frontend/web/blog/cmnbtblg-20200401-src.css'
       		}
     	},
         concatCssLanding: {
@@ -75,9 +77,9 @@ module.exports = function( grunt ) {
       		},
       		dist: {
         		src: [
-					'../../../frontend/web/blog/ladbtblg-20191001-src.css'
+					'../../../frontend/web/blog/ladbtblg-20200401-src.css'
 				],
-        		dest: '../../../frontend/web/blog/ladbtblg-20191001-src.css'
+        		dest: '../../../frontend/web/blog/ladbtblg-20200401-src.css'
       		}
     	},
         concatCssPublic: {
@@ -87,9 +89,9 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.min.css',
-					'../../../frontend/web/blog/pubbtblg-20191001-src.css'
+					'../../../frontend/web/blog/pubbtblg-20200401-src.css'
 				],
-        		dest: '../../../frontend/web/blog/pubbtblg-20191001-src.css'
+        		dest: '../../../frontend/web/blog/pubbtblg-20200401-src.css'
       		}
     	},
         concatCssPrivate: {
@@ -99,10 +101,10 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.min.css',
-					'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.css',
-					'../../../frontend/web/blog/prvbtblg-20191001-src.css'
+					//'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.css',
+					'../../../frontend/web/blog/prvbtblg-20200401-src.css'
 				],
-        		dest: '../../../frontend/web/blog/prvbtblg-20191001-src.css'
+        		dest: '../../../frontend/web/blog/prvbtblg-20200401-src.css'
       		}
     	},
         concatJsLazy: {
@@ -113,7 +115,7 @@ module.exports = function( grunt ) {
         		src: [
 					'../../../vendor/bower-asset/cmt-velocity/src/solo/lazy.js'
 				],
-        		dest: '../../../frontend/web/blog/lzybtblg-20191001-src.js'
+        		dest: '../../../frontend/web/blog/lzybtblg-20200401-src.js'
       		}
     	},
         concatJsCommon: {
@@ -132,23 +134,25 @@ module.exports = function( grunt ) {
 					//'../../../vendor/bower-asset/nouislider/distribute/nouislider.min.js',
 					//'../../../vendor/bower-asset/progressbar.js/dist/progressbar.min.js',
 					'../../../vendor/bower-asset/chart.js/dist/Chart.min.js',
+					'../../../vendor/bower-asset/aos/dist/aos.js',
+					'../../../vendor/bower-asset/intl-tel-input/build/js/utils.js',
 					'../../../vendor/bower-asset/intl-tel-input/build/js/intlTelInput-jquery.min.js',
-					'../../../vendor/bower-asset/cmt-velocity/dist/velocity.js',
+					'../../../vendor/cmgtools/velocity/dist/velocity.js',
 
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/base.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/grid.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/autoload.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/site.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/province.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/region.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/city.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/comment.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/base.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/grid.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/autoload.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/site.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/province.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/region.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/city.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/comment.js',
 
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/forms/base.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/forms/controllers/form.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/forms/base.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/forms/controllers/form.js',
 
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/notify/base.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/notify/controllers/notification.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/notify/base.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/notify/controllers/notification.js',
 
 					'../../../themes/blog/resources/scripts/templates/public.js',
 
@@ -160,7 +164,7 @@ module.exports = function( grunt ) {
 					'../../../themes/blog/resources/scripts/apps/core/autoload.js',
 					'../../../themes/blog/resources/scripts/apps/core/controllers/site.js'
 				],
-        		dest: '../../../frontend/web/blog/cmnbtblg-20191001-src.js'
+        		dest: '../../../frontend/web/blog/cmnbtblg-20200401-src.js'
       		}
     	},
         concatJsLanding: {
@@ -170,11 +174,12 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../themes/blog/resources/scripts/main.js',
+					'../../../themes/blog/resources/scripts/landing.js',
 					'../../../themes/blog/resources/scripts/search.js',
 					'../../../themes/blog/resources/scripts/sliders.js',
 					'../../../themes/blog/resources/scripts/popups.js'
 				],
-        		dest: '../../../frontend/web/blog/ladbtblg-20191001-src.js'
+        		dest: '../../../frontend/web/blog/ladbtblg-20200401-src.js'
       		}
     	},
         concatJsPublic: {
@@ -186,11 +191,12 @@ module.exports = function( grunt ) {
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.full.min.js',
 
 					'../../../themes/blog/resources/scripts/main.js',
+					'../../../themes/blog/resources/scripts/public.js',
 					'../../../themes/blog/resources/scripts/search.js',
 					'../../../themes/blog/resources/scripts/sliders.js',
 					'../../../themes/blog/resources/scripts/popups.js'
 				],
-        		dest: '../../../frontend/web/blog/pubbtblg-20191001-src.js'
+        		dest: '../../../frontend/web/blog/pubbtblg-20200401-src.js'
       		}
     	},
         concatJsPrivate: {
@@ -200,30 +206,33 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.full.min.js',
-					'../../../vendor/bower-asset/moment/min/moment.min.js',
-					'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.js',
+					//'../../../vendor/bower-asset/moment/min/moment.min.js',
+					//'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.js',
 
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/address.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/data.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/file.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/gallery.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/location.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/mapper.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/meta.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/model.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/social.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/services/user.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/main.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/address.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/data.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/file.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/gallery.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/location.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/mapper.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/meta.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/model.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/social.js',
-					'../../../vendor/bower-asset/cmt-velocity-apps/src/apps/core/controllers/user.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/address.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/data.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/file.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/gallery.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/location.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/mapper.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/meta.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/model.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/social.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/user.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/main.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/address.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/data.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/file.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/gallery.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/location.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/mapper.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/meta.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/model.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/social.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/core/controllers/user.js',
+
+					'../../../vendor/cmgtools/velocity-apps/src/apps/notify/base.js',
+					'../../../vendor/cmgtools/velocity-apps/src/apps/notify/controllers/notification.js',
 
 					'../../../themes/blog/resources/scripts/templates/private.js',
 
@@ -236,11 +245,12 @@ module.exports = function( grunt ) {
 					'../../../themes/blog/resources/scripts/apps/core/controllers/user.js',
 
 					'../../../themes/blog/resources/scripts/main.js',
+					'../../../themes/blog/resources/scripts/private.js',
 					'../../../themes/blog/resources/scripts/search.js',
 					'../../../themes/blog/resources/scripts/sliders.js',
 					'../../../themes/blog/resources/scripts/popups.js'
 				],
-        		dest: '../../../frontend/web/blog/prvbtblg-20191001-src.js'
+        		dest: '../../../frontend/web/blog/prvbtblg-20200401-src.js'
       		}
     	},
     	cssmin: {
@@ -249,11 +259,11 @@ module.exports = function( grunt ) {
 			},
       		target: {
 	        	files: {
-					'../../../frontend/web/blog/fawbtblg-20191001.css': [ '../../../frontend/web/blog/fawbtblg-20191001-src.css' ],
-					'../../../frontend/web/blog/cmnbtblg-20191001.css': [ '../../../frontend/web/blog/cmnbtblg-20191001-src.css' ],
-	          		'../../../frontend/web/blog/ladbtblg-20191001.css': [ '../../../frontend/web/blog/ladbtblg-20191001-src.css' ],
-					'../../../frontend/web/blog/pubbtblg-20191001.css': [ '../../../frontend/web/blog/pubbtblg-20191001-src.css' ],
-					'../../../frontend/web/blog/prvbtblg-20191001.css': [ '../../../frontend/web/blog/prvbtblg-20191001-src.css' ]
+					'../../../frontend/web/blog/fawbtblg-20200401.css': [ '../../../frontend/web/blog/fawbtblg-20200401-src.css' ],
+					'../../../frontend/web/blog/cmnbtblg-20200401.css': [ '../../../frontend/web/blog/cmnbtblg-20200401-src.css' ],
+	          		'../../../frontend/web/blog/ladbtblg-20200401.css': [ '../../../frontend/web/blog/ladbtblg-20200401-src.css' ],
+					'../../../frontend/web/blog/pubbtblg-20200401.css': [ '../../../frontend/web/blog/pubbtblg-20200401-src.css' ],
+					'../../../frontend/web/blog/prvbtblg-20200401.css': [ '../../../frontend/web/blog/prvbtblg-20200401-src.css' ]
 	        	}
       		}
     	},
@@ -263,11 +273,11 @@ module.exports = function( grunt ) {
 			},
       		main_target: {
 	        	files: {
-	          		'../../../frontend/web/blog/lzybtblg-20191001.js': [ '../../../frontend/web/blog/lzybtblg-20191001-src.js' ],
-					'../../../frontend/web/blog/cmnbtblg-20191001.js': [ '../../../frontend/web/blog/cmnbtblg-20191001-src.js' ],
-					'../../../frontend/web/blog/ladbtblg-20191001.js': [ '../../../frontend/web/blog/ladbtblg-20191001-src.js' ],
-					'../../../frontend/web/blog/pubbtblg-20191001.js': [ '../../../frontend/web/blog/pubbtblg-20191001-src.js' ],
-					'../../../frontend/web/blog/prvbtblg-20191001.js': [ '../../../frontend/web/blog/prvbtblg-20191001-src.js' ]
+	          		'../../../frontend/web/blog/lzybtblg-20200401.js': [ '../../../frontend/web/blog/lzybtblg-20200401-src.js' ],
+					'../../../frontend/web/blog/cmnbtblg-20200401.js': [ '../../../frontend/web/blog/cmnbtblg-20200401-src.js' ],
+					'../../../frontend/web/blog/ladbtblg-20200401.js': [ '../../../frontend/web/blog/ladbtblg-20200401-src.js' ],
+					'../../../frontend/web/blog/pubbtblg-20200401.js': [ '../../../frontend/web/blog/pubbtblg-20200401-src.js' ],
+					'../../../frontend/web/blog/prvbtblg-20200401.js': [ '../../../frontend/web/blog/prvbtblg-20200401-src.js' ]
 	        	}
       		}
     	},

@@ -108,6 +108,7 @@ class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
 
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}core_object AUTO_INCREMENT = 1000001" );
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}core_model_object AUTO_INCREMENT = 1000001" );
+
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}cms_link AUTO_INCREMENT = 100001" );
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}cms_model_link AUTO_INCREMENT = 1000001" );
 

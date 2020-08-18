@@ -56,9 +56,9 @@ class m181210_021404_base extends \cmsgears\core\common\base\Migration {
 
 		$this->update( $this->cmgPrefix . 'core_site_meta', [ 'value' => null ], [ 'modelId' => $site->id, 'name' => 'comments_disqus_forum', 'type' => 'comment' ] );
 
-		//$this->site->description = 'Site Description';
+		$site->description = 'Blog template demo';
 
-		$this->site->update();
+		$site->update();
 	}
 
 	public function down() {
