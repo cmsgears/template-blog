@@ -113,10 +113,10 @@ class m181210_021452_sites extends \cmsgears\core\common\base\Migration {
 
 		$userRole = Role::findBySlugType( 'user', CoreGlobal::TYPE_SYSTEM );
 
-		$columns = [ 'id', 'siteId', 'userId', 'roleId', 'pinned', 'featured', 'createdAt', 'modifiedAt' ];
+		$columns = [ 'id', 'siteId', 'userId', 'roleId', 'pinned', 'featured', 'popular', 'createdAt', 'modifiedAt' ];
 
 		$members = [
-			//[ 10001, $site->id, 5, $userRole->id, 0, 0, '2018-12-07 18:02:25', '2018-12-07 18:05:04' ]
+			//[ 10001, $site->id, 5, $userRole->id, 0, 0, 0, '2018-12-07 18:02:25', '2018-12-07 18:05:04' ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_site_member', $columns, $members );

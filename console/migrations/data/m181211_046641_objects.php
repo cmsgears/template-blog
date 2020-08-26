@@ -2,6 +2,7 @@
 // CMG Imports
 use cmsgears\cms\common\config\CmsGlobal;
 
+use cmsgears\core\common\models\entities\ObjectData;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Template;
 use cmsgears\core\common\models\entities\User;
@@ -76,11 +77,13 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'themeId', 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
+
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			// Default Menus
-			//[ 8001, $theme->id, NULL, NULL, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_MENU, 'icon', 'texture', NULL, NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-test" }', NULL, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"1","headerIcon":"1","headerTitle":"1","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaType":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}', NULL, 0, NULL ]
+			//[ 8001, $site->id, NULL, NULL, NULL, NULL ,NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_MENU, NULL, NULL, NULL, 'Test 1', NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -95,11 +98,13 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$cardElement	= Template::findGlobalBySlugType( 'card', CmsGlobal::TYPE_ELEMENT );
 		$boxElement		= Template::findGlobalBySlugType( 'box', CmsGlobal::TYPE_ELEMENT );
 
-		$columns = [ 'id', 'themeId', 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
+
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			// Default Elements
-			//[ 10001, $theme->id, NULL, NULL, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-test" }', NULL, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"1","headerIcon":"1","headerTitle":"1","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaType":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}', NULL, 0, NULL ]
+			//[ 10001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'An initiative of Tathastu Social Iniciatives, a society registered in Kanpur, Uttar Pradesh (India).', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -122,11 +127,13 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		// Templates
 		$defaultWidget = Template::findGlobalBySlugType( 'default', CmsGlobal::TYPE_WIDGET );
 
-		$columns = [ 'id', 'themeId', 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
+
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			// Default Elements
-			//[ 10101, $theme->id, NULL, NULL, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', NULL, NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-test" }', NULL, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"1","headerIcon":"1","headerTitle":"1","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaType":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}', NULL, 0, NULL ]
+			//[ 11001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'An initiative of Tathastu Social Iniciatives, a society registered in Kanpur, Uttar Pradesh (India).', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -142,11 +149,13 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$fxsBlock		= Template::findGlobalBySlugType( 'foxslider', CmsGlobal::TYPE_BLOCK );
 		$testiBlock		= Template::findGlobalBySlugType( 'testimonial', CmsGlobal::TYPE_BLOCK );
 
-		$columns = [ 'id', 'themeId', 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
+
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			// Default Blocks
-			//[ 10201, $theme->id, NULL, NULL, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_BLOCK, 'icon', 'texture', NULL, NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-test" }', NULL, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"1","headerIcon":"1","headerTitle":"1","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaType":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}', NULL, 0, NULL ]
+			//[ 12001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_BLOCK, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'An initiative of Tathastu Social Iniciatives, a society registered in Kanpur, Uttar Pradesh (India).', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -162,11 +171,13 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$vertSidebar	= Template::findGlobalBySlugType( 'vsidebar', CmsGlobal::TYPE_SIDEBAR );
 		$horizSidebar	= Template::findGlobalBySlugType( 'hsidebar', CmsGlobal::TYPE_SIDEBAR );
 
-		$columns = [ 'id', 'themeId', 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
+
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			// Default Sidebars
-			//[ 10301, $theme->id, NULL, NULL, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_SIDEBAR, 'icon', 'texture', NULL, NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-test" }', NULL, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"1","headerIcon":"1","headerTitle":"1","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaType":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}', NULL, 0, NULL ]
+			//[ 13001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_SIDEBAR, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'An initiative of Tathastu Social Iniciatives, a society registered in Kanpur, Uttar Pradesh (India).', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
