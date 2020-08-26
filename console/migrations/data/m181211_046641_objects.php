@@ -104,7 +104,7 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 10001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'An initiative of Tathastu Social Iniciatives, a society registered in Kanpur, Uttar Pradesh (India).', NULL, NULL, NULL, 0, NULL ]
+			//[ 10001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', NULL, NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
