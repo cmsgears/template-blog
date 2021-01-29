@@ -75,20 +75,19 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 		// Templates
 		$defaultTemplate = Template::findGlobalBySlugType( CoreGlobal::TEMPLATE_DEFAULT, CmsGlobal::TYPE_POST );
 
-		$columns = [ 'id', 'siteId', 'avatarId', 'parentId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'status', 'visibility', 'order', 'pinned', 'featured', 'comments', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'avatarId', 'parentId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'comments', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$pages = [
 			// Blog
-			//[ 2001, $site->id, null, null, $master->id, $master->id, 'Post', 'post', CmsGlobal::TYPE_POST, null, null, null, null, Page::STATUS_ACTIVE, Page::VISIBILITY_PUBLIC, 0, false, false, 0, '2017-06-29 00:00:00', '2017-06-29 00:00:00', null, null, null, 0, null ]
+			//[ 2001, $site->id, NULL, NULL, $master->id, $master->id, 'Courtesy Visit To ExxonMobil', 'test 1', 'blog', 'icon', 'texture', '', '', 16000, 1500, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","fluidBanner":"0","background":"0","backgroundClass":"","backgroundVideo":null,"texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerFluid":"0","headerBanner":"0","headerGallery":"0","headerScroller":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"1","contentInfo":"1","contentSummary":"1","contentData":"1","maxCover":"0","contentSocial":"1","contentLabels":"1","contentAvatar":"0","contentBanner":"1","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","metas":"0","metasWithContent":"0","metasOrder":"","metaTypes":"","metaWrapClass":"","elements":"0","elementsBeforeContent":"0","elementsWithContent":"0","elementsOrder":"","elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsBeforeContent":"0","widgetsWithContent":"0","widgetsOrder":"","widgetType":"","widgetWrapClass":"","widgetWrapper":"","widgetClass":"","blocks":"0","blocksBeforeContent":"0","blocksWithContent":"0","blocksOrder":"","blockType":"","sidebars":"0","sidebarsBeforeContent":"0","sidebarsWithContent":"0","sidebarsOrder":"","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"1","bottomSidebarSlugs":"post-bottom","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":"","footerSidebar":"0","footerSidebarSlug":null,"comments":"1","disqus":"0","author":"0","related":"0","popular":"0","similar":"0","purifySummary":"1","purifyContent":"1","amp":"0","ampGoogleScripts":"","ampScriptUrl":"","ampStylePath":"","ampSchema":"","ampMetas":"","h1Summary":"0"}}', NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_page', $columns, $pages );
 
-		$columns = [ 'id', 'templateId', 'bannerId', 'videoId', 'galleryId', 'parentId', 'parentType', 'type', 'summary', 'seoName', 'seoDescription', 'seoKeywords', 'seoRobot', 'publishedAt', 'content', 'data' ];
+		$columns = [ 'id', 'templateId', 'bannerId', 'mbannerId', 'videoId', 'mvideoId', 'galleryId', 'parentId', 'parentType', 'type', 'summary', 'classPath', 'viewPath', 'seoName', 'seoDescription', 'seoKeywords', 'seoRobot', 'seoSchema', 'publishedAt', 'content', 'data', 'schema' ];
 
 		$pageContent = [
-			// Blog
-			//[ 2001, $defaultTemplate->id, null, null, null, 2001, CmsGlobal::TYPE_POST, null, null, null, null, null, 'index,follow', DateUtil::getDateTime(), null, null ]
+			//[ 2001, $defaultTemplate->id, 107001, NULL, NULL, NULL, NULL, 2001, 'blog', NULL, '', NULL, NULL, '', '', '', '', '', DateUtil::getDateTime(), 'test 1', NULL, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_model_content', $columns, $pageContent );
@@ -192,7 +191,7 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'popular', 'nodes' ];
 
 		$mappings = [
-			//[ 150001, $recPosts->id, $postRightSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, null ]
+			//[ 160001, $recPosts->id, $postRightSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

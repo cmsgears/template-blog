@@ -164,7 +164,7 @@ class m181213_031480_forms extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'popular', 'nodes' ];
 
 		$mappings = [
-			//[ 151001, 10089, $contactForm->id, 'form', 'block', 0, 1, 0, 0, 0, NULL ]
+			//[ 170001, 10089, $contactForm->id, 'form', 'block', 0, 1, 0, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

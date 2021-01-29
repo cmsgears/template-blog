@@ -1,8 +1,8 @@
 <?php
 
 $params = yii\helpers\ArrayHelper::merge(
-	require( __DIR__ . '/../../common/config/params.php' ),
-	require( __DIR__ . '/params.php' )
+	require __DIR__ . '/../../common/config/params.php',
+	require __DIR__ . '/params.php'
 );
 
 return [
@@ -29,7 +29,7 @@ return [
 			'class' => 'cmsgears\forms\api\Module'
 		],
         'cms' => [
-            'class' => 'cmsgears\cms\admin\Module'
+            'class' => 'cmsgears\cms\api\Module'
         ],
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\api\Module'

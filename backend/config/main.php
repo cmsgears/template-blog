@@ -1,8 +1,8 @@
 <?php
 
-$params = yii\helpers\ArrayHelper::merge(
-    require( __DIR__ . '/../../common/config/params.php' ),
-    require( __DIR__ . '/params.php' )
+$params = array_merge(
+    require __DIR__ . '/../../common/config/params.php',
+    require __DIR__ . '/params.php'
 );
 
 return [
@@ -51,7 +51,9 @@ return [
 		'view' => [
 			'theme' => [
 				'class' => 'themes\admin\Theme',
-				'childs' => [ 'themes\adminchild\Theme' ]
+				'childs' => [ 
+					'themes\adminchild\Theme' 
+				]
 			]
 		],
 		'request' => [

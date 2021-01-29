@@ -101,7 +101,7 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.min.css',
-					//'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.css',
+					//'../../../assets/fullcalendar/dist/fullcalendar.min.css',
 					'../../../frontend/web/blog/prvbtblg-20200401-src.css'
 				],
         		dest: '../../../frontend/web/blog/prvbtblg-20200401-src.css'
@@ -206,8 +206,8 @@ module.exports = function( grunt ) {
       		dist: {
         		src: [
 					'../../../vendor/bower-asset/datetimepicker/build/jquery.datetimepicker.full.min.js',
-					//'../../../vendor/bower-asset/moment/min/moment.min.js',
-					//'../../../vendor/bower-asset/fullcalendar/dist/fullcalendar.min.js',
+					'../../../vendor/bower-asset/moment/min/moment.min.js',
+					//'../../../themes/assets/vendor/fullcalendar/lib/main/fullcalendar.min.js',
 
 					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/address.js',
 					'../../../vendor/cmgtools/velocity-apps/src/apps/core/services/data.js',
