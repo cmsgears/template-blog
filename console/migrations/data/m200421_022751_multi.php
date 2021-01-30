@@ -19,7 +19,7 @@ use cmsgears\core\common\utilities\DateUtil;
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
+class m200421_022751_multi extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -125,7 +125,7 @@ class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181221_022751_multi will be deleted with m160621_014408_core.\n";
+		echo "m200421_022751_multi will be deleted with m160621_014408_core.\n";
 	}
 
 }

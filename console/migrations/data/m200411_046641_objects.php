@@ -15,7 +15,7 @@ use cmsgears\core\common\utilities\DateUtil;
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
+class m200411_046641_objects extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -63,10 +63,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'backend', 'frontend', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 104001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
+			//[ 104001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -80,10 +80,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 8001, $site->id, NULL, NULL, NULL, NULL ,NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_MENU, NULL, NULL, NULL, 'Test 1', NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ]
+			//[ 8001, $site->id, NULL, NULL, NULL, NULL ,NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_MENU, NULL, NULL, NULL, 'Test 1', NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -101,10 +101,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'viewPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 10001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', NULL, NULL, NULL, NULL, 0, NULL ]
+			//[ 10001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_ELEMENT, 'icon', 'texture', NULL, NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', NULL, NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -130,10 +130,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'viewPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 11001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
+			//[ 11001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', NULL, NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -152,10 +152,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'viewPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 12001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_BLOCK, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
+			//[ 12001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_BLOCK, 'icon', 'texture', NULL, NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -174,10 +174,10 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'themeId', 'templateId', 'parentId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'viewPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'popular', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
-			//[ 13001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_SIDEBAR, 'icon', 'texture', NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
+			//[ 13001, $site->id, NULL, NULL, NULL, 104001, NULL, NULL, NULL, $master->id, $master->id, 'Test 1', 'test-1', CmsGlobal::TYPE_SIDEBAR, 'icon', 'texture', NULL, NULL, NULL, NULL, NULL, $status, $vis, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-info-footer" }', 'Test 1.', NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
@@ -227,7 +227,7 @@ class m181211_046641_objects extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181211_046641_objects will be deleted with m160621_014408_core.\n";
+		echo "m200411_046641_objects will be deleted with m160621_014408_core.\n";
 	}
 
 }

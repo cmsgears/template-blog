@@ -1,5 +1,5 @@
 <?php
-// CMS Imports
+// CMG Imports
 use cmsgears\core\common\config\CoreGlobal;
 
 return [
@@ -70,6 +70,7 @@ return [
 			'activities' => true,
 			'siteConfigAll' => true,
 			'multiSite' => false,
+			'autoSiteMember' => false,
 			'subDirectory' => false,
 			'defaultSiteSlug' => 'main',
 			'softDelete' => true,

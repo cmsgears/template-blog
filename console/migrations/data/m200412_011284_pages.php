@@ -5,14 +5,17 @@ use cmsgears\cms\common\config\CmsGlobal;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Template;
 use cmsgears\core\common\models\entities\User;
+use cmsgears\cms\common\models\entities\Page;
+use cmsgears\cms\common\models\entities\Element;
 use cmsgears\cms\common\models\entities\Widget;
+use cmsgears\cms\common\models\entities\Block;
 
 use cmsgears\core\common\utilities\DateUtil;
 
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
+class m200412_011284_pages extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -55,10 +58,10 @@ class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'backend', 'frontend', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 106001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
+			//[ 106001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -128,7 +131,7 @@ class m181212_011284_pages extends \cmsgears\core\common\base\Migration {
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture texture-black', 'title' => NULL, 'description' => $desc[ 13 ], 'data' => $setting[ 13 ] ], [ 'slug' => 'feedback' ] );
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 14 ], 'data' => $setting[ 14 ] ], [ 'slug' => 'testimonial' ] );
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 15 ], 'data' => $setting[ 15 ] ], [ 'slug' => 'help' ] );
-		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 16 ], 'data' => $setting[ 16 ] ], [ 'slug' => 'faq' ] );
+		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 16 ], 'data' => $setting[ 16 ] ], [ 'slug' => 'faqs' ] );
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 17 ], 'data' => $setting[ 17 ] ], [ 'slug' => 'blog' ] );
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 18 ], 'data' => $setting[ 18 ] ], [ 'slug' => 'search-pages' ] );
 		$this->update( $this->cmgPrefix . 'cms_page', [ 'texture' => 'texture', 'title' => NULL, 'description' => $desc[ 19 ], 'data' => $setting[ 19 ] ], [ 'slug' => 'search-articles' ] );

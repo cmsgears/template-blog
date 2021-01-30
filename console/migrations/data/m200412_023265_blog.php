@@ -6,12 +6,15 @@ use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Template;
 use cmsgears\core\common\models\entities\User;
 
+use cmsgears\cms\common\models\entities\Sidebar;
+use cmsgears\cms\common\models\entities\Widget;
+
 use cmsgears\core\common\utilities\DateUtil;
 
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
+class m200412_023265_blog extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -58,10 +61,10 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'backend', 'frontend', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 107001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
+			//[ 107001, $site->id, $master->id, $master->id, 'test', NULL, 'test', '', 'jpg', 'banner', 0.123, 1500, 'image', NULL, '2020-08-11/banner/test.jpg', '2020-08-11/banner/test-medium.jpg', '2020-08-11/banner/test-small.jpg', '2020-08-11/banner/test-thumb.jpg', '2020-08-11/banner/test-pl.jpg', '2020-08-11/banner/test-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -79,7 +82,7 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 
 		$pages = [
 			// Blog
-			//[ 2001, $site->id, NULL, NULL, $master->id, $master->id, 'Courtesy Visit To ExxonMobil', 'test 1', 'blog', 'icon', 'texture', '', '', 16000, 1500, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","fluidBanner":"0","background":"0","backgroundClass":"","backgroundVideo":null,"texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerFluid":"0","headerBanner":"0","headerGallery":"0","headerScroller":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"1","contentInfo":"1","contentSummary":"1","contentData":"1","maxCover":"0","contentSocial":"1","contentLabels":"1","contentAvatar":"0","contentBanner":"1","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","metas":"0","metasWithContent":"0","metasOrder":"","metaTypes":"","metaWrapClass":"","elements":"0","elementsBeforeContent":"0","elementsWithContent":"0","elementsOrder":"","elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsBeforeContent":"0","widgetsWithContent":"0","widgetsOrder":"","widgetType":"","widgetWrapClass":"","widgetWrapper":"","widgetClass":"","blocks":"0","blocksBeforeContent":"0","blocksWithContent":"0","blocksOrder":"","blockType":"","sidebars":"0","sidebarsBeforeContent":"0","sidebarsWithContent":"0","sidebarsOrder":"","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"1","bottomSidebarSlugs":"post-bottom","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":"","footerSidebar":"0","footerSidebarSlug":null,"comments":"1","disqus":"0","author":"0","related":"0","popular":"0","similar":"0","purifySummary":"1","purifyContent":"1","amp":"0","ampGoogleScripts":"","ampScriptUrl":"","ampStylePath":"","ampSchema":"","ampMetas":"","h1Summary":"0"}}', NULL, 0, NULL ]
+			//[ 12001, $site->id, NULL, NULL, $master->id, $master->id, 'Courtesy Visit To ExxonMobil', 'test 1', 'blog', 'icon', 'texture', '', '', 16000, 1500, 0, 0, 0, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, '{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","fluidBanner":"0","background":"0","backgroundClass":"","backgroundVideo":null,"texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerFluid":"0","headerBanner":"0","headerGallery":"0","headerScroller":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"1","contentInfo":"1","contentSummary":"1","contentData":"1","maxCover":"0","contentSocial":"1","contentLabels":"1","contentAvatar":"0","contentBanner":"1","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","metas":"0","metasWithContent":"0","metasOrder":"","metaTypes":"","metaWrapClass":"","elements":"0","elementsBeforeContent":"0","elementsWithContent":"0","elementsOrder":"","elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsBeforeContent":"0","widgetsWithContent":"0","widgetsOrder":"","widgetType":"","widgetWrapClass":"","widgetWrapper":"","widgetClass":"","blocks":"0","blocksBeforeContent":"0","blocksWithContent":"0","blocksOrder":"","blockType":"","sidebars":"0","sidebarsBeforeContent":"0","sidebarsWithContent":"0","sidebarsOrder":"","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"1","bottomSidebarSlugs":"post-bottom","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":"","footerSidebar":"0","footerSidebarSlug":null,"comments":"1","disqus":"0","author":"0","related":"0","popular":"0","similar":"0","purifySummary":"1","purifyContent":"1","amp":"0","ampGoogleScripts":"","ampScriptUrl":"","ampStylePath":"","ampSchema":"","ampMetas":"","h1Summary":"0"}}', NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_page', $columns, $pages );
@@ -87,7 +90,7 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'templateId', 'bannerId', 'mbannerId', 'videoId', 'mvideoId', 'galleryId', 'parentId', 'parentType', 'type', 'summary', 'classPath', 'viewPath', 'seoName', 'seoDescription', 'seoKeywords', 'seoRobot', 'seoSchema', 'publishedAt', 'content', 'data', 'schema' ];
 
 		$pageContent = [
-			//[ 2001, $defaultTemplate->id, 107001, NULL, NULL, NULL, NULL, 2001, 'blog', NULL, '', NULL, NULL, '', '', '', '', '', DateUtil::getDateTime(), 'test 1', NULL, NULL ]
+			//[ 12001, $defaultTemplate->id, 107001, NULL, NULL, NULL, NULL, 12001, 'blog', NULL, '', NULL, NULL, '', '', '', '', '', DateUtil::getDateTime(), 'test 1', NULL, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_model_content', $columns, $pageContent );
@@ -169,8 +172,17 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 
 	private function updateBlogTemplates() {
 
+		$defaultTemplate = Template::findGlobalBySlugType( CoreGlobal::TEMPLATE_DEFAULT, CmsGlobal::TYPE_POST );
+
+		$categoryTemplate	= Template::findGlobalBySlugType( CoreGlobal::TEMPLATE_CATEGORY, CmsGlobal::TYPE_POST );
+		$tagTemplate		= Template::findGlobalBySlugType( CoreGlobal::TEMPLATE_TAG, CmsGlobal::TYPE_POST );
+
 		$cardPosts		= Template::findGlobalBySlugType( 'post-card', CmsGlobal::TYPE_WIDGET );
 		$searchPosts	= Template::findGlobalBySlugType( 'post-search', CmsGlobal::TYPE_WIDGET );
+
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'data' => $settings[ 0 ], 'viewPath' => '@themeTemplates/post/default' ], "id=$defaultTemplate->id" );
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'data' => $settings[ 1 ], 'viewPath' => '@themeTemplates/post/default' ], "id=$categoryTemplate->id" );
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'data' => $settings[ 2 ], 'viewPath' => '@themeTemplates/post/default' ], "id=$tagTemplate->id" );
 
 		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/post' ], "id=$cardPosts->id" );
 		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/post' ], "id=$searchPosts->id" );
@@ -199,7 +211,7 @@ class m181212_023265_blog extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181212_023265_blog will be deleted with m160621_014408_core.\n";
+		echo "m200412_023265_blog will be deleted with m160621_014408_core.\n";
 	}
 
 }

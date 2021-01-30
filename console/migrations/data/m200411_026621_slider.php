@@ -8,7 +8,7 @@ use cmsgears\core\common\utilities\DateUtil;
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
+class m200411_026621_slider extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -45,10 +45,10 @@ class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'backend', 'frontend', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'code', 'title', 'description', 'extension', 'directory', 'size', 'visibility', 'type', 'storage', 'url', 'medium', 'small', 'thumb', 'placeholder', 'smallPlaceholder', 'ogg', 'webm', 'caption', 'altText', 'link', 'shared', 'srcset', 'sizes', 'createdAt', 'modifiedAt', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$files = [
-			//[ 102001, $site->id, $master->id, $master->id, 'slide-1', NULL, 'Slide 1', '', 'jpg', 'gallery', 0.1214, 1500, 'image', NULL, '2020-08-11/gallery/slide-1.jpg', '2020-08-11/gallery/slide-1-medium.jpg', '2020-08-11/gallery/slide-1-small.jpg', '2020-08-11/gallery/slide-1-thumb.jpg', '2020-08-11/gallery/slide-1-pl.jpg', '2020-08-11/gallery/slide-1-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
+			//[ 102001, $site->id, $master->id, $master->id, 'slide-1', NULL, 'Slide 1', '', 'jpg', 'gallery', 0.1214, 1500, 'image', NULL, '2020-08-11/gallery/slide-1.jpg', '2020-08-11/gallery/slide-1-medium.jpg', '2020-08-11/gallery/slide-1-small.jpg', '2020-08-11/gallery/slide-1-thumb.jpg', '2020-08-11/gallery/slide-1-pl.jpg', '2020-08-11/gallery/slide-1-small-pl.jpg', NULL, NULL, NULL, NULL, NULL, 0, '1920,1152,576', '(max-width: 1920px) 100vw, 1920px', DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_file', $columns, $files );
@@ -78,7 +78,7 @@ class m181211_026621_slider extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181211_026621_slider will be deleted with m160621_014408_core.\n";
+		echo "m200411_026621_slider will be deleted with m160621_014408_core.\n";
 	}
 
 }
