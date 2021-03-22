@@ -1,7 +1,10 @@
 <?php
-namespace frontend\tests;
+namespace modules\core\frontend\controllers\apix;
 
-class AcceptanceTester extends \Codeception\Actor {
+/**
+ * @inheritdoc
+ */
+class CommentController extends \cmsgears\core\frontend\controllers\apix\CommentController {
 
 	// Variables ---------------------------------------------------
 
@@ -13,8 +16,6 @@ class AcceptanceTester extends \Codeception\Actor {
 
 	// Private ----------------
 
-	// Traits ------------------------------------------------------
-
 	// Constructor and Initialisation ------------------------------
 
 	// Instance methods --------------------------------------------
@@ -23,10 +24,14 @@ class AcceptanceTester extends \Codeception\Actor {
 
 	// Yii parent classes --------------------
 
+	// yii\base\Component -----
+
+	// yii\base\Controller ----
+
 	// CMG interfaces ------------------------
 
 	// CMG parent classes --------------------
 
-	// AcceptanceTester ----------------------
+	// CommentController ---------------------
 
 }

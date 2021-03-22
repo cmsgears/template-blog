@@ -1,8 +1,8 @@
 <?php
 
 $params = array_merge(
-	require( __DIR__ . '/../../common/config/params.php' ),
-	require( __DIR__ . '/params.php' )
+	require __DIR__ . '/../../common/config/params.php',
+	require __DIR__ . '/params.php'
 );
 
 return [
@@ -10,10 +10,11 @@ return [
 	'basePath' => dirname( __DIR__ ),
 	'bootstrap' => [
 		'log',
-		'core', 'coreFactory', 'forms', 'formsFactory', 'breeze',
-		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
+		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory',
+		'snsConnect', 'snsConnectFactory',
 		'foxSlider',
-		'bcoreFactory',
+		'blogCoreFactory',
 		'core-console'
 	],
 	'controllerNamespace' => 'console\controllers',

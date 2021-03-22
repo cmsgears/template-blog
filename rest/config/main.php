@@ -1,8 +1,8 @@
 <?php
 
 $params = yii\helpers\ArrayHelper::merge(
-	require( __DIR__ . '/../../common/config/params.php' ),
-	require( __DIR__ . '/params.php' )
+	require __DIR__ . '/../../common/config/params.php',
+	require __DIR__ . '/params.php'
 );
 
 return [
@@ -12,11 +12,14 @@ return [
 	'basePath' => dirname( __DIR__ ),
 	'controllerNamespace' => 'api\controllers',
 	'defaultRoute' => 'core/site/index',
+	//'catchAll' => [ 'core/site/maintenance' ],
 	'bootstrap' => [
 		'log',
 		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
-		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
-		'foxSlider'
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory',
+		'snsConnect', 'snsConnectFactory',
+		'foxSlider',
+		'blogCoreFactory'
 	],
 	'modules' => [
 		'core' => [
@@ -26,7 +29,7 @@ return [
 			'class' => 'cmsgears\forms\api\Module'
 		],
         'cms' => [
-            'class' => 'cmsgears\cms\admin\Module'
+            'class' => 'cmsgears\cms\api\Module'
         ],
 		'newsletter' => [
 			'class' => 'cmsgears\newsletter\api\Module'
@@ -41,7 +44,6 @@ return [
             'class' => 'foxslider\api\Module'
         ]
 	],
-	//'catchAll' => [ 'core/site/maintenance' ],
 	'components' => [
 		'request' => [
 			'parsers' => [
@@ -54,7 +56,8 @@ return [
 		'urlManager' => [
 			'rules' => [
 				// rest request rules ---------------------------
-				// Generic - 3, 4 and 5 levels - catch all
+				// Generic - 2, 3, 4 and 5 levels - catch all
+				'<controller:[\w\-]+>/<action:[\w\-]+>' => 'core/api/<controller>/<action>',
 				'<module:\w+>/<controller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<action>',
 				'<module:\w+>/<controller:[\w\-]+>/<pcontroller:[\w\-]+>/<action:[\w\-]+>' => '<module>/api/<controller>/<pcontroller>/<action>',
 				'<module:\w+>/<pcontroller1:\w+>/<pcontroller2:\w+>/<controller:\w+>/<action:[\w\-]+>' => '<module>/api/<pcontroller1>/<pcontroller2>/<controller>/<action>'

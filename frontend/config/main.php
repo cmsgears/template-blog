@@ -1,8 +1,8 @@
 <?php
 
 $params = yii\helpers\ArrayHelper::merge(
-	require( __DIR__ . '/../../common/config/params.php' ),
-	require( __DIR__ . '/params.php' )
+	require __DIR__ . '/../../common/config/params.php',
+	require __DIR__ . '/params.php'
 );
 
 return [
@@ -16,9 +16,10 @@ return [
 	'bootstrap' => [
 		'log',
 		'core', 'coreFactory', 'forms', 'formsFactory', 'cms', 'cmsFactory', 'breeze',
-		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory', 'snsConnect', 'snsConnectFactory',
+		'newsletter', 'newsletterFactory', 'notify', 'notifyFactory',
+		'snsConnect', 'snsConnectFactory',
 		'foxSlider',
-		'bcoreFactory'
+		'blogCoreFactory'
 	],
 	'modules' => [
 		'core' => [
@@ -56,7 +57,10 @@ return [
 			]
 		],
 		'user' => [
-			'identityCookie' => [ 'name' => '_identity-blog-site', 'httpOnly' => true ]
+			'identityCookie' => [
+				'name' => '_identity-blog-site',
+				'httpOnly' => true
+			]
 		],
 		'session' => [
 			'name' => 'blog-site'

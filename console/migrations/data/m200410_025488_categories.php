@@ -3,13 +3,14 @@
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
 use cmsgears\core\common\models\resources\Category;
+use cmsgears\core\common\models\resources\Option;
 
 use cmsgears\core\common\utilities\DateUtil;
 
-// Blog Imports
+// Basic Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
+class m200410_025488_categories extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -37,6 +38,8 @@ class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
 	public function up() {
 
 		$this->insertOptionGroups();
+
+		$this->insertOptions();
 	}
 
 	private function insertOptionGroups() {
@@ -47,17 +50,21 @@ class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
 		$columns = [ 'id', 'siteId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'description', 'featured', 'lValue', 'rValue', 'createdAt', 'modifiedAt' ];
 
 		$groups = [
-			//[ 10001, $site->id, $master->id, $master->id, 'Test', 'test', CoreGlobal::TYPE_OPTION_GROUP, 'Test options.', false, 1, 2, DateUtil::getDateTime(), DateUtil::getDateTime() ]
+			// Generic
+			//[ 10001, $site->id, $master->id, $master->id, 'test', 'test', CoreGlobal::TYPE_OPTION_GROUP, 'test', false, 1, 2, DateUtil::getDateTime(), DateUtil::getDateTime() ],
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_category', $columns, $groups );
+	}
 
-		//$tAssets = Category::findBySlugType( 'test', CoreGlobal::TYPE_OPTION_GROUP );
+	private function insertOptions() {
 
-		$optionColumns = [ 'id', 'categoryId', 'name', 'value', 'icon', 'input', 'htmlOptions', 'content', 'data' ];
+		//$test	= Category::findBySlugType( 'test', CoreGlobal::TYPE_OPTION_GROUP );
+
+		$optionColumns = [ 'id', 'categoryId', 'name', 'value', 'icon', 'active', 'order', 'input', 'htmlOptions', 'content', 'data' ];
 
 		$options = [
-			//[ 100001, $tAssets->id, 'Test', 'Land', null, null, null, null, null ],
+			//[ 100001, $test->id, 'Test', 'Test', NULL, 1, 0, 0, NULL, NULL, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_option', $optionColumns, $options );
@@ -65,7 +72,7 @@ class m181210_025488_categories extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181210_025488_categories will be deleted with m160621_014408_core.\n";
+		echo "m200410_025488_categories will be deleted with m160621_014408_core.\n";
 	}
 
 }

@@ -19,7 +19,7 @@ use cmsgears\core\common\utilities\DateUtil;
 // Blog Imports
 use modules\core\common\config\CoreGlobal;
 
-class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
+class m200421_022751_multi extends \cmsgears\core\common\base\Migration {
 
 	// Public Variables
 
@@ -108,6 +108,7 @@ class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
 
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}core_object AUTO_INCREMENT = 1000001" );
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}core_model_object AUTO_INCREMENT = 1000001" );
+
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}cms_link AUTO_INCREMENT = 100001" );
 		$this->execute( "ALTER TABLE {$this->cmgPrefix}cms_model_link AUTO_INCREMENT = 1000001" );
 
@@ -124,7 +125,7 @@ class m181221_022751_multi extends \cmsgears\core\common\base\Migration {
 
 	public function down() {
 
-		echo "m181221_022751_multi will be deleted with m160621_014408_core.\n";
+		echo "m200421_022751_multi will be deleted with m160621_014408_core.\n";
 	}
 
 }
