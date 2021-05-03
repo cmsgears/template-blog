@@ -1,7 +1,4 @@
 <?php
-// CMG Imports
-use cmsgears\core\common\config\CoreGlobal;
-
 return [
 	'aliases' => [
 		'@bower' => '@vendor/bower-asset',
@@ -75,7 +72,7 @@ return [
 			'defaultSiteSlug' => 'main',
 			'softDelete' => true,
 			'provinceLabel' => 'State',
-			'regionLabel' => 'Province',
+			'regionLabel' => 'District',
 			'zipLabel' => 'Postal Code'
 		],
 		'coreFactory' => [

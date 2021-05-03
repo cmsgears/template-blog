@@ -70,7 +70,7 @@ class m200412_011284_pages extends \cmsgears\core\common\base\Migration {
 	private function updatePages() {
 
 		$desc = [
-			'Site',
+			'Home',
 			'Login at Site',
 			'Login using OTP at Site',
 			'Register at Site',
@@ -141,7 +141,7 @@ class m200412_011284_pages extends \cmsgears\core\common\base\Migration {
 	private function updatePageContent() {
 
 		$summary = [
-			'Site',
+			'Home',
 			'Login at Site',
 			'Login using OTP at Site',
 			'Register at Site',

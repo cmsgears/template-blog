@@ -1,10 +1,10 @@
 <?php
 // CMG Imports
+use cmsgears\core\common\models\entities\Locale;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Role;
 use cmsgears\core\common\models\entities\Theme;
 use cmsgears\core\common\models\entities\User;
-use cmsgears\core\common\models\entities\Locale;
 
 use cmsgears\core\common\utilities\DateUtil;
 

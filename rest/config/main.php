@@ -23,7 +23,7 @@ return [
 	],
 	'modules' => [
 		'core' => [
-			'class' => 'cmsgears\core\api\Module'
+			'class' => 'modules\core\api\Module'
 		],
 		'forms' => [
 			'class' => 'cmsgears\forms\api\Module'
