@@ -51,8 +51,8 @@ return [
 		'view' => [
 			'theme' => [
 				'class' => 'themes\admin\Theme',
-				'childs' => [ 
-					'themes\adminchild\Theme' 
+				'childs' => [
+					'themes\adminchild\Theme'
 				]
 			]
 		],
@@ -103,7 +103,10 @@ return [
 		],
 		'sidebar' => [
 			'class' => 'cmsgears\core\admin\components\Sidebar',
-			'modules' => [ 'bcore', 'cms', 'foxslider', 'core', 'notify', 'newsletter', 'snsconnect' ],
+			'modules' => [
+				'bcore',
+				'cms', 'foxslider', 'core', 'notify', 'newsletter', 'snsconnect'
+			],
 			'plugins' => [
 				'socialMeta' => [ 'twitter-meta', 'facebook-meta' ],
 				'fileManager' => [ 'file' ]

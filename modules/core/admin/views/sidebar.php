@@ -2,7 +2,7 @@
 // Yii Imports
 use yii\helpers\Html;
 
-// Basic Imports
+// Blog Imports
 use modules\core\common\config\CoreGlobal;
 use cmsgears\forms\common\config\FormsGlobal;
 

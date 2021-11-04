@@ -6,6 +6,8 @@ use cmsgears\core\common\models\entities\ObjectData;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Template;
 use cmsgears\core\common\models\entities\User;
+use cmsgears\core\common\models\mappers\ModelObject;
+
 use cmsgears\cms\common\models\entities\Block;
 use cmsgears\cms\common\models\entities\Sidebar;
 use cmsgears\cms\common\models\entities\Widget;
@@ -55,7 +57,11 @@ class m200411_046641_objects extends \cmsgears\core\common\base\Migration {
 
 		$this->updateWidgetTemplates();
 		$this->updateWidgets();
+
+		$this->updateBlockTemplates();
 		$this->updateBlocks();
+
+		$this->updateElements();
 	}
 
 	private function insertFiles() {
@@ -188,25 +194,47 @@ class m200411_046641_objects extends \cmsgears\core\common\base\Migration {
 		$mainSidebar	= Sidebar::findBySlugType( 'main-right', CmsGlobal::TYPE_SIDEBAR );
 		$pgrSidebar		= Sidebar::findBySlugType( 'page-right', CmsGlobal::TYPE_SIDEBAR );
 		$psrSidebar		= Sidebar::findBySlugType( 'post-right', CmsGlobal::TYPE_SIDEBAR );
+		$psbSidebar		= Sidebar::findBySlugType( 'post-bottom', CmsGlobal::TYPE_SIDEBAR );
+		$pssrSidebar	= Sidebar::findBySlugType( 'post-search-right', CmsGlobal::TYPE_SIDEBAR );
+		$pscrSidebar	= Sidebar::findBySlugType( 'post-category-right', CmsGlobal::TYPE_SIDEBAR );
+		$pscbSidebar	= Sidebar::findBySlugType( 'post-category-bottom', CmsGlobal::TYPE_SIDEBAR );
+		$pstrSidebar	= Sidebar::findBySlugType( 'post-tag-right', CmsGlobal::TYPE_SIDEBAR );
+		$pstbSidebar	= Sidebar::findBySlugType( 'post-tag-bottom', CmsGlobal::TYPE_SIDEBAR );
 		$frmrSidebar	= Sidebar::findBySlugType( 'form-right', CmsGlobal::TYPE_SIDEBAR );
 
-		$popsPosts	= Widget::findBySlugType( 'popular-site-posts', CmsGlobal::TYPE_WIDGET );
-		$recsPosts	= Widget::findBySlugType( 'recent-site-posts', CmsGlobal::TYPE_WIDGET );
+		$pscWidget	= Widget::findBySlugType( 'post-categories', CmsGlobal::TYPE_WIDGET );
+		$psfWidget	= Widget::findBySlugType( 'featured-site-posts', CmsGlobal::TYPE_WIDGET );
+		$pspWidget	= Widget::findBySlugType( 'popular-site-posts', CmsGlobal::TYPE_WIDGET );
+		$psrWidget	= Widget::findBySlugType( 'recent-site-posts', CmsGlobal::TYPE_WIDGET );
+
+		$nlWidget	= Widget::findBySlugType( 'newsletter', CmsGlobal::TYPE_WIDGET );
+
+		ModelObject::deleteByParent( $pgrSidebar->id, CmsGlobal::TYPE_SIDEBAR );
 
 		$columns = [ 'id', 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'popular', 'nodes' ];
 
 		$mappings = [
-			[ 100001, $popsPosts->id, $mainSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
-			[ 100011, $recsPosts->id, $pgrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
-			[ 100021, $recsPosts->id, $psrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
-			[ 100031, $recsPosts->id, $frmrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
-			[ 100041, $recsPosts->id, $frmrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ]
+			[ 100001, $pspWidget->id, $mainSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
+			[ 100011, $psrWidget->id, $pgrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
+			[ 100021, $psrWidget->id, $psrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
+			[ 100031, $pspWidget->id, $frmrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ],
+			[ 100041, $psrWidget->id, $frmrSidebar->id, 'sidebar', 'widget', 0, 1, 0, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
 	}
 
 	private function updateWidgetTemplates() {
+
+		//$postCardTemplate	= Template::findGlobalBySlugType( 'post-card', CmsGlobal::TYPE_WIDGET );
+		//$postBoxTemplate	= Template::findGlobalBySlugType( 'post-box', CmsGlobal::TYPE_WIDGET );
+		//$postSearchTemplate	= Template::findGlobalBySlugType( 'post-search', CmsGlobal::TYPE_WIDGET );
+		//$newsletterTemplate	= Template::findGlobalBySlugType( 'newsletter', CmsGlobal::TYPE_WIDGET );
+
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/post' ], "id=$postCardTemplate->id" );
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/post' ], "id=$postBoxTemplate->id" );
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/post' ], "id=$postSearchTemplate->id" );
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/newsletter' ], "id=$newsletterTemplate->id" );
 
 		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/widget/model', 'view' => 'card' ], "slug IN ('page-card', 'post-card', 'article-card')" );
 	}
@@ -220,9 +248,37 @@ class m200411_046641_objects extends \cmsgears\core\common\base\Migration {
 		//$this->update( $this->cmgPrefix . 'core_object', [ 'data' => $settings[ 0 ] ], [ 'slug' => 'home-posts', 'type' => 'widget' ] );
 	}
 
+	private function updateBlockTemplates() {
+
+		//$defaultTemplate = Template::findGlobalBySlugType( 'default', CmsGlobal::TYPE_BLOCK );
+
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/block/default' ], "id=$defaultTemplate->id" );
+
+		//$textTemplate = Template::findGlobalBySlugType( 'text', CmsGlobal::TYPE_BLOCK );
+
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/block/text' ], "id=$textTemplate->id" );
+
+		//$newsletterTemplate	= Template::findGlobalBySlugType( 'newsletter', CmsGlobal::TYPE_BLOCK );
+
+		//$this->update( $this->cmgPrefix . 'core_template', [ 'viewPath' => '@themeTemplates/block/newsletter' ], "id=$newsletterTemplate->id" );
+	}
+
 	private function updateBlocks() {
 
 		//$this->update( $this->cmgPrefix . 'core_object', [ 'templateId' => $multisite->id ], [ 'slug' => 'multisite-posts', 'type' => 'block' ] );
+	}
+
+	private function updateElements() {
+
+		$content = [
+			'Intro'
+		];
+
+		$settings = [
+			'{"settings":{"defaultAvatar":"0","lazyAvatar":"0","resAvatar":"0","defaultBanner":"0","lazyBanner":"0","resBanner":"0","bkg":"0","bkgClass":"","bkgVideo":"0","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentRaw":"","maxCover":"0","contentClass":"reader margin margin-small-v","contentDataClass":"","styles":"","scripts":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","metas":"0","metaTypes":"","metaWrapClass":"","purifySummary":"1","purifyContent":"1"}}'
+		];
+
+		//$this->update( $this->cmgPrefix . 'core_object', [ 'content' => $content[ 0 ], 'data' => $settings[ 0 ] ], [ 'slug' => 'intro', 'type' => CmsGlobal::TYPE_ELEMENT ] );
 	}
 
 	public function down() {

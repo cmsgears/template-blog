@@ -64,7 +64,7 @@ class m200410_025488_categories extends \cmsgears\core\common\base\Migration {
 		$optionColumns = [ 'id', 'categoryId', 'name', 'value', 'icon', 'active', 'order', 'input', 'htmlOptions', 'content', 'data' ];
 
 		$options = [
-			//[ 100001, $test->id, 'Test', 'Test', NULL, 1, 0, 0, NULL, NULL, NULL ]
+			//[ 100001, $tAssets->id, 'Test', 'Land', null, true, 0, null, null, null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_option', $optionColumns, $options );
